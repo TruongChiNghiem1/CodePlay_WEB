@@ -19,36 +19,51 @@
     <header>
         <div class="header_menu">
             <div class="dropdown" id="header_button_home">
-                <button class="btn btn-secondary dropdown-toggle"
+                <button onclick="goToHome()" class="btn btn-secondary dropdown-toggle"
                     type="button" id="dropdownMenuButton1"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     Home
                 </button>
                 <ul class="dropdown-menu"
                     aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="">Decorate Themes</a></li>
-                    <li><a class="dropdown-item" href="">Bestseller</a></li>
-                    <li><a class="dropdown-item" href="">Collections</a></li>
+                    <li><a class="dropdown-item" href=""></a></li>
+                    <li><a class="dropdown-item" href=""></a></li>
+                    <li><a class="dropdown-item" href=""></a></li>
                 </ul>
             </div>
             <div class="dropdown" id="header_button_shop">
-                    <button class="btn btn-secondary dropdown-toggle"
+                    <button onclick="goToShop()" class="btn btn-secondary dropdown-toggle"
                         type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Shop
                     </button>
                 <ul class="dropdown-menu"
                     aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="">All Categories</a></li>
-                    <li><a class="dropdown-item" href="">Get Disscont</a></li>
+                    <li><a class="dropdown-item" href=""></a></li>
+                    <li><a class="dropdown-item" href=""></a></li>
                 </ul>
             </div>
-            <div><button type="button" id="header_button_aboutus" class="btn btn-primary">About Us</button></div>
+            <div><button onclick="goToAboutUs()" type="button" id="header_button_aboutus" class="btn btn-primary">About Us</button></div>
+        </div>
+
+        <div class="header_menu_button_rps" onclick="changeButtonMenu(this)">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+            <div id="menu-button-dropdown">
+                <div><a href="">Home</a></div>
+                <hr>
+                <div><a href=""></a>Shop</div>
+                <hr>
+                <div><a href="">About Us</a></div>
+            </div>
         </div>
         <h1>Dekorare</h1>
         <div class="header_cart">
-            <button class="header_cart_button"><i class="bi-cart"></i></button>
+            <button onclick="goToCart()" class="header_cart_button"><i class="bi-cart"></i></button>
         </div>
     </header>
 </body>
+
+    <script src="../js/main.js"></script>
 </html>

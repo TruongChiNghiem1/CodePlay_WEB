@@ -2,27 +2,37 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    
 }
 
 header{
+    width: 100%;
     height: 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
     color: white;
     background-color: rgb(6, 105, 95);
+    padding: 0 26px;
+}
+
+header h1{
+    margin: 0;
 }
 
 .header_menu{
     display: flex;
+}
 
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 .header_menu button
 {
     height: 5rem;
     width: 8rem;
+    font-size: 18px;
     border: none;
     background-color: rgba(6, 53, 56, 0);
     border-radius: 0;
@@ -37,14 +47,16 @@ header{
 .header_cart{
     width: 24rem;
     text-align: right;
-    padding-right: 36px;
 }
 
 .header_cart_button{
     width: 36px;
+    font-size: 24px;
+    color: white;
     height: 36px;
     border: none;
     border-radius: 100%;
+    background-color: transparent;
 }
 
 .header_cart_button:hover{
@@ -52,5 +64,96 @@ header{
     background-color: #23413e;
 }
 
+.header_menu_button_rps {
+    position: relative;
+    left: -5%;
+    display: none;
+    cursor: pointer;
+}
+
+.line1,
+.line2,
+.line3 {
+    height: 2px;
+    width: 20px;
+    background-color: black;
+    margin: 3px 0;
+    transition: 0.5s;
+}
+
+.change .line1 {
+    transform: translate(0, 5px) rotate(-45deg);
+}
+
+.change .line2 {
+    opacity: 0;
+}
+
+.change .line3 {
+    transform: translate(0, -5px) rotate(45deg);
+}
+
+.change #menu-button-dropdown{
+    display: block;
+}
+
+#menu-button-dropdown{
+    width: 5rem;
+    display: none;
+    position: absolute;
+    top: 3rem;
+    left: -1rem;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 8px;
+}
+
+
+#menu-button-dropdown a{
+    color: #161616;
+}
+
+#menu-button-dropdown div:hover{
+    background-color: #dddebd;
+}
+
+header h1 a{
+    font-weight: bold;
+    color: white;
+}
+
+@media (max-width: 1330px) {
+    .header_menu button {
+        height: 3rem;
+        width: 5rem;
+        font-size: 12px;
+    }
+
+    .header_cart{
+        width: 8rem;
+    }
+}
+
+@media (max-width: 580px) {
+    header{
+        padding: 0 8px;
+    }
+    .header_menu button{
+        display: none;
+    }
+
+
+    .header_menu_button_rps{
+        display: block;
+        margin: 0 16px;
+    }
+
+    .header_cart{
+        text-align: right;
+    }
+
+    
+}
 
 
