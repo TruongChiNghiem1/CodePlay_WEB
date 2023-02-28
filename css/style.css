@@ -10,8 +10,8 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: black;
-    background-color: turquoise;
+    color: white;
+    background-color: rgb(6, 105, 95);
 }
 
 .header_menu{
@@ -24,13 +24,33 @@ header{
     height: 5rem;
     width: 8rem;
     border: none;
-    background-color: rgba(7, 49, 85, 0);
+    background-color: rgba(6, 53, 56, 0);
     border-radius: 0;
-    color: black;
+    color: white;
     --bs-btn-active-bg: #918168;
 }
 
 .header_menu button:hover{
-    background-color: #4c5235;
-
+    background-color: #23413e;
 }
+
+.header_cart{
+    width: 24rem;
+    text-align: right;
+    padding-right: 36px;
+}
+
+.header_cart_button{
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 100%;
+}
+
+.header_cart_button:hover{
+    color: wheat;
+    background-color: #23413e;
+}
+
+
+
