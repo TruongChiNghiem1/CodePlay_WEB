@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+header{
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    background-color: turquoise;
+}
+
+.header_menu{
+    display: flex;
+
+}
+
+.header_menu button
+{
+    height: 5rem;
+    width: 8rem;
+    border: none;
+    background-color: rgba(7, 49, 85, 0);
+    border-radius: 0;
+    color: black;
+    --bs-btn-active-bg: #918168;
+}
+
+.header_menu button:hover{
+    background-color: #4c5235;
+
+}
