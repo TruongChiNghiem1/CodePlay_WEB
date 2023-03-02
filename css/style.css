@@ -6,14 +6,28 @@
 
 header{
     width: 100%;
+    height: 5em;
+}
+
+#header_container{
+    width: 100%;
     height: 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
     color: white;
-    background-color: rgb(6, 105, 95);
-    padding: 0 26px;
+    background-color: #84c5bf;
+    padding: 0 1rem;
+}
+
+header a{
+    text-decoration: none;
+    color: white;
+}
+
+header a:hover{
+    color: wheat;
 }
 
 header h1{
@@ -22,6 +36,7 @@ header h1{
 
 .header_menu{
     display: flex;
+
 }
 
 .dropdown:hover .dropdown-menu {
@@ -33,20 +48,24 @@ header h1{
     height: 5rem;
     width: 8rem;
     font-size: 18px;
+    padding: 0;
     border: none;
     background-color: rgba(6, 53, 56, 0);
     border-radius: 0;
     color: white;
     --bs-btn-active-bg: #918168;
+    box-sizing: content-box;
 }
 
 .header_menu button:hover{
     background-color: #23413e;
 }
 
-.header_cart{
+.header_cart_lgn{
     width: 24rem;
-    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 
 .header_cart_button{
@@ -55,21 +74,54 @@ header h1{
     color: white;
     height: 36px;
     border: none;
-    border-radius: 100%;
     background-color: transparent;
 }
 
+.header_person_button{
+    width: 24px;
+    height: 36px;
+    font-size: 24px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    margin:0 1rem;
+}
+
+.header_login_button_hv{
+    display: none;
+}
+
+
 .header_cart_button:hover{
     color: wheat;
-    background-color: #23413e;
+}
+
+.quockiVN{
+    width: 24px;
+    height: 18px;
+   
 }
 
 .header_menu_button_rps {
     position: relative;
-    left: -5%;
+    left: -10%;
     display: none;
     cursor: pointer;
 }
+
+.dropdown-menu {
+    border: none;
+    background-color: #55938ec8;
+    border-radius: 0;
+    --bs-dropdown-link-active-bg: rgba(133, 133, 97, 0.822);
+    --bs-dropdown-link-active-color: black;
+
+}
+
+.dropdown-menu a{
+    color: white;
+}
+
 
 .line1,
 .line2,
@@ -125,32 +177,25 @@ header h1 a{
 
 @media (max-width: 1330px) {
     .header_menu button {
-        height: 3rem;
+        height: 5rem;
         width: 5rem;
         font-size: 12px;
     }
 
-    .header_cart{
-        width: 8rem;
+    .header_cart_lgn{
+        width: 15rem;
     }
 }
 
-@media (max-width: 580px) {
-    header{
-        padding: 0 8px;
-    }
+@media (max-width: 680px) {
     .header_menu button{
-        display: none;
+        display: none;   
     }
 
 
     .header_menu_button_rps{
         display: block;
-        margin: 0 16px;
-    }
-
-    .header_cart{
-        text-align: right;
+        margin: 0 1rem;
     }
 
     
