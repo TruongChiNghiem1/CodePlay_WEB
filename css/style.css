@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 header{
@@ -56,10 +56,11 @@ header h1{
     color: white;
     --bs-btn-active-bg: #918168;
     box-sizing: content-box;
+    font-weight: bold;
 }
 
 .header_menu button:hover{
-    background-color: #23413e;
+    background-color: rgba(133, 133, 97, 0.694);
 }
 
 .header_cart_lgn{
@@ -70,31 +71,35 @@ header h1{
 }
 
 .header_cart_button{
-    width: 36px;
+    width: 42px;
+    height: 42px;
     font-size: 24px;
     color: white;
-    height: 36px;
     border: none;
     background-color: transparent;
+    border-radius: 100%;
 }
 
 .header_person_button{
-    width: 24px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     font-size: 24px;
     color: white;
     border: none;
     background-color: transparent;
     margin:0 1rem;
-}
-
-.header_login_button_hv{
-    display: none;
+    border-radius: 100%;
 }
 
 
 .header_cart_button:hover{
-    color: wheat;
+    color: rgb(255, 235, 197);
+    box-shadow: 0px 0px 15px wheat;
+}
+
+.header_person_button:hover{
+    color: rgb(255, 235, 197);
+    box-shadow: 0px 0px 15px wheat;
 }
 
 .quockiVN{
@@ -112,7 +117,7 @@ header h1{
 
 .dropdown-menu {
     border: none;
-    background-color: #55938ec8;
+    background-color: rgba(171, 171, 150, 0.307);
     border-radius: 0;
     --bs-dropdown-link-active-bg: rgba(133, 133, 97, 0.822);
     --bs-dropdown-link-active-color: black;
@@ -129,7 +134,7 @@ header h1{
 .line3 {
     height: 2px;
     width: 20px;
-    background-color: black;
+    background-color: white;
     margin: 3px 0;
     transition: 0.5s;
 }
@@ -151,24 +156,30 @@ header h1{
 }
 
 #menu-button-dropdown{
-    width: 5rem;
+    width: 8rem;
     display: none;
     position: absolute;
     top: 3rem;
-    left: -1rem;
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    padding: 8px;
+    left: -1.5rem;
+    background-color: transparent;
 }
 
+#menu-button-dropdown div {
+    padding: 0.5rem 1rem;
+    border: px;
+    border-color:  #e3e1e1;
+}
 
 #menu-button-dropdown a{
-    color: #161616;
+    color: white;
 }
 
 #menu-button-dropdown div:hover{
     background-color: #dddebd;
+}
+
+#menu-button-dropdown div:hover a{
+    color: #161616;
 }
 
 header h1 a{
@@ -293,13 +304,48 @@ section{
     color:white;
 }
 
+.font_content_2{
+    font-family: "Inter", Sans-serif;
+}
+
+.bg_color_card{
+    background-color: #f1f5e8;
+}
+
+.border_none{
+    border: none;
+    border-radius: 0;
+}
+
+.padding_3{
+    padding: 3rem;
+}
+
+.font_dancing{
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+}
+
+.color_black{
+    color: black;
+    text-decoration: none;
+}
+
+.color_black_themes{
+    width: 0;
+}
+.color_black:hover{
+    color: #92660f;
+}
+
+
 
 
 @media (max-width: 1330px) {
     .header_menu button {
         height: 5rem;
         width: 5rem;
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .header_cart_lgn{
@@ -316,6 +362,9 @@ section{
     .header_menu_button_rps{
         display: block;
         margin: 0 1rem;
+    }
+    .header_cart_lgn{
+        width: 5rem;
     }
 
     
