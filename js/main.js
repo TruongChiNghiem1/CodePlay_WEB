@@ -145,6 +145,20 @@ const renderCarouselInner = () => {
         }
     });
     document.getElementById('carousel-inner').innerHTML = html;
+    html = "";
+    const content_2 = product.map((item, index) => {
+        if (index >= start + 16 && index < perPageHome + 16) {
+            html += `<div class="card m_r_10 w-9">
+                        <img src = ${item.image} class="card-img-top">
+                            <div class="card-body height_categories text-center
+                             bg_color_bottom_categories">
+                                <p class="card-text fw-bold ">${item.classify[0]}</p>
+                            </div>
+                    </div>`
+                    
+        }
+    });
+    document.getElementById('carousel-inner-2').innerHTML = html;
 }
 
 const renderCarouselItem = () =>{
@@ -162,6 +176,24 @@ const renderCarouselItem = () =>{
         }
     });
     document.getElementById('carousel-item').innerHTML = html;
+    html ="";
+    const content_2 = product.map((item, index) => {
+        if (index >= start + 32 && index < endHome + 32) {
+            html += `<div class="card m_r_10 w-9">
+                        <img src = ${item.image} class="card-img-top">
+                            <div class="card-body height_categories text-center 
+                            bg_color_bottom_categories" >
+                                <p class="card-text fw-bold">${item.classify[0]}</p>
+                            </div>
+                    </div>`
+                    
+        }
+    });
+    document.getElementById('carousel-item-2').innerHTML = html;
 }
+
+
 renderCarouselInner()
 renderCarouselItem();
+
+
