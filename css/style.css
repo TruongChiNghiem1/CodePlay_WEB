@@ -496,6 +496,14 @@ section{
     text-decoration: none;
 }
 
+.img_designer{
+
+    position: absolute;
+    width: 10%;
+    border-radius: 100%;
+    top: 30%;
+    left: 30%;
+}
 
 
 
