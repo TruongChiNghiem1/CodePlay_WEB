@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet"
+            href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap"
+            rel="stylesheet">
+        <link
+            href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+            rel="stylesheet" type='text/css'>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <header>
+            <div id="header_container">
+                <div class="header_menu">
+                    <div class="dropdown" id="header_button_home">
+                        <button onclick="goToHome()" class="btn btn-secondary
+                            dropdown-toggle"
+                            type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </button>
+                        <ul class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="">Decorate Themes</a></li>
+                            <li><a class="dropdown-item" href="">Collections</a></li>
+                            <li><a class="dropdown-item" href="">Interior
+                                    designer</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown" id="header_button_shop">
+                        <button onclick="goToShop()" class="btn btn-secondary
+                            dropdown-toggle"
+                            type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </button>
+                        <ul class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="">All Categories</a></li>
+                            <li><a class="dropdown-item" href="">Noticeable</a></li>
+                        </ul>
+                    </div>
+                    <div><button onclick="goToAboutUs()" type="button"
+                            id="header_button_aboutus" class="btn btn-primary">About
+                            Us</button></div>
+                    <div class="header_menu_button_rps"
+                        onclick="changeButtonMenu(this)">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                        <div id="menu-button-dropdown">
+                            <div><a
+                                    href="http://127.0.0.1:5500/pages/index.html">Home</a></div>
+                            <div><a
+                                    href="http://127.0.0.1:5500/pages/shop.html">Shop</a></div>
+                            <div><a
+                                    href="http://127.0.0.1:5500/pages/about_us.html">About
+                                    Us</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="http://127.0.0.1:5500/pages/index.html"><h1
+                        style="font-weight: bold;">Dekorare</h1></a>
+                <div class="header_cart_lgn">
+                    <button onclick="goToCart()" class="header_cart_button"><i
+                            class="bi-bag"></i></button>
+                    <button onclick="goToCart()" class="header_person_button"><i
+                            class="bi-person-circle"></i></button>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div>
+                <h1>Dekorate</h1>
+            </div>
+
+            <div>
+                <div>
+                    <div>
+                        <p>PRESTIGE INTERIOR DESIGN COMPANY</p>
+                    </div>
+                    <div>
+                        <p>In recent years, Vietnam's housing market has become
+                            increasingly active, leading to an increase in
+                            demand for interior design services. Therefore,
+                            there have been many interior design companies born,
+                            and DEKORARE Joint-stock Company is one of them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                    <div>
+                        <p>GIỚI THIỆU CHUNG</p>
+                        <p>Compared to many other interior design companies,
+                            DEKORARE does not have as long a history as the
+                            company was only established on January 16, 2020.
+                            However, this is not a weakness, but on the
+                            contrary, it is also our strength. Since we were
+                            established later, we can learn and draw a lot of
+                            experience and valuable lessons about interior
+                            design. From there, build and improve our services,
+                            to bring customers the most outstanding benefits.
+                            DEKORARE is a unit specializing in providing
+                            full-service design and construction – turnkey, with
+                            exclusive design solutions by professional
+                            architects. The solutions provided by us are highly
+                            flexible and applicable, ensuring no additional
+                            costs beyond the initial estimate.</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>Đặc biệt, DEKORARE còn là đơn vị trực tiếp gia công
+                            các sản phẩm nội thất với xưởng sản xuất được đầu tư
+                            máy móc, trang thiết bị hiện đại, tạo nên những sản
+                            phẩm chất lượng, tỉ mỉ, có độ chính xác cao.
+                            Chúng tôi tự hào là đơn vị đảm nhận thiết kế nội
+                            thất cho các tập đoàn BĐS lớn nhất Việt Nam:
+                            Ecopark, Sunshine Group, TTC Land, Thịnh Gia, Quốc
+                            Cường Gia Lai… Ngoài ra, DEKORARE đã thực hiện thiết
+                            kế và thi công cho hơn 100+ dự án căn hộ đẳng cấp.</p>
+                    </div>
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div></div>
+            </div>
+        </section>
+        <footer>
+            
+        </footer>
+    </body>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+        </style>
+</html>
