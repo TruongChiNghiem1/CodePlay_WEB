@@ -498,7 +498,9 @@ header h1 a {
 .chill_section_5 a {
     text-decoration: none;
 }
-
+.bg_color_black{
+    background-color: rgba(52, 58, 58, 0.384);
+}
 
 /* About us */
 .font_great {
@@ -515,9 +517,42 @@ header h1 a {
     margin-top: 4rem;
     margin-bottom: 4rem;
 }
+.mt_18{
+    margin-top: 18rem;
+}
+.mt_31{
+    margin-top: 31rem;
+}
 .wh_300{
     width: 700px;
     height: 300px;
+}
+.px_10{
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+.py_5{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.w_270{
+    width: 270px;
+}
+.h_40{
+    height: 40px;
+}
+.h_35{
+    height: 35px;
+}
+.bg_transparent{
+    background-color: transparent;
+    
+}
+.bd_white{
+    border-color: white;
+}
+.w_87{
+    width: 87%;
 }
 
 @media (min-width: 1626px) {
