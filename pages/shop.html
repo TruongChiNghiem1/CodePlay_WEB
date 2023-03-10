@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet"
+            href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap"
+            rel="stylesheet">
+        <link
+            href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+            rel="stylesheet" type='text/css'>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <header class="">
+            <div class="" id="header_container">
+                <div class="header_menu">
+                    <div class="dropdown" id="header_button_home">
+                        <button onclick="goToHome()" class="btn btn-secondary
+                            dropdown-toggle"
+                            type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </button>
+                        <ul class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="">Decorate Themes</a></li>
+                            <li><a class="dropdown-item" href="">Collections</a></li>
+                            <li><a class="dropdown-item" href="">Interior
+                                    designer</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown" id="header_button_shop">
+                        <button onclick="goToShop()" class="btn btn-secondary
+                            dropdown-toggle"
+                            type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </button>
+                        <ul class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="">All Categories</a></li>
+                            <li><a class="dropdown-item" href="">Noticeable</a></li>
+                        </ul>
+                    </div>
+                    <div><button onclick="goToAboutUs()" type="button"
+                            id="header_button_aboutus" class="btn btn-primary">About
+                            Us</button></div>
+                    <div class="header_menu_button_rps"
+                        onclick="changeButtonMenu(this)">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                        <div id="menu-button-dropdown">
+                            <div><a
+                                    href="http://127.0.0.1:5500/pages/index.html">Home</a></div>
+                            <div><a
+                                    href="http://127.0.0.1:5500/pages/shop.html">Shop</a></div>
+                            <div><a
+                                    href="http://127.0.0.1:5500/pages/about_us.html">About
+                                    Us</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="http://127.0.0.1:5500/pages/index.html"><h1
+                        style="font-weight: bold;">Dekorare</h1></a>
+                <div class="header_cart_lgn">
+                    <button onclick="goToCart()" class="header_cart_button"><i
+                            class="bi-bag"></i></button>
+                    <button onclick="goToCart()" class="header_person_button"><i
+                            class="bi-person-circle"></i></button>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div>
+                <div class="bg_shop_header"></div>
+            </div>
+        </section>
+        <footer>
+            <div class="w-100 px_10 pt-5  mt_31 ">
+                <div class="d-flex justify-content-between">
+                    <div class="">
+                        <h1 class="fw-bold">Dekorare</h1>
+                        <p class="fw-bold mb-0 mt-4">EMAIL ADDRESS*</p>
+                        <div>
+                            <input class="w_270 h_40 border border-0" type="email">
+                        </div>
+                        <div class="mt-1">
+                            <input class="w_270 h_35 bg_transparent color_white bd_white border" type="button" value="SIGN UP">
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-3">COMPANY</h5>
+                        <p class="fs-5">Home</p>
+                        <p class="fs-5">Shop</p>
+                        <p class="fs-5">About Us</p>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-3">CUSTOMER SERVICE</h5>
+                        <p class="fs-5">Contact Us</p>
+                        <p class="fs-5">My Account</p>
+                        <p class="fs-5">Store</p>
+                        <p class="fs-5">Cart</p>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-3">MORE TO EXPLORE</h5>
+                        <p class="fs-5">Beauty decor</p>
+                        <p class="fs-5">Offer</p>
+                        <p class="fs-5">Help</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-center">
+                    <p>@Web build by Trương Chí Nghiệm & Nguyễn Uyển Quyên</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+        </style>
+</html>
