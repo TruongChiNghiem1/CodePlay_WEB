@@ -548,7 +548,7 @@ header h1 a {
     height: 35px;
 }
 .bg_transparent{
-    background-color: transparent;
+    background-color: transparent !important;
     
 }
 .bd_white{
@@ -586,12 +586,24 @@ header h1 a {
 .bg_shop_header{
     background-image: url("../img/shop/BackgroundShop.jpg");
     background-position: center;
-    width: 100%;
-    height: 100%;
-
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
-
+.w_100{
+    width: 100vw;
+}
+.w_1000{
+    width:1000px;
+}
+.h_400{
+    height: 400px;
+}
+.fs_3{
+    font-size: 3rem;
+}
+.mt_20{
+    margin-top: -20px;
+}
 @media (min-width: 1626px) {
     .container_child{
         /* margin-left: -150px; */
