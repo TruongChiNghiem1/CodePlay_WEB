@@ -604,6 +604,19 @@ header h1 a {
 .mt_20{
     margin-top: -20px;
 }
+
+.w_250{
+    width: 250px;
+}
+.w_1500{
+    width: 1500px;
+}
+.w_500{
+    width: 500px;
+}
+.color_tone{
+    color:#dddebd;
+}
 @media (min-width: 1626px) {
     .container_child{
         /* margin-left: -150px; */
