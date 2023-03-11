@@ -280,6 +280,11 @@ header h1 a {
     height: 150px;
 }
 
+#decorate-themes{
+    display: flex;
+    justify-content: center;
+}
+
 .carousel-control-prev {
     top: 50vh;
     left: 15px;
@@ -348,6 +353,7 @@ header h1 a {
 #all_categories {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .card-img-top {
