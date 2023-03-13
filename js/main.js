@@ -2,15 +2,15 @@ const changeButtonMenu = (x) => {
     x.classList.toggle("change");
 }
 
-const goToHome = () =>{
+const goToHome = () => {
     window.location = "http://127.0.0.1:5500/pages/index.html"
 }
 
-const goToShop = () =>{
+const goToShop = () => {
     window.location = "http://127.0.0.1:5500/pages/shop.html"
 }
 
-const goToAboutUs = () =>{
+const goToAboutUs = () => {
     window.location = "http://127.0.0.1:5500/pages/about_us.html"
 }
 
@@ -21,43 +21,56 @@ const goToCart = () => {
 var x = document.querySelector("#header_container");
 const but = document.querySelectorAll(".header_menu > div > button")
 const icon = document.querySelectorAll(".header_cart_lgn > button > i")
+
+let changeStyleHeader = () => {
+    document.getElementById('header_container').style.backgroundColor = "white";
+    but.forEach(element => {
+        element.style.color = 'black';
+    });
+    icon.forEach(element => {
+        element.style.color = 'black'
+    })
+    document.getElementById('header_button_aboutus').style.color = "black";
+    document.querySelector("#header_container > a > h1").style.color = "black";
+}
+
+let clearStyleHeader = () => {
+    document.getElementById('header_container').style.backgroundColor = "rgba(52, 58, 58, 0.384)";
+    but.forEach(element => {
+        element.style.color = '';
+    });
+    icon.forEach(element => {
+        element.style.color = ''
+    })
+    document.querySelector("#header_container > a > h1").style.color = "";
+    document.getElementById('header_button_aboutus').style.color = "";
+
+}
+
+x.addEventListener("mouseover", changeStyleHeader);
+x.addEventListener("mouseout", clearStyleHeader);
+
 let onScroll = () => {
     window.addEventListener("scroll", callBackFunc);
     function callBackFunc() {
         var y = window.pageYOffset;
         if (y > 10) {
             x.classList.add("scroll");
-            document.getElementById('header_container').style.backgroundColor = "white";
-            but.forEach(element => {
-                element.style.color = 'black';
-            });
-            icon.forEach(element => {
-                element.style.color = 'black'
-            })
-            document.getElementById('header_button_aboutus').style.color = "black";
-            document.querySelector("#header_container > a > h1").style.color = "black";
+            changeStyleHeader();
         } else {
             x.classList.remove("scroll");
-            document.getElementById('header_container').style.backgroundColor = "rgba(52, 58, 58, 0.384)";
-            but.forEach(element => {
-                element.style.color = '';
-            });
-            icon.forEach(element => {
-                element.style.color = ''
-            })
-            document.querySelector("#header_container > a > h1").style.color = "";
-            document.getElementById('header_button_aboutus').style.color = "";
+            clearStyleHeader();
         }
     }
 }
 
-window.onload = () => { onScroll()}
+window.onload = () => { onScroll() }
 
 const product = [
     { id: 1, image: '"../img-product/Rosy Vase.jpg"', title: "Rosy Vase", price: "120.000$", classify: ["Decor"] },
-    { id: 2, image: '"../img-product/Strange Single Sofa.jpg"', title: "Strange Single Sofa", price: "500.000$", classify: ["Living-room" ]},
+    { id: 2, image: '"../img-product/Strange Single Sofa.jpg"', title: "Strange Single Sofa", price: "500.000$", classify: ["Living-room"] },
     { id: 3, image: '"../img-product/Retro Wall Clock.jpg"', title: "Retro Wall Clock", price: "180.000$", classify: ["Wall", "Decor"] },
-    { id: 4, image: '"../img-product/Retro Paiting By Me.jpg"', title: "Retro Paiting By Me", price: "1.000.000$", classify: ["Decor"]},
+    { id: 4, image: '"../img-product/Retro Paiting By Me.jpg"', title: "Retro Paiting By Me", price: "1.000.000$", classify: ["Decor"] },
     { id: 5, image: '"../img-product/Holder Curtain Tiebacks.jpg"', title: "Holder Curtain Tiebacks", price: "99.000$", classify: ["Decor"] },
     { id: 6, image: '"../img-product/Light Door Handle.jpg"', title: "Light Door Handle", price: "120.000$", classify: ["Decor"] },
     { id: 7, image: '"../img-product/Flower Garden Cup.jpg"', title: "Flower Garden Cup", price: "80.000$", classify: ["Kitchen"] },
@@ -78,8 +91,8 @@ const product = [
     { id: 22, image: '"../img-product/Modern Light.jpg"', title: "Modern Light", price: "110.000$", classify: ["Wall", "Decor"] },
     { id: 23, image: '"../img-product/Snail lamp.jpg"', title: "Snail Light", price: "50.000$", classify: ["Living-room", "Decor"] },
     { id: 24, image: '"../img-product/Water Tower Chair.jpg"', title: "Water Tower Chair", price: "250.000$", classify: ["Living-room", "Bancony"] },
-    { id: 25, image: '"../img-product/Float Wall Lamp.jpg"', title: "Float Wall Lamp", price: "150.000$", classify: ["Wall","Decor"] },
-    { id: 26, image: '"../img-product/Scandinavian kitchen.jpg"', title: "Scandinavian Kitchen", price: "50.000$", classify: ["Kitchen" ]},
+    { id: 25, image: '"../img-product/Float Wall Lamp.jpg"', title: "Float Wall Lamp", price: "150.000$", classify: ["Wall", "Decor"] },
+    { id: 26, image: '"../img-product/Scandinavian kitchen.jpg"', title: "Scandinavian Kitchen", price: "50.000$", classify: ["Kitchen"] },
     { id: 27, image: '"../img-product/Remark Floating Shelves.jpg"', title: "Remark Floating Shelves", price: "50.000$", classify: ["Decor", "Bancony"] },
     { id: 28, image: '"../img-product/Coffee Chill Table.jpg"', title: "Coffee Chill Table", price: "120.000$", classify: ["Bancony"] },
     { id: 29, image: '"../img-product/Papering Chair.jpg"', title: "Papering Chair", price: "350.000$", classify: ["Living-room", "Bancony"] },
@@ -109,7 +122,7 @@ const product = [
     { id: 53, image: '"../img-product/Outdoor Modular Setting.jpg"', title: "Outdoor Modular Setting", price: "500.000$", classify: ["Other", "Bancony"] },
     { id: 54, image: '"../img-product/Beige Hanging Shelf.jpg"', title: "Beige Hanging Shelf", price: "50.00$", classify: ["Other", "Bathroom"] },
     { id: 55, image: '"../img-product/Mushroom Spice Jar.jpg"', title: "Mushroom Spice Jar", price: "5.00$", classify: ["Kitchen"] },
-    { id: 56, image: '"../img-product/Marble Wine Rack.jpg"', title: "Marble Wine Rack", price: "15.00$", classify: ["Kitchen" ]},
+    { id: 56, image: '"../img-product/Marble Wine Rack.jpg"', title: "Marble Wine Rack", price: "15.00$", classify: ["Kitchen"] },
     { id: 57, image: '"../img-product/Quartz Bottle Opener.jpg"', title: "Quartz Bottle Opener", price: "5.00$", classify: ["Other", "Kitchen"] },
     { id: 58, image: '"../img-product/Gesprenkelter Haken.jpg"', title: "Gesprenkelter Haken", price: "2.00$", classify: ["Other", "Wall"] },
     { id: 59, image: '"../img-product/Bear Honney Blossom.jpg"', title: "Bear Honney Blossom", price: "60.00$", classify: ["Other", "Kitchen"] },
@@ -141,7 +154,7 @@ const renderCarouselInner = () => {
                                 <p class="card-text fw-bold ">${item.classify[0]}</p>
                             </div>
                     </div>`
-                    
+
         }
     });
     document.getElementById('carousel-inner').innerHTML = html;
@@ -155,13 +168,13 @@ const renderCarouselInner = () => {
                                 <p class="card-text fw-bold ">${item.classify[0]}</p>
                             </div>
                     </div>`
-                    
+
         }
     });
     document.getElementById('carousel-inner-2').innerHTML = html;
 }
 
-const renderCarouselItem = () =>{
+const renderCarouselItem = () => {
     let html = "";
     const content = product.map((item, index) => {
         if (index >= start + perPageHome && index < endHome + 8) {
@@ -172,11 +185,11 @@ const renderCarouselItem = () =>{
                                 <p class="card-text fw-bold">${item.classify[0]}</p>
                             </div>
                     </div>`
-                    
+
         }
     });
     document.getElementById('carousel-item').innerHTML = html;
-    html ="";
+    html = "";
     const content_2 = product.map((item, index) => {
         if (index >= start + 32 && index < endHome + 32) {
             html += `<div class="card m_r_10 w-9">
@@ -186,7 +199,7 @@ const renderCarouselItem = () =>{
                                 <p class="card-text fw-bold">${item.classify[0]}</p>
                             </div>
                     </div>`
-                    
+
         }
     });
     document.getElementById('carousel-item-2').innerHTML = html;
