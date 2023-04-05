@@ -673,9 +673,12 @@ header h1 a {
     margin-bottom: 30px;
     width: 500px;
     height: 40px;
-    border: none;
-    background-color: #d4d4d4;
+    border-color: black;
+    background-color: #ffffff;
     margin-left: 10px;
+    border-width: 1px;
+    padding-left: 15px;
+    outline: none;
 }
 .button_search_product{
     width: 100px;
@@ -704,6 +707,9 @@ header h1 a {
 }
 .h_300{
     height: 400px;
+}
+.w-725{
+    width: 72.5%;
 }
 .hover_text{
     border-style: solid;
