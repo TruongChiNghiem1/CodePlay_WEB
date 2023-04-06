@@ -603,14 +603,14 @@ header h1 a {
     padding-right: 2.4rem;
 }
 
-.bg_footer {
+.bg_footer{
     background-image: url("../img/About_us/3.png");
-    background-position: center;
-    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-repeat: round;
 }
 
 /* shop */
-.mt_80 {
+.mt_80{
     margin-top: -80;
 }
 
@@ -641,7 +641,7 @@ header h1 a {
     margin-top: -20px;
 }
 
-.w_250 {
+.w_250{
     width: 250px;
 }
 
@@ -656,45 +656,6 @@ header h1 a {
 .color_tone {
     color: #dddebd;
 }
-
-.interior_designer_main {
-    background-color: #d7d7d7;
-    padding: 3rem ;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.interior_dgn_leftside {
-    width: 30rem;
-    padding: 3rem;
-}
-
-.carousel-inner>.item>img {
-    width: 640px;
-    height: 360px;
-}
-
-.interior_dgn_rightside{
-    width: 800px;
-    margin: 3rem;
-}
-
-.carousel-caption {
-    color: black;
-
-}
-.dsn_next, .dsn_prev {
-    position: absolute;
-    top: -0px;
-    height: 100%;
-    background-color: transparent;
-}
-
-/* 
-.dsn_item{
-    width: 800px;
-} */
-
 @media (min-width: 1626px) {
     .container_child {
         /* margin-left: -150px; */
