@@ -71,434 +71,434 @@ const product = [
     id: 1,
     image: "../img/shop/Rosy Vase.jpg",
     title: "Rosy Vase",
-    price: "120.000",
+    price: "120000",
     classify: ["Decor"],
   },
   {
     id: 2,
     image: "../img/shop/Strange Single Sofa.jpg",
     title: "Strange Single Sofa",
-    price: "500.000",
+    price: "500000",
     classify: ["Living-room"],
   },
   {
     id: 3,
     image: "../img/shop/Retro Wall Clock.jpg",
     title: "Retro Wall Clock",
-    price: "180.000",
+    price: "180000",
     classify: ["Wall", "Decor"],
   },
   {
     id: 4,
     image: "../img/shop/Retro Paiting By Me.jpg",
     title: "Retro Paiting By Me",
-    price: "1.000.000",
+    price: "1000000",
     classify: ["Decor"],
   },
   {
     id: 5,
     image: "../img/shop/Holder Curtain Tiebacks.jpg",
     title: "Holder Curtain Tiebacks",
-    price: "99.000",
+    price: "99000",
     classify: ["Decor"],
   },
   {
     id: 7,
     image: "../img/shop/Flower Garden Cup.jpg",
     title: "Flower Garden Cup",
-    price: "80.000",
+    price: "80000",
     classify: ["Kitchen"],
   },
   {
     id: 8,
     image: "../img/shop/Luxury Dishes.jpg",
     title: "Luxury Dishes",
-    price: "120.000",
+    price: "120000",
     classify: ["Kitchen"],
   },
   {
     id: 9,
     image: "../img/shop/Drifwood Wall Clock.jpg",
     title: "Drifwood Wall Clock",
-    price: "320.000",
+    price: "320000",
     classify: ["Wall", "Decor"],
   },
   {
     id: 10,
     image: "../img/shop/Vintage Fan Wall Lamp.jpg",
     title: "Vintage Fan Wall Lamp",
-    price: "100.000",
+    price: "100000",
     classify: ["Decor", "Wall"],
   },
   {
     id: 11,
     image: "../img/shop/You are Mirror.jpg",
     title: "You're Mirror",
-    price: "120.000",
+    price: "120000",
     classify: ["Decor", "Wall"],
   },
   {
     id: 12,
     image: "../img/shop/Morden Planter Kiki.jpg",
     title: "Morden Planter Kiki",
-    price: "150.000",
+    price: "150000",
     classify: ["Bancony"],
   },
   {
     id: 13,
     image: "../img/shop/Combo Flowers Spoon.jpg",
     title: "Combo Flowers Spoon",
-    price: "90.000",
+    price: "90000",
     classify: ["Kitchen"],
   },
   {
     id: 14,
     image: "../img/shop/Shower Curtain.jpg",
     title: "Shower Curtain",
-    price: "60.000",
+    price: "60000",
     classify: ["Bathroom"],
   },
   {
     id: 15,
     image: "../img/shop/Seashell Pillow.jpg",
     title: "Seashell Pillow",
-    price: "20.000",
+    price: "20000",
     classify: ["Bedroom"],
   },
   {
     id: 16,
     image: "../img/shop/Circle Rug DOVE.jpg",
     title: "Circle Rug DOVE",
-    price: "50.000",
+    price: "50000",
     classify: ["Bedroom", "Bathroom"],
   },
   {
     id: 17,
     image: "../img/shop/Bloom Chair.jpg",
     title: "Bloom Chair",
-    price: "150.000",
+    price: "150000",
     classify: ["Living-room"],
   },
   {
     id: 18,
     image: "../img/shop/Bookshelf Checker.jpg",
     title: "Bookshelf Checker",
-    price: "80.000",
+    price: "80000",
     classify: ["Living-room", "Bedroom"],
   },
   {
     id: 19,
     image: "../img/shop/Coffee Table Design.jpg",
     title: "Coffee Table Design",
-    price: "50.000",
+    price: "50000",
     classify: ["Bancony"],
   },
   {
     id: 20,
     image: "../img/shop/Cosmico Clothes Hanger.jpg",
     title: "Cosmico Clothes Hanger",
-    price: "65.000",
+    price: "65000",
     classify: ["Bedroom", "Bathroom"],
   },
   {
     id: 21,
     image: "../img/shop/Iconic Etcetera Chair.jpg",
     title: "Iconic Etcetera Chair",
-    price: "70.000",
+    price: "70000",
     classify: ["Living-room", "Bancony"],
   },
   {
     id: 22,
     image: "../img/shop/Modern Light.jpg",
     title: "Modern Light",
-    price: "110.000",
+    price: "110000",
     classify: ["Wall", "Decor"],
   },
   {
     id: 23,
     image: "../img/shop/Snail lamp.jpg",
     title: "Snail Light",
-    price: "50.000",
+    price: "50000",
     classify: ["Living-room", "Decor"],
   },
   {
     id: 24,
     image: "../img/shop/Water Tower Chair.jpg",
     title: "Water Tower Chair",
-    price: "250.000",
+    price: "250000",
     classify: ["Living-room", "Bancony"],
   },
   {
     id: 25,
     image: "../img/shop/Float Wall Lamp.jpg",
     title: "Float Wall Lamp",
-    price: "150.000",
+    price: "150000",
     classify: ["Wall", "Decor"],
   },
   {
     id: 26,
     image: "../img/shop/Scandinavian kitchen.jpg",
     title: "Scandinavian Kitchen",
-    price: "50.000",
+    price: "50000",
     classify: ["Kitchen"],
   },
   {
     id: 27,
     image: "../img/shop/Remark Floating Shelves.jpg",
     title: "Remark Floating Shelves",
-    price: "50.000",
+    price: "50000",
     classify: ["Decor", "Bancony"],
   },
   {
     id: 28,
     image: "../img/shop/Coffee Chill Table.jpg",
     title: "Coffee Chill Table",
-    price: "120.000",
+    price: "120000",
     classify: ["Bancony"],
   },
   {
     id: 29,
     image: "../img/shop/Papering Chair.jpg",
     title: "Papering Chair",
-    price: "350.000",
+    price: "350000",
     classify: ["Living-room", "Bancony"],
   },
   {
     id: 30,
     image: "../img/shop/Tapio Avena Vase.jpg",
     title: "Tapio Avena Vase",
-    price: "50.000",
+    price: "50000",
     classify: ["Decor", "Other"],
   },
   {
     id: 31,
     image: "../img/shop/Leaf Candle Holder.jpg",
     title: "Leaf Candle Holder",
-    price: "20.00",
+    price: "20000",
     classify: ["Decor", "Living-room"],
   },
   {
     id: 32,
     image: "../img/shop/Spiral Felt Star.jpg",
     title: "Spiral Felt Star",
-    price: "50.00",
+    price: "50000",
     classify: ["Decor", "Other"],
   },
   {
     id: 33,
     image: "../img/shop/Gray Dream Catcher.jpg",
     title: "Gray Dream Catcher",
-    price: "80.00",
+    price: "80000",
     classify: ["Decor", "Other"],
   },
   {
     id: 34,
     image: "../img/shop/Pink Flower Toilet.jpg",
     title: "Pink Flower Toilet",
-    price: "350.000",
+    price: "350000",
     classify: ["Bathroom"],
   },
   {
     id: 35,
     image: "../img/shop/Outdoor Egg Chair.jpg",
     title: "Outdoor Egg Chair",
-    price: "250.000",
+    price: "250000",
     classify: ["Bancony"],
   },
   {
     id: 36,
     image: "../img/shop/Multi-function Cabinet.jpg",
     title: "Multi-function Cabinet",
-    price: "100.000",
+    price: "100000",
     classify: ["Bathroom", "Bedroom"],
   },
   {
     id: 37,
     image: "../img/shop/Orissa Shower Curtain.jpg",
     title: "Orissa Shower Curtain",
-    price: "60.00",
+    price: "60000",
     classify: "Bathroom",
   },
   {
     id: 38,
     image: "../img/shop/Multi-use shelf.jpg",
     title: "Multi-use Shelf",
-    price: "99.00",
+    price: "99000",
     classify: ["Bathroom", "Other"],
   },
   {
     id: 39,
     image: "../img/shop/Susie Storage Cart.jpg",
     title: "Susie Storage Cart",
-    price: "150.000",
+    price: "150000",
     classify: ["Bathroom"],
   },
   {
     id: 40,
     image: "../img/shop/Pastel Caninet.jpg",
     title: "Pastel Caninet",
-    price: "199.000",
+    price: "199000",
     classify: ["Bathroom", "Bedroom"],
   },
   {
     id: 41,
     image: "../img/shop/Wood Design Decor.jpg",
     title: "Wood Design Decor",
-    price: "99.000",
+    price: "99000",
     classify: ["Wall", "Decor"],
   },
   {
     id: 42,
     image: "../img/shop/Swing Decoration.jpg",
     title: "Swing Decoration",
-    price: "150.000",
+    price: "150000",
     classify: ["Bancony", "Decor"],
   },
   {
     id: 43,
     image: "../img/shop/Strawberry Hanging Planter.jpg",
     title: "Strawberry Hanging Planter",
-    price: "15.00",
+    price: "15000",
     classify: ["Bancony", "Decor"],
   },
   {
     id: 44,
     image: "../img/shop/Combo Spade Dish.jpg",
     title: "Combo Spade Dish",
-    price: "59.00",
+    price: "59000",
     classify: ["Kitchen"],
   },
   {
     id: 45,
     image: "../img/shop/Pillow Sofa Decor.jpg",
     title: "Pillow Sofa Decor",
-    price: "50.000",
+    price: "50000",
     classify: ["Living-room"],
   },
   {
     id: 46,
     image: "../img/shop/Doily Table Runner.jpg",
     title: "Doily Table Runner ",
-    price: "50.00",
+    price: "50000",
     classify: ["Kitchen", "Decor", "Other"],
   },
   {
     id: 47,
     image: "../img/shop/Flowers Pillow.jpg",
     title: "Flowers Pillow",
-    price: "30.00",
+    price: "30000",
     classify: ["Living-room", "Bedroom"],
   },
   {
     id: 48,
     image: "../img/shop/Crochet Pearl Valance.jpg",
     title: "Crochet Pearl Valance",
-    price: "20.00",
+    price: "20000",
     classify: ["Other", "Decor"],
   },
   {
     id: 49,
     image: "../img/shop/Unique Loryal Curtain.jpg",
     title: "Unique Loryal Curtain",
-    price: "50.000",
+    price: "50000",
     classify: ["Other", "Decor"],
   },
   {
     id: 50,
     image: "../img/shop/Reflections Decor.jpg",
     title: "Reflections Decor",
-    price: "500.00",
+    price: "500000",
     classify: ["Other", "Decor"],
   },
   {
     id: 51,
     image: "../img/shop/Lavender In Sunset.jpg",
     title: "Lavender In Sunset",
-    price: "250.000",
+    price: "250000",
     classify: ["Wall", "Decor"],
   },
   {
     id: 52,
     image: "../img/shop/Rocking Chair.jpg",
     title: "Rocking Chair",
-    price: "50.000",
+    price: "50000",
     classify: ["Living-room", "Bancony"],
   },
   {
     id: 53,
     image: "../img/shop/Outdoor Modular Setting.jpg",
     title: "Outdoor Modular Setting",
-    price: "500.000",
+    price: "500000",
     classify: ["Other", "Bancony"],
   },
   {
     id: 54,
     image: "../img/shop/Beige Hanging Shelf.jpg",
     title: "Beige Hanging Shelf",
-    price: "50.00",
+    price: "50000",
     classify: ["Other", "Bathroom"],
   },
   {
     id: 55,
     image: "../img/shop/Mushroom Spice Jar.jpg",
     title: "Mushroom Spice Jar",
-    price: "5.00",
+    price: "5000",
     classify: ["Kitchen"],
   },
   {
     id: 56,
     image: "../img/shop/Marble Wine Rack.jpg",
     title: "Marble Wine Rack",
-    price: "15.00",
+    price: "15000",
     classify: ["Kitchen"],
   },
   {
     id: 57,
     image: "../img/shop/Quartz Bottle Opener.jpg",
     title: "Quartz Bottle Opener",
-    price: "5.00",
+    price: "5000",
     classify: ["Other", "Kitchen"],
   },
   {
     id: 58,
     image: "../img/shop/Gesprenkelter Haken.jpg",
     title: "Gesprenkelter Haken",
-    price: "2.00",
+    price: "2000",
     classify: ["Other", "Wall"],
   },
   {
     id: 59,
     image: "../img/shop/Bear Honney Blossom.jpg",
     title: "Bear Honney Blossom",
-    price: "60.00",
+    price: "60000",
     classify: ["Other", "Kitchen"],
   },
   {
     id: 60,
     image: "../img/shop/Bold Chair.jpg",
     title: "Bold Chair",
-    price: "150.00",
+    price: "150000",
     classify: ["Bancony", "Living-room"],
   },
   {
     id: 61,
     image: "../img/shop/Combo Framed Branches.jpg",
     title: "Combo Framed Branches",
-    price: "300.00",
+    price: "300000",
     classify: ["Wall", "Living-room", "Decor"],
   },
   {
     id: 62,
     image: "../img/shop/Osvaldo Table Clock.jpg",
     title: "Osvaldo Table Clock",
-    price: "50.00",
+    price: "50000",
     classify: ["Other", "Decor"],
   },
   {
     id: 63,
     image: "../img/shop/Square Planter.jpg",
     title: "Square Planter",
-    price: "50.00",
+    price: "50000",
     classify: ["Bancony"],
   },
 ];
@@ -514,27 +514,21 @@ function getCurrentPage(currentPage) {
 
 const room = (loai) => {
   let html = "";
-  const content = product.map((i, index) => {
+  const content = product.map((i, key) => {
     if (loai == "all") {
       html +=
         `<div class="col h_300 ">
         <a class="" href="detail.html">
                 <div class="hover_product d-flex">
                   <div class="title_color">
-                    <img class="w_product" src="` +
-        i.image +
-        `" alt="">
-                    <p class="ml_5 fs_1 fw-bold">` +
-        i.title +
-        `</p>
-                    <p class="ml_5 fs_1 fw-light">` +
-        i.price +
-        `$</p>
+                    <img class="w_product" src="${i.image}" alt="">
+                    <p class="ml_5 fs_1 fw-bold">${i.title}</p>
+                    <p class="ml_5 fs_1 fw-light">${i.price}$</p>
                   </div>
                   <div class="d-flex flex-column hover_open_cart">
-                    <a class="heart_product color_heart" href=""><i class="fa-regular fa-heart"></i></a>
-                    <a class="heart_product color_eye" href=""><i class="fa-regular fa-eye"></i></a>
-                    <a class="heart_product color_cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                  <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                  <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
+                  <a onclick="addToCart(${key})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
                   </div>
                 </div>
                 </a>
@@ -544,21 +538,13 @@ const room = (loai) => {
         `<div class="col h_300 ">
                     <div class="hover_product d-flex">
                       <div class="title_color">
-
-                        <img class="w_product" src="` +
-        i.image +
-        `" alt="">
-                        <p class="ml_5 fs_1 fw-bold">` +
-        i.title +
-        `</p>
-                        <p class="ml_5 fs_1 fw-light">` +
-        i.price +
-        `$</p>
-                      </div>
+                      <img class="w_product" src="${i.image}" alt="">
+                      <p class="ml_5 fs_1 fw-bold">${i.title}</p>
+                      <p class="ml_5 fs_1 fw-light">${i.price}$</p></div>
                       <div class="d-flex flex-column hover_open_cart">
-                        <a class="heart_product color_heart" href=""><i class="fa-regular fa-heart"></i></a>
-                        <a class="heart_product color_eye" href=""><i class="fa-regular fa-eye"></i></a>
-                        <a class="heart_product color_cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                        <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
+                        <a onclick="addToCart(${key})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
                       </div>
                     </div>
                 </div>`;
@@ -732,3 +718,28 @@ if (qa != null) {
   });
 }
 
+let total = document.querySelector('.total')
+let quatity = document.querySelector('.quatity')
+
+let listCart = [];
+function addToCart(key){
+  if(listCart[key] == null){
+    listCart[key] = product[key];
+    listCart[key].quatity = 1;
+  }
+
+  reloadCart();
+}
+
+function reloadCart(){
+  listCart.innerHTML = '';
+  let count = 0;
+  let totalPrice = 0;
+  listCart.forEach((value, key)=>{
+    const numberPrice = new Number(value.price);
+    totalPrice += numberPrice;
+    count += value.quatity;
+  })
+  total.innerText = totalPrice.toLocaleString();
+  quatity.innerText = count;
+}
