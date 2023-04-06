@@ -35,32 +35,34 @@ let changeStyleHeader = () => {
 };
 
 let clearStyleHeader = () => {
-    document.getElementById('header_container').style.backgroundColor = "rgba(52, 58, 58, 0.384)";
-    but.forEach(element => {
-        element.style.color = '';
-    });
-    icon.forEach(element => {
-        element.style.color = ''
-    })
-    document.querySelector("#header_container > a > h1").style.color = "";
-    document.getElementById('header_button_aboutus').style.color = "";
+  document.getElementById("header_container").style.backgroundColor =
+    "rgba(52, 58, 58, 0.384)";
+  but.forEach((element) => {
+    element.style.color = "";
+  });
+  icon.forEach((element) => {
+    element.style.color = "";
+  });
+  document.querySelector("#header_container > a > h1").style.color = "";
+  document.getElementById("header_button_aboutus").style.color = "";
+};
 
-}
-
+x.addEventListener("mouseover", changeStyleHeader);
+x.addEventListener("mouseout", clearStyleHeader);
 
 let onScroll = () => {
-    window.addEventListener("scroll", callBackFunc);
-    function callBackFunc() {
-        var y = window.pageYOffset;
-        if (y > 10) {
-            x.classList.add("scroll");
-            changeStyleHeader();
-        } else {
-            x.classList.remove("scroll");
-            clearStyleHeader();
-        }
+  window.addEventListener("scroll", callBackFunc);
+  function callBackFunc() {
+    var y = window.pageYOffset;
+    if (y > 10) {
+      x.classList.add("scroll");
+      changeStyleHeader();
+    } else {
+      x.classList.remove("scroll");
+      clearStyleHeader();
     }
-}
+  }
+};
 
 window.onload = () => {
   onScroll();
