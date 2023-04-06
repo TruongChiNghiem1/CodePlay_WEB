@@ -3,19 +3,19 @@ const changeButtonMenu = (x) => {
 };
 
 const goToHome = () => {
-  window.location = "http://127.0.0.1:5500/index.html";
+  window.location = "index.html";
 };
 
 const goToShop = () => {
-  window.location = "http://127.0.0.1:5500/shop.html";
+  window.location = "shop.html";
 };
 
 const goToAboutUs = () => {
-  window.location = "http://127.0.0.1:5500/about_us.html";
+  window.location = "about_us.html";
 };
 
 const goToCart = () => {
-  window.location = "http://127.0.0.1:5500/cart.html";
+  window.location = "cart.html";
 };
 
 var x = document.querySelector("#header_container");
