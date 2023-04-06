@@ -35,7 +35,7 @@ let changeStyleHeader = () => {
 }
 
 let clearStyleHeader = () => {
-    document.getElementById('header_container').style.backgroundColor = "rgba(52, 58, 58, 0.384)";
+     document.getElementById('header_container').style.backgroundColor = "rgba(52, 58, 58, 0.384)";
     but.forEach(element => {
         element.style.color = '';
     });
@@ -47,8 +47,6 @@ let clearStyleHeader = () => {
 
 }
 
-x.addEventListener("mouseover", changeStyleHeader);
-x.addEventListener("mouseout", clearStyleHeader);
 
 let onScroll = () => {
     window.addEventListener("scroll", callBackFunc);
@@ -57,6 +55,7 @@ let onScroll = () => {
         if (y > 10) {
             x.classList.add("scroll");
             changeStyleHeader();
+            x.addEventListener("mouseover", changeStyleHeader);
         } else {
             x.classList.remove("scroll");
             clearStyleHeader();
