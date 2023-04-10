@@ -514,6 +514,7 @@ function getCurrentPage(currentPage) {
   end = currentPage * perPage;
 }
 
+//Xuat product theo loai
 const room = (loai) => {
   let html = "";
   const content = product.map((i, key) => {
@@ -559,6 +560,7 @@ const room = (loai) => {
 };
 room("all");
 
+//search
 const searchProduct = () => {
   let titleSearch = document.getElementById("searchProduct");
   let html = "";
@@ -588,6 +590,7 @@ var additional = document.getElementById("additional");
 var reviews = document.getElementById("reviews");
 var qa = document.getElementById("qa");
 
+//render decription detail
 function renderdecription() {
   if (description != null) {
     description.classList.add("gach_duoi");
