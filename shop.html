@@ -7,7 +7,11 @@
         <title>Document</title>
         <!-- <link rel="stylesheet"
             href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+            crossorigin="anonymous">
 
         <link
             href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap"
@@ -88,35 +92,53 @@
                         h_400 justify-content-center">
                         <h1 class="fw-bold color_white fs_3 mb-5">Shop</h1>
                         <div class="d-flex justify-content-between w-100">
-                            <div><a onclick="room('all')" class="fs-4 color_white
-                                text-decoration-none hover_text d-flex"
-                                href="#">All</a>
+                            <div><a onclick="renderByClasstify('all')"
+                                    class="fs-4
+                                    color_white
+                                    text-decoration-none hover_text d-flex"
+                                    href="#">All</a>
                             </div>
                             <div>
-                                <a onclick="room('Bathroom')" class="fs-4 color_white
+                                <a onclick="renderByClasstify('Bathroom')"
+                                    class="fs-4
+                                    color_white
                                     text-decoration-none hover_text d-flex"
                                     href="#">Bathroom</a>
                             </div>
-                            <div><a onclick="room('Kitchen')" class="fs-4 color_white
+                            <div><a onclick="renderByClasstify('Kitchen')"
+                                    class="fs-4
+                                    color_white
                                     text-decoration-none hover_text d-flex"
                                     href="#">Kitchen</a></div>
-                            
-                            <div><a onclick="room('Bedroom')" class="fs-4 color_white
+
+                            <div><a onclick="renderByClasstify('Bedroom')"
+                                    class="fs-4
+                                    color_white
                                     text-decoration-none hover_text d-flex"
                                     href="#">Bedroom</a></div>
-                            <div><a onclick="room('Wall')" class="fs-4 color_white
+                            <div><a onclick="renderByClasstify('Wall')"
+                                    class="fs-4
+                                    color_white
                                     text-decoration-none hover_text d-flex"
                                     href="#">Wall</a></div>
-                            <div><a onclick="room('Decor')" class="fs-4 color_white
+                            <div><a onclick="renderByClasstify('Decor')"
+                                    class="fs-4
+                                    color_white
                                     text-decoration-none hover_text d-flex"
                                     href="#">Decor</a></div>
-                            <div><a onclick="room('Living-room')" class="fs-4 color_white
+                            <div><a onclick="renderByClasstify('Living-room')"
+                                    class="fs-4
+                                    color_white
                                     text-decoration-none hover_text d-flex"
                                     href="#">LivingRoom</a></div>
-                            <div><a onclick="room('Bancony')" class="fs-4 color_white
+                            <div><a onclick="renderByClasstify('Bancony')"
+                                    class="fs-4
+                                    color_white
                                     text-decoration-none hover_text d-flex"
                                     href="#">Bancony</a></div>
-                            <div><a onclick="room('Other')" class="fs-4 color_white
+                            <div><a onclick="renderByClasstify('Other')"
+                                    class="fs-4
+                                    color_white
                                     text-decoration-none hover_text d-flex"
                                     href="#">Other</a></div>
                         </div>
@@ -124,56 +146,58 @@
                 </div>
             </div>
             <div class="container">
-                <div class="d-flex align-items-center w-725 justify-content-between">
+                <div class="d-flex align-items-center w-725
+                    justify-content-between">
                     <!-- <form action=""> -->
-                        <div>
-                            <input onkeyup="searchProduct()" id="searchProduct" class="search_product" placeholder="Search product" type="search" name="" id="">
-                            <button onclick="" class="button_search_product">Search</button>
-                            <div class="total"></div>
-                            <div class="quatity"></div>
-                        </div>
+                    <div>
+                        <input onkeyup="searchProduct()" id="searchProduct"
+                            class="search_product" placeholder="Search product"
+                            type="search" name="" id="">
+                        <button onclick="" class="button_search_product">Search</button>
+                        <div class="total"></div>
+                        <div class="quatity"></div>
+                    </div>
                     <!-- </form> -->
                     <div class="mt-3">
-                        <nav aria-label="Page navigation example ">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#"
-                                        aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link"
-                                        href="#">1</a></li>
-                                <li class="page-item"><a class="page-link"
-                                        href="#">2</a></li>
-                                <li class="page-item"><a class="page-link"
-                                        href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"
-                                        aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        <div class="paging">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="btn-previous page-link"
+                                            href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <div id="number-page" class="number-page">
+                                    </div>
+                                    <li class="page-item">
+                                        <a class="btn-next page-link" href="#"
+                                            aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">
                     <div id="product_shop" class=" row-cols-md-4 row w-75">
-
                     </div>
                     <div class="w-25 d-flex flex-column">
                         <div class="h_400 w-80">
                             <div>
-                                <p class="mb_15 fs-5  fw-light">Khoảng giá</p>
+                                <p class="mb_15 fs-5 fw-light">Khoảng giá</p>
                             </div>
                             <div class="d-flex justify-content-between mb_20">
                                 <input class="min_price" type="number"
-                                    placeholder="đ từ" step="1000" max="100000000" name=""
+                                    placeholder="đ từ" step="1000"
+                                    max="100000000" name=""
                                     id="">
                                 <div class="gach_ngang"></div>
                                 <input class="min_price" type="number"
-                                    placeholder="đ đến" step="1000" max="100000000" name=""
+                                    placeholder="đ đến" step="1000"
+                                    max="100000000" name=""
                                     id="">
                             </div>
                             <div class="d-flex justify-content-between">
@@ -187,7 +211,8 @@
                                     <div class="d-flex justify-content-between">
                                         <div class="img_bestSeller1">
                                             <img class="w-100"
-                                                src="img/shop/Ice-Cream Light.jpg" alt="">
+                                                src="img/shop/Ice-Cream
+                                                Light.jpg" alt="">
                                             <div class="bestseller_bottom ">
                                                 <p class="fw-bold fs-5 ml_10">Ice-cream
                                                     Light</p>
@@ -197,7 +222,8 @@
                                         </div>
                                         <div class="img_bestSeller1">
                                             <img class="w-100"
-                                                src="img/shop/Ice-Cream Light.jpg" alt="">
+                                                src="img/shop/Ice-Cream
+                                                Light.jpg" alt="">
                                             <div class="bestseller_bottom ">
                                                 <p class="fw-bold fs-5 ml_10">Ice-cream
                                                     Light</p>
@@ -210,7 +236,8 @@
                                         mt_30 mb_20">
                                         <div class="img_bestSeller1">
                                             <img class="w-100"
-                                                src="img/shop/Ice-Cream Light.jpg" alt="">
+                                                src="img/shop/Ice-Cream
+                                                Light.jpg" alt="">
                                             <div class="bestseller_bottom ">
                                                 <p class="fw-bold fs-5 ml_10">Ice-cream
                                                     Light</p>
@@ -220,7 +247,8 @@
                                         </div>
                                         <div class="img_bestSeller1">
                                             <img class="w-100"
-                                                src="img/shop/Ice-Cream Light.jpg" alt="">
+                                                src="img/shop/Ice-Cream
+                                                Light.jpg" alt="">
                                             <div class="bestseller_bottom ">
                                                 <p class="fw-bold fs-5 ml_10">Ice-cream
                                                     Light</p>
@@ -283,7 +311,8 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/40e182ddd7.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/40e182ddd7.js"
+        crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
