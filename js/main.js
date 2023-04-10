@@ -592,7 +592,52 @@ btnPrevious.addEventListener('click', () => {
     renderProduct();
 });
 
-   
+function renderByClasstify(classify) {
+    let sum = 0;
+    let html = "";
+    const content = product.map((i, index) => {
+        if (classify === "all") {
+            if (index >= start && index < end) {
+                html +=
+                    `<div class="col h_300 ">
+                <a id="${i.id}" href="detail.html">
+                        <div class="hover_product d-flex">
+                          <div class="title_color">
+                            <img class="w_product" src="${i.image}" alt="">
+                            <p class="ml_5 fs_1 fw-bold">${i.title}</p>
+                            <p class="ml_5 fs_1 fw-light">${i.price}$</p>
+                          </div>
+                          <div class="d-flex flex-column hover_open_cart">
+                          <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                          <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
+                          <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                          </div>
+                        </div>
+                        </a>
+                    </div>`;
+            }
+        } else if (i.classify.includes(classify)) {
+            html += `<div class="col h_300 ">
+                        <div class="hover_product d-flex">
+                            <div class="title_color">
+                                <img class="w_product" src="${i.image}" alt="">
+                                <p class="ml_5 fs_1 fw-bold">${i.title}</p>
+                                <p class="ml_5 fs_1 fw-light">${i.price}$</p></div>
+                                <div class="d-flex flex-column hover_open_cart">
+                                    <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                                    <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
+                                    <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            sum++;
+        }
+        document.getElementById('product_shop').innerHTML = html;
+        let totalPage = Math.ceil(sum / perPage);
+        renderListPage(totalPage);
+    })
+}
 
 const searchProduct = () => {
     let titleSearch = document.getElementById("searchProduct");
