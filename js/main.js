@@ -548,8 +548,10 @@ function renderProduct() {
     document.getElementById('product_shop').innerHTML = html;
 }
 
-renderProduct();
-renderListPage(totalPage);
+if (document.getElementById('product_shop') !== null) {
+    renderProduct();
+}
+
 function renderListPage(totalPage) {
     let html = '';
     html += `<li class="page-item"><a class="page-link" href="#">${1}</a></li>`;
@@ -558,6 +560,10 @@ function renderListPage(totalPage) {
     }
     document.getElementById('number-page').innerHTML = html;
     document.getElementById('number-page').style.display = 'flex';
+}
+
+if (document.getElementById('number-page') !== null) {
+    renderListPage(totalPage);
 }
 
 function changePage() {
@@ -573,25 +579,28 @@ function changePage() {
 }
 changePage();
 
-btnNext.addEventListener('click', () => {
-    currentPage++;
-    if (currentPage >= totalPage) {
-        currentPage = totalPage;
-    }
-    getCurrentPage(currentPage);
-    renderProduct();
+if (btnNext !== null && btnPrevious !== null) {
+    btnNext.addEventListener('click', () => {
+        currentPage++;
+        if (currentPage >= totalPage) {
+            currentPage = totalPage;
+        }
+        getCurrentPage(currentPage);
+        renderProduct();
 
-});
+    });
 
-btnPrevious.addEventListener('click', () => {
-    currentPage--;
-    if (currentPage <= 1) {
-        currentPage = 1;
-    }
-    getCurrentPage(currentPage);
-    renderProduct();
-});
+    btnPrevious.addEventListener('click', () => {
+        currentPage--;
+        if (currentPage <= 1) {
+            currentPage = 1;
+        }
+        getCurrentPage(currentPage);
+        renderProduct();
+    });
 
+
+}
 function renderByClasstify(classify) {
     let sum = 0;
     let html = "";
@@ -815,3 +824,4 @@ function reloadCart() {
     total.innerText = totalPrice.toLocaleString();
     quatity.innerText = count;
 }
+
