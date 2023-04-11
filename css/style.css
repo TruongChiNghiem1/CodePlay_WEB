@@ -952,7 +952,7 @@ a {
 }
 
 .h_min_detail {
-    min-height: 350px;
+    min-height: 420px;
 }
 
 /*------Cart--------*/
@@ -1102,6 +1102,116 @@ footer {
 #e-mail-submit-button:hover {
     opacity: 80%;
 
+}
+
+
+.commit {
+    display: flex;
+    width: 100%;
+    height: 35rem;
+    margin: 6rem 0 0 0;
+    box-sizing: border-box;
+    background-image: url('https://dnudecor.vn/wp-content/uploads/2020/08/Bản_sao_của_Wartermark-1.png');
+}
+
+.commit-content {
+    width: 40%;
+    height: 100%;
+    background-color: rgba(124, 79, 72, 0.623);
+    color: white;
+    transition: 0.5s ease;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.fa-angle-double-right {
+    font-size: 3rem;
+    padding-left: 5rem;
+
+}
+
+.commit-content-content {
+    padding: 5rem 0 3rem 5rem;
+    width: 35rem;
+    font-size: 20px;
+}
+
+.commit-content-content p {
+    width: 30rem;
+}
+
+.commit-content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 60px;
+    color: rgb(223, 213, 122);
+}
+
+.commit-card {
+    width: 100%;
+    height: 100%;
+    padding: 4rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.card_about {
+    padding-left: 4rem;
+    display: none;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto;
+    gap: 2rem;
+}
+
+.card_about img {
+    width: 80%;
+    height: 80%;
+    transition: 0.2s ease-in-out;
+}
+
+
+.card-item:hover .card-details {
+    opacity: 1;
+    bottom: 1rem;
+}
+
+
+.card_about .card-item {
+    position: relative;
+}
+
+.card-item:hover img {
+    transform: scale(1.5);
+    opacity: 50%;
+}
+
+.card_about .card-details {
+    position: absolute;
+    bottom: 0px;
+    opacity: 0;
+    transition: 0.2s ease;
+    font-size: 14px;
+    font-weight: light;
+}
+
+
+.commit-content:hover {
+    width: 100%;
+    background-color: rgb(133, 92, 86);
+}
+
+.commit-content:hover>.fa-angle-double-right {
+    display: none;
+}
+
+
+.commit-content:hover .card_about {
+    display: grid;
+}
+
+.commit-content-content {
+    font-size: 16px;
 }
 
 @media (min-width: 1626px) {
