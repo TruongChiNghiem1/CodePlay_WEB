@@ -522,8 +522,6 @@ const userAction = async () => {
     const response = await fetch('https://642c508e208dfe25472d4c1e.mockapi.io/api/v1/product');
     const product = await response.json();
 
-    console.log(product);
-
     let perPage = 16;
     let currentPage = 1;
     let start = 0;
@@ -623,7 +621,6 @@ const userAction = async () => {
     
 
     function renderByClasstify(classify) {
-        console.log("asdfwa");
         let sum = 0;
         let html = "";
         const content = product.map((i, index) => {
@@ -741,6 +738,15 @@ const userAction = async () => {
         }
         document.getElementById("product_shop").innerHTML = html;
     };
+
+    const runSearchProduct = document.querySelector("#searchProduct");
+
+    if(runSearchProduct != null){
+        runSearchProduct.addEventListener("keyup", () => {
+            searchProduct();
+        });
+    }
+    
 
     var description = document.getElementById("description");
     var additional = document.getElementById("additional");
