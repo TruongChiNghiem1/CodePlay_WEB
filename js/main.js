@@ -1,5 +1,3 @@
-
-
 const changeButtonMenu = (x) => {
     x.classList.toggle("change");
 };
@@ -112,7 +110,7 @@ const product = [
         image: "https://i.pinimg.com/736x/e4/28/e5/e428e54c5bcb03f1d2680084bda56128.jpg",
         title: "Retro Paiting By Me",
         price: "1000000",
-        classif: [
+        classify: [
             "Decor"
         ]
     },
@@ -572,7 +570,7 @@ const product = [
     },
     {
         id: 53,
-        image: "https://i.pinimg.com/564x/54/a6/cc/54a6cc90ad210d20d2df22b53a0fefe8.jpg.jpg",
+        image: "https://i.pinimg.com/564x/54/a6/cc/54a6cc90ad210d20d2df22b53a0fefe8.jpg",
         title: "Stone Wash Basins",
         price: "500000",
         classify: [
@@ -692,7 +690,6 @@ function getCurrentPage(currentPage) {
     end = currentPage * perPage;
 }
 
-console.log(product.length);
 let totalPage = Math.ceil(product.length / perPage);
 const btnNext = document.querySelector(".btn-next");
 const btnPrevious = document.querySelector(".btn-previous");
@@ -831,9 +828,10 @@ const All = document.querySelector("#All");
 const Bathroom = document.querySelector("#Bathroom");
 const Kitchen = document.querySelector("#Kitchen");
 const Bedroom = document.querySelector("#Bedroom");
-const Wall = document.getElementById("#Wall");
+const Wall = document.querySelector("#Wall");
 const Decor = document.querySelector("#Decor");
 const LivingRoom = document.querySelector("#LivingRoom");
+const Bancony = document.querySelector("#Bancony");
 const Other = document.querySelector("#Other");
 
 if (All != null || Bathroom != null || Kitchen != null || Bedroom != null || Wall != null || Decor != null || LivingRoom != null || Other != null) {
@@ -858,6 +856,9 @@ if (All != null || Bathroom != null || Kitchen != null || Bedroom != null || Wal
     });
     LivingRoom.addEventListener("click", () => {
         renderByClasstify('Living-room');
+    });
+    Bancony.addEventListener("click", () => {
+        renderByClasstify('Bancony');
     });
     Other.addEventListener("click", () => {
         renderByClasstify('Other');
