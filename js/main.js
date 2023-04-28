@@ -1033,18 +1033,60 @@ if (qa != null) {
     });
 }
 
+// Cart
 let total = document.querySelector('.total')
 let quatity = document.querySelector('.quatity')
 
 let listCart = [];
 function addToCart(key) {
-    if (listCart[key] == null) {
-        listCart[key] = product[key];
-        listCart[key].quatity = 1;
-    }
-
-    reloadCart();
+    listCart.push({
+        total: product[key], 
+        qty: 1
+    })
+    localStorage.setItem('cart', JSON.stringify(listCart));
+    // reloadCart();
 }
+
+function getDataCart(){
+    let html = "";
+    let totalPrice = 0;
+    dataCart = JSON.parse(localStorage.getItem('cart'));
+    dataCart.map((i, index) => {
+        const numberPrice = new Number(i.total.price);
+        totalPrice += numberPrice;
+        html += `
+                <div class="d-flex justify-content-between mb-5">
+                    <div class="d-flex align-items-center w_400">
+                        <img class="w_40" src="${i.total.image}" alt="">
+                        <div class="ml_10">
+                            <p class="fs-4 fw-bold">${i.total.title}</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center
+                        justify-content-between w_270">
+                        <p class="fs-4">${i.total.price}</p>
+                        <div class="d-flex mr_10 h_40 align-items-center">
+                            <div class="apartform" id="apartform">-</div>
+                            <input class="number" type="text"
+                                inputmode="numeric" min="1" step="1"
+                                size="4" value="1" name="" id="">
+                            <div class="apartform" id="plus">+</div>
+                        </div>
+                        <div>
+                            <p class="color_red fw-bold">Remove</p>
+                        </div>
+                    </div>
+                </div>
+                `
+    })
+    const render = document.getElementById("spCart");
+    const total = document.getElementById("total");
+    if (render != null && total != null) {
+        render.innerHTML = html;
+        total.innerHTML = totalPrice;
+    }
+}
+getDataCart();
 
 function reloadCart() {
     listCart.innerHTML = '';
@@ -1058,8 +1100,6 @@ function reloadCart() {
     total.innerText = totalPrice.toLocaleString();
     quatity.innerText = count;
 }
-
-
 
 
 
