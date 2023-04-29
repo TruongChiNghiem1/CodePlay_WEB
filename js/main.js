@@ -1060,19 +1060,7 @@ function reloadCart() {
 }
 
 
-
-
-
-
 //Script to footer
-
-function catchEnter(key) {
-    var keycode = (key.keyCode ? key.keyCode : key.which);
-    if (keycode == '13') {
-        getEmailSubmit();
-    }
-}
-addEventListener('keypress', catchEnter);
 
 var emailSubmit = document.getElementById('e-mail-submit');
 let checkMail = () => {
@@ -1113,3 +1101,12 @@ let getEmailSubmit = () => {
         }, "1000");
     }
 }
+
+
+function catchEnter(key) {
+    var keycode = (key.keyCode ? key.keyCode : key.which);
+    if (keycode == '13') {
+        getEmailSubmit();
+    }
+}
+addEventListener('keypress', catchEnter);
