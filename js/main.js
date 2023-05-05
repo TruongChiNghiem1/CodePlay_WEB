@@ -21,7 +21,7 @@ const goToCart = () => {
 };
 
 const goToAcount = () => {
-    window.location = "info_account.html";
+    window.location = "login.html";
 };
 
 //Change color header while scroll
@@ -588,6 +588,14 @@ function getCurrentPage(currentPage) {
 let totalPage = Math.ceil(product.length / perPage);
 const btnNext = document.querySelector(".btn-next");
 const btnPrevious = document.querySelector(".btn-previous");
+let thisProduct = [];
+const goToDetail = (key) => {
+    thisProduct.push({
+        detail: product[key],
+        qty: 1
+    }
+    )
+}
 
 function renderProduct() {
     let html = "";
@@ -965,7 +973,7 @@ function getDataCart() {
                             <div class="apartform" id="apartform">-</div>
                             <input class="number" type="text"
                                 inputmode="numeric" min="1" step="1"
-                                size="4" value="1" name="" id="">
+                                size="4" value="" name="" id="">
                             <div class="apartform" id="plus">+</div>
                         </div>
                         <div>

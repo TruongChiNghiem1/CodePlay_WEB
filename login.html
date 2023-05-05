@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login | Decorare</title>
+        <link rel="stylesheet"
+            href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+            crossorigin="anonymous">
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap"
+            rel="stylesheet">
+        <link
+            href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+            rel="stylesheet" type='text/css'>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="header_login">
+            <div class="header_menu">
+                <div class="dropdown">
+                    <button onclick="goToHome()" class="btn btn-secondary
+                        dropdown-toggle"
+                        type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Home
+                    </button>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="">Decorate Themes</a></li>
+                        <li><a class="dropdown-item" href="">Collections</a></li>
+                        <li><a class="dropdown-item" href="">Interior
+                                designer</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown" id="header_button_shop">
+                    <button onclick="goToShop()" class="btn btn-secondary
+                        dropdown-toggle"
+                        type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop
+                    </button>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="">All Categories</a></li>
+                        <li><a class="dropdown-item" href="">Noticeable</a></li>
+                    </ul>
+                </div>
+                <div><button onclick="goToAboutUs()" type="button"
+                        id="header_button_aboutus" class="btn btn-primary">About
+                        Us</button></div>
+                <div class="header_menu_button_rps"
+                    onclick="changeButtonMenu(this)">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                    <div id="menu-button-dropdown">
+                        <div><a
+                                href="/index.html">Home</a></div>
+                        <div><a
+                                href="/shop.html">Shop</a></div>
+                        <div><a
+                                href="/about_us.html">About
+                                Us</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/index.html"><h1
+                    style="font-weight: bold;">Dekorare</h1></a>
+            <div class="header_cart_lgn">
+                <button onclick="goToCart()" class="header_cart_button"><i
+                        class="bi-bag"></i></button>
+                <button onclick="goToAccount()"
+                    class="header_person_button"><i
+                        class="bi-person-circle"></i></button>
+
+            </div>
+        </div>
+        <section>
+            <div class="login_main">
+                <!-- Section: Design Block -->
+                <section class="text-center text-lg-start">
+                    <style>
+      .cascading-right {
+        margin-right: -50px;
+      }
+  
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
+                    <!-- Jumbotron -->
+                    <div class="container py-4">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-6 mb-5 mb-lg-0">
+                                <div class="card cascading-right" style="
+                                    background: hsla(0, 0%, 100%, 0.55);
+                                    backdrop-filter: blur(30px);
+                                    ">
+                                    <div class="card-body p-5 shadow-5
+                                        text-center">
+                                        <h2 class="fw-bold mb-5">Sign up now</h2>
+                                        <form>
+                                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                                            <div class="row">
+                                                <div class="col-md-6 mb-4">
+                                                    <div class="form-outline">
+                                                        <input type="text"
+                                                            id="form3Example1"
+                                                            class="form-control"
+                                                            />
+                                                        <label
+                                                            class="form-label"
+                                                            for="form3Example1">First
+                                                            name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-4">
+                                                    <div class="form-outline">
+                                                        <input type="text"
+                                                            id="form3Example2"
+                                                            class="form-control"
+                                                            />
+                                                        <label
+                                                            class="form-label"
+                                                            for="form3Example2">Last
+                                                            name</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Email input -->
+                                            <div class="form-outline mb-4">
+                                                <input type="email"
+                                                    id="form3Example3"
+                                                    class="form-control" />
+                                                <label class="form-label"
+                                                    for="form3Example3">Email
+                                                    address</label>
+                                            </div>
+
+                                            <!-- Password input -->
+                                            <div class="form-outline mb-4">
+                                                <input type="password"
+                                                    id="form3Example4"
+                                                    class="form-control" />
+                                                <label class="form-label"
+                                                    for="form3Example4">Password</label>
+                                            </div>
+
+                                            <!-- Checkbox -->
+                                            <div class="form-check d-flex
+                                                justify-content-center mb-4">
+                                                <input class="form-check-input
+                                                    me-2" type="checkbox"
+                                                    value="" id="form2Example33"
+                                                    checked />
+                                                <label class="form-check-label"
+                                                    for="form2Example33">
+                                                    Subscribe to our newsletter
+                                                </label>
+                                            </div>
+
+                                            <!-- Submit button -->
+                                            <button type="submit" class="btn
+                                                btn-primary btn-block mb-4">
+                                                Sign up
+                                            </button>
+
+                                            <!-- Register buttons -->
+                                            <div class="text-center">
+                                                <p>or sign up with:</p>
+                                                <button type="button" class="btn
+                                                    btn-link btn-floating mx-1">
+                                                    <i class="fab
+                                                        fa-facebook-f"></i>
+                                                </button>
+
+                                                <button type="button" class="btn
+                                                    btn-link btn-floating mx-1">
+                                                    <i class="fab fa-google"></i>
+                                                </button>
+
+                                                <button type="button" class="btn
+                                                    btn-link btn-floating mx-1">
+                                                    <i class="fab fa-twitter"></i>
+                                                </button>
+
+                                                <button type="button" class="btn
+                                                    btn-link btn-floating mx-1">
+                                                    <i class="fab fa-github"></i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 mb-5 mb-lg-0">
+                                <img
+                                    src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
+                                    class="w-100 rounded-4 shadow-4"
+                                    alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Jumbotron -->
+                </section>
+                <!-- Section: Design Block -->
+            </div>
+        </section>
+
+    </body>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/40e182ddd7.js"
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+        </style>
+</html>
