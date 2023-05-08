@@ -12,8 +12,7 @@ header {
     width: 100%;
     height: 5em;
 }
-
-#header_container {
+#header_container{
     width: 100%;
     height: 5rem;
     display: flex;
@@ -973,7 +972,9 @@ a {
     height: 40px;
 
 }
-
+.min_with_cart{
+    min-height: 310px;
+}
 .outln_none {
     outline: none;
 }
@@ -1212,6 +1213,29 @@ footer {
 
 .commit-content-content {
     font-size: 16px;
+}
+.header_login {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    color: white;
+    background-color: transparent;
+    padding: 0 1rem;
+    z-index: 2;
+}
+
+.header_login h1{
+    color: white;
+}
+
+.login_main{
+    position: relative;
+    min-height: 100vh;
+    background-image: url("https://depot.qodeinteractive.com/wp-content/uploads/2017/02/h9-slide-img.jpg");
+    background-position: bottom;
 }
 
 @media (min-width: 1626px) {
