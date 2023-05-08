@@ -972,7 +972,9 @@ a {
     height: 40px;
 
 }
-
+.min_with_cart{
+    min-height: 290px;
+}
 .outln_none {
     outline: none;
 }

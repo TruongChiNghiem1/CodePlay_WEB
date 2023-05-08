@@ -602,7 +602,7 @@ function renderProduct() {
     const content = product.map((i, index) => {
         if (index >= start && index < end) {
             html += `<div class="col h_300 ">
-              <a id="${i.id}" href="detail.html">
+              <a id="${i.id}" onclick="detail(${index})">
                       <div class="hover_product d-flex">
                         <div class="title_color">
                           <img class="w_product" src="${i.image}" alt="">
@@ -679,7 +679,7 @@ function renderByClasstify(classify) {
         if (classify === "all") {
             if (index >= start && index < end) {
                 html += `<div class="col h_300 ">
-                  <a id="${i.id}" href="detail.html">
+                  <a id="${i.id}" onclick="detail(${index})">
                           <div class="hover_product d-flex">
                             <div class="title_color">
                               <img class="w_product" src="${i.image}" alt="">
@@ -697,7 +697,7 @@ function renderByClasstify(classify) {
             }
         } else if (i.classify.includes(classify)) {
             html += `<div class="col h_300 ">
-                        <a id="${i.id}" href="detail.html">
+                        <a id="${i.id}" onclick="detail(${index})">
                         <div class="hover_product d-flex">
                         <div class="title_color">
                             <img class="w_product" src="${i.image}" alt="">
@@ -777,7 +777,7 @@ const searchProduct = () => {
         let searchTitle = titleSearch.value.toLowerCase();
         if (title.includes(searchTitle)) {
             html += `<div class="col h_300 ">
-                        <a id="${i.id}" href="detail.html">
+                        <a id="${i.id}" onclick="detail(${index})">
                         <div class="hover_product d-flex">
                         <div class="title_color">
                             <img class="w_product" src="${i.image}" alt="">
@@ -943,9 +943,10 @@ let listCart = localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [];
 function addToCart(key) {
+  dataCart = JSON.parse(localStorage.getItem("cart"));
+
     listCart.push({
         total: product[key],
-        qty: 1,
     });
     localStorage.setItem("cart", JSON.stringify(listCart));
     // reloadCart();
@@ -954,10 +955,24 @@ function addToCart(key) {
 function getDataCart() {
     let html = "";
     let totalPrice = 0;
-    dataCart = JSON.parse(localStorage.getItem("cart"));
+    let dataCart = JSON.parse(localStorage.getItem("cart"))
+            ? JSON.parse(localStorage.getItem("cart"))
+            : [];
+    let flag = false;
+    let flag2 = false;
     dataCart.map((i, index) => {
-        const numberPrice = new Number(i.total.price);
+        let qty = 0;
+        dataCart.map((j, key) => {
+          if(j.total.id == i.total.id){
+            qty++;
+            flag2 = true;
+          }
+        })
+        let numberPrice = new Number(i.total.price);
+        numberPrice = numberPrice * qty;
         totalPrice += numberPrice;
+
+        if(!flag ){
         html += `
                 <div class="d-flex justify-content-between mb-5">
                     <div class="d-flex align-items-center w_400">
@@ -968,13 +983,13 @@ function getDataCart() {
                     </div>
                     <div class="d-flex align-items-center
                         justify-content-between w_270">
-                        <p class="fs-4">${i.total.price}</p>
+                        <p class="fs-4">${numberPrice}</p>
                         <div class="d-flex mr_10 h_40 align-items-center">
-                            <div class="apartform" id="apartform">-</div>
-                            <input class="number" type="text"
-                                inputmode="numeric" min="1" step="1"
-                                size="4" value="" name="" id="">
-                            <div class="apartform" id="plus">+</div>
+                        <div class="apartform" id="apartform1">-</div>
+                          <input class="number" type="text" id="qty"
+                              inputmode="numeric" min="1" value="${qty}" max="100" step="1"
+                              size="4" name="" id="">
+                          <div class="apartform" id="plus">+</div>
                         </div>
                         <div>
                             <p class="color_red fw-bold">Remove</p>
@@ -982,6 +997,12 @@ function getDataCart() {
                     </div>
                 </div>
                 `;
+        }
+          if(qty > 1){
+            flag = true;
+          } else {
+            flag = false;
+          }
     });
     const render = document.getElementById("spCart");
     const total = document.getElementById("total");
@@ -990,6 +1011,7 @@ function getDataCart() {
         total.innerHTML = totalPrice;
     }
 }
+
 getDataCart();
 
 function reloadCart() {
@@ -1005,7 +1027,6 @@ function reloadCart() {
     quatity.innerText = count;
 }
 
-sd
 //Script to footer
 
 var emailSubmit = document.getElementById('e-mail-submit');
@@ -1057,3 +1078,46 @@ function catchEnter(key) {
     }
 }
 addEventListener('keypress', catchEnter);
+
+
+//detail
+let listDetail = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [];
+function detail(id){
+  localStorage.setItem("detail", JSON.stringify(product[id]));
+  window.location="detail.html";
+}
+
+function renderDetail(){
+  let dataDetail = JSON.parse(localStorage.getItem("detail"));
+  const titleDetail = document.getElementById("title");
+  const imageDetail = document.getElementById("imageDetail")
+  const priceDetail = document.getElementById("priceDetail");
+  const categoryDetail = document.getElementById("categoryDetail");
+  if(titleDetail != null || imageDetail != null || priceDetail != null || categoryDetail != null){
+    let htmlImageDetail = `<img class="w-100" src="${dataDetail.image}" alt="">`;
+    titleDetail.innerText = dataDetail.title;
+    imageDetail.innerHTML = htmlImageDetail;
+    priceDetail.innerText = "$" + dataDetail.price;
+    categoryDetail.innerText = dataDetail.classify;
+  }
+
+  const apartform = document.getElementById("apartform1");
+  const plus = document.getElementById("plus")
+  const qty = document.getElementById("qty")
+  if(apartform != null || plus != null || qty != null){
+    plus.addEventListener("click", () =>{
+      qty.value++;
+    })
+
+    apartform.addEventListener("click", () => {
+      if(qty.value > 1){
+        qty.value--;
+      }
+    })
+  }
+}
+
+renderDetail();
+
