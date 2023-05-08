@@ -20,6 +20,10 @@ const goToCart = () => {
     window.location = "cart.html";
 };
 
+const goToFavourite = () => {
+  window.location = "favourite.html";
+};
+
 const goToAcount = () => {
     window.location = "login.html";
 };
@@ -610,7 +614,7 @@ function renderProduct() {
                           <p class="ml_5 fs_1 fw-light">${i.price}$</p>
                         </div>
                         <div class="d-flex flex-column hover_open_cart">
-                        <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a onclick="addToFavourite(${index})" class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
                         <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
                         <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
                         </div>
@@ -687,7 +691,7 @@ function renderByClasstify(classify) {
                               <p class="ml_5 fs_1 fw-light">${i.price}$</p>
                             </div>
                             <div class="d-flex flex-column hover_open_cart">
-                            <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                            <a onclick="addToFavourite(${index})"  class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
                             <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
                             <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
@@ -705,7 +709,7 @@ function renderByClasstify(classify) {
                             <p class="ml_5 fs_1 fw-light">${i.price}$</p>
                         </div>
                     <div class="d-flex flex-column hover_open_cart">
-                        <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a onclick="addToFavourite(${index})"  class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
                         <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
                         <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
@@ -785,7 +789,7 @@ const searchProduct = () => {
                             <p class="ml_5 fs_1 fw-light">${i.price}$</p>
                         </div>
                     <div class="d-flex flex-column hover_open_cart">
-                        <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a onclick="addToFavourite(${index})"  class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
                         <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
                         <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
@@ -959,26 +963,24 @@ function getDataCart() {
             ? JSON.parse(localStorage.getItem("cart"))
             : [];
     let flag = false;
-    let flag2 = false;
-    dataCart.map((i, index) => {
+    product.map((i, index) => {
         let qty = 0;
         dataCart.map((j, key) => {
-          if(j.total.id == i.total.id){
+          if(j.total.id == i.id){
             qty++;
-            flag2 = true;
           }
         })
-        let numberPrice = new Number(i.total.price);
+        let numberPrice = new Number(i.price);
         numberPrice = numberPrice * qty;
         totalPrice += numberPrice;
 
-        if(!flag ){
+        if(qty > 0){
         html += `
                 <div class="d-flex justify-content-between mb-5">
                     <div class="d-flex align-items-center w_400">
-                        <img class="w_40" src="${i.total.image}" alt="">
+                        <img class="w_40" src="${i.image}" alt="">
                         <div class="ml_10">
-                            <p class="fs-4 fw-bold">${i.total.title}</p>
+                            <p class="fs-4 fw-bold">${i.title}</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center
@@ -998,11 +1000,6 @@ function getDataCart() {
                 </div>
                 `;
         }
-          if(qty > 1){
-            flag = true;
-          } else {
-            flag = false;
-          }
     });
     const render = document.getElementById("spCart");
     const total = document.getElementById("total");
@@ -1081,9 +1078,9 @@ addEventListener('keypress', catchEnter);
 
 
 //detail
-let listDetail = localStorage.getItem("cart")
-    ? JSON.parse(localStorage.getItem("cart"))
-    : [];
+// let listDetail = localStorage.getItem("cart")
+//     ? JSON.parse(localStorage.getItem("cart"))
+//     : [];
 function detail(id){
   localStorage.setItem("detail", JSON.stringify(product[id]));
   window.location="detail.html";
@@ -1104,8 +1101,8 @@ function renderDetail(){
   }
 
   const apartform = document.getElementById("apartform1");
-  const plus = document.getElementById("plus")
-  const qty = document.getElementById("qty")
+  const plus = document.getElementById("plus");
+  let qty = document.getElementById("qty");
   if(apartform != null || plus != null || qty != null){
     plus.addEventListener("click", () =>{
       qty.value++;
@@ -1120,4 +1117,86 @@ function renderDetail(){
 }
 
 renderDetail();
+
+
+//Favourite
+
+let listFavourite = localStorage.getItem("Favourite")
+    ? JSON.parse(localStorage.getItem("Favourite"))
+    : [];
+function addToFavourite(key) {
+    listFavourite.push({
+        total: product[key],
+    });
+    localStorage.setItem("Favourite", JSON.stringify(listFavourite));
+    // reloadCart();
+}
+
+function getDataFavourite() {
+    let html = "";
+    let dataFavourite = JSON.parse(localStorage.getItem("Favourite"))
+            ? JSON.parse(localStorage.getItem("Favourite"))
+            : [];
+      let num = 0;
+
+    product.map((i, index) => {
+        let qty = 0;
+        dataFavourite.map((j, key) => {
+          if(j.total.id == i.id){
+            qty++;
+          }
+        })
+        let numberPrice = new Number(i.price);
+        numberPrice = numberPrice * qty;
+
+        if(qty > 0){
+          num++;
+        html += `
+                <div class="d-flex justify-content-between mb-5">
+                  <div class="d-flex align-items-center w_400">
+                    <a onclick="detail(${index})">
+                      <img class="w_40" src="${i.image}" alt="">
+                      </a>
+                      <div class="ml_10">
+                      <a onclick="detail(${index})">
+                          <p class="fs-4 fw-bold">${i.title}</p>
+                          </a>
+                      </div>
+                  </div>
+                    <div class="d-flex align-items-center
+                        justify-content-between w_270">
+                        <p class="fs-4">${numberPrice}</p>
+                        <div>
+                            <p class="color_red fw-bold">Remove</p>
+                        </div>
+                    </div>
+                </div>
+                `;
+        }
+    });
+    let spFavourite = document.getElementById("spFavourite");
+    let qtyFavourite = document.getElementById("qtyFavourite");
+    // console.log(num);
+    if (spFavourite != null && qtyFavourite != null) {
+      spFavourite.innerHTML = html;
+      qtyFavourite.innerText = num;
+    }
+}
+
+getDataFavourite();
+
+function addToCartDetailFunction(){
+  const addToCartDetail = document.getElementById("addToCartDetail");
+  let qty = document.getElementById("qty");
+  if(addToCartDetail != null || qty != null){
+    addToCartDetail.addEventListener("click", () =>{
+      let dataDetail = JSON.parse(localStorage.getItem("detail"));
+      for (let index = 0; index < qty.value; index++) {
+        addToCart(dataDetail.id-2);
+      }
+    })
+  }
+}
+addToCartDetailFunction();
+
 
