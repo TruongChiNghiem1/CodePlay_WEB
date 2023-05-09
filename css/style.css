@@ -12,7 +12,8 @@ header {
     width: 100%;
     height: 5em;
 }
-#header_container{
+
+#header_container {
     width: 100%;
     height: 5rem;
     display: flex;
@@ -1212,6 +1213,7 @@ footer {
 .commit-content-content {
     font-size: 16px;
 }
+
 .header_login {
     width: 100%;
     height: 5rem;
@@ -1225,16 +1227,120 @@ footer {
     z-index: 2;
 }
 
-.header_login h1{
+.header_login h1 {
     color: white;
 }
 
-.login_main{
+.login_main {
     position: relative;
     min-height: 100vh;
-    background-image: url("https://depot.qodeinteractive.com/wp-content/uploads/2017/02/h9-slide-img.jpg");
-    background-position: bottom;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://res.cloudinary.com/dz96u1u2a/image/upload/v1683668375/wallpaperflare.com_wallpaper_1_zbok3f.jpg");
+    background-position: center;
+    background-size: cover;
 }
+
+.login_form {
+    width: 20vw;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.field-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.login_form input {
+    height: 50px;
+    border-color: rgb(216, 216, 216);
+    background-color: rgba(255, 255, 255, 0.08);
+    border: none;
+    border-radius: 40px;
+    padding: 0 20px;
+    color: white !important;
+}
+
+.login_form input::placeholder {
+    color: white;
+}
+
+.login_form input:focus {
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    border: 1px groove white;
+
+}
+
+#Login {
+    background: #fbceb5 !important;
+    border: 1px solid #fbceb5 !important;
+    color: #000 !important;
+    cursor: pointer;
+    border-radius: 40px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.checkbox-wrap {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.checkbox-primary {
+    color: #fbceb5;
+}
+
+.checkbox-wrap input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+input[type="checkbox"] {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    overflow: visible;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.w-50 {
+    width: 50% !important;
+}
+
+@media (min-width: 768px) {
+    .text-md-right {
+        text-align: right !important;
+    }
+}
+
+
 
 @media (min-width: 1626px) {
     .container_child {
