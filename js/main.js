@@ -20,6 +20,10 @@ const goToCart = () => {
     window.location = "cart.html";
 };
 
+const goToFavourite = () => {
+  window.location = "favourite.html";
+};
+
 const goToAcount = () => {
     window.location = "login.html";
 };
@@ -541,7 +545,7 @@ function renderProduct() {
     const content = product.map((i, index) => {
         if (index >= start && index < end) {
             html += `<div class="col h_300 ">
-              <a id="${i.id}" href="detail.html">
+              <a id="${i.id}" onclick="detail(${index})">
                       <div class="hover_product d-flex">
                         <div class="title_color">
                           <img class="w_product" src="${i.image}" alt="">
@@ -549,7 +553,7 @@ function renderProduct() {
                           <p class="ml_5 fs_1 fw-light">${i.price}$</p>
                         </div>
                         <div class="d-flex flex-column hover_open_cart">
-                        <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a onclick="addToFavourite(${index})" class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
                         <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
                         <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
                         </div>
@@ -618,7 +622,7 @@ function renderByClasstify(classify) {
         if (classify === "all") {
             if (index >= start && index < end) {
                 html += `<div class="col h_300 ">
-                  <a id="${i.id}" href="detail.html">
+                  <a id="${i.id}" onclick="detail(${index})">
                           <div class="hover_product d-flex">
                             <div class="title_color">
                               <img class="w_product" src="${i.image}" alt="">
@@ -626,7 +630,7 @@ function renderByClasstify(classify) {
                               <p class="ml_5 fs_1 fw-light">${i.price}$</p>
                             </div>
                             <div class="d-flex flex-column hover_open_cart">
-                            <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                            <a onclick="addToFavourite(${index})"  class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
                             <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
                             <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
@@ -636,7 +640,7 @@ function renderByClasstify(classify) {
             }
         } else if (i.classify.includes(classify)) {
             html += `<div class="col h_300 ">
-                        <a id="${i.id}" href="detail.html">
+                        <a id="${i.id}" onclick="detail(${index})">
                         <div class="hover_product d-flex">
                         <div class="title_color">
                             <img class="w_product" src="${i.image}" alt="">
@@ -644,7 +648,7 @@ function renderByClasstify(classify) {
                             <p class="ml_5 fs_1 fw-light">${i.price}$</p>
                         </div>
                     <div class="d-flex flex-column hover_open_cart">
-                        <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a onclick="addToFavourite(${index})"  class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
                         <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
                         <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
@@ -716,7 +720,7 @@ const searchProduct = () => {
         let searchTitle = titleSearch.value.toLowerCase();
         if (title.includes(searchTitle)) {
             html += `<div class="col h_300 ">
-                        <a id="${i.id}" href="detail.html">
+                        <a id="${i.id}" onclick="detail(${index})">
                         <div class="hover_product d-flex">
                         <div class="title_color">
                             <img class="w_product" src="${i.image}" alt="">
@@ -724,7 +728,7 @@ const searchProduct = () => {
                             <p class="ml_5 fs_1 fw-light">${i.price}$</p>
                         </div>
                     <div class="d-flex flex-column hover_open_cart">
-                        <a class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a onclick="addToFavourite(${index})"  class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
                         <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
                         <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
@@ -882,9 +886,10 @@ let listCart = localStorage.getItem("cart") ?
     JSON.parse(localStorage.getItem("cart")) : [];
 
 function addToCart(key) {
+  dataCart = JSON.parse(localStorage.getItem("cart"));
+
     listCart.push({
         total: product[key],
-        qty: 1,
     });
     localStorage.setItem("cart", JSON.stringify(listCart));
     // reloadCart();
@@ -893,27 +898,39 @@ function addToCart(key) {
 function getDataCart() {
     let html = "";
     let totalPrice = 0;
-    dataCart = JSON.parse(localStorage.getItem("cart"));
-    dataCart.map((i, index) => {
-        const numberPrice = new Number(i.total.price);
+    let dataCart = JSON.parse(localStorage.getItem("cart"))
+            ? JSON.parse(localStorage.getItem("cart"))
+            : [];
+    let flag = false;
+    product.map((i, index) => {
+        let qty = 0;
+        dataCart.map((j, key) => {
+          if(j.total.id == i.id){
+            qty++;
+          }
+        })
+        let numberPrice = new Number(i.price);
+        numberPrice = numberPrice * qty;
         totalPrice += numberPrice;
+
+        if(qty > 0){
         html += `
                 <div class="d-flex justify-content-between mb-5">
                     <div class="d-flex align-items-center w_400">
-                        <img class="w_40" src="${i.total.image}" alt="">
+                        <img class="w_40" src="${i.image}" alt="">
                         <div class="ml_10">
-                            <p class="fs-4 fw-bold">${i.total.title}</p>
+                            <p class="fs-4 fw-bold">${i.title}</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center
                         justify-content-between w_270">
-                        <p class="fs-4">${i.total.price}</p>
+                        <p class="fs-4">${numberPrice}</p>
                         <div class="d-flex mr_10 h_40 align-items-center">
-                            <div class="apartform" id="apartform">-</div>
-                            <input class="number" type="text"
-                                inputmode="numeric" min="1" step="1"
-                                size="4" value="" name="" id="">
-                            <div class="apartform" id="plus">+</div>
+                        <div class="apartform" id="apartform1">-</div>
+                          <input class="number" type="text" id="qty"
+                              inputmode="numeric" min="1" value="${qty}" max="100" step="1"
+                              size="4" name="" id="">
+                          <div class="apartform" id="plus">+</div>
                         </div>
                         <div>
                             <p class="color_red fw-bold">Remove</p>
@@ -921,6 +938,7 @@ function getDataCart() {
                     </div>
                 </div>
                 `;
+        }
     });
     const render = document.getElementById("spCart");
     const total = document.getElementById("total");
@@ -929,6 +947,7 @@ function getDataCart() {
         total.innerHTML = totalPrice;
     }
 }
+
 getDataCart();
 
 function reloadCart() {

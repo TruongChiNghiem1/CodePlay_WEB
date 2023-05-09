@@ -973,7 +973,9 @@ a {
     height: 40px;
 
 }
-
+.min_with_cart{
+    min-height: 310px;
+}
 .outln_none {
     outline: none;
 }
