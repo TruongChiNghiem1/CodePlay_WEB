@@ -21,7 +21,7 @@ const goToCart = () => {
 };
 
 const goToFavourite = () => {
-  window.location = "favourite.html";
+    window.location = "favourite.html";
 };
 
 const goToAcount = () => {
@@ -886,7 +886,7 @@ let listCart = localStorage.getItem("cart") ?
     JSON.parse(localStorage.getItem("cart")) : [];
 
 function addToCart(key) {
-  dataCart = JSON.parse(localStorage.getItem("cart"));
+    dataCart = JSON.parse(localStorage.getItem("cart"));
 
     listCart.push({
         total: product[key],
@@ -899,22 +899,22 @@ function getDataCart() {
     let html = "";
     let totalPrice = 0;
     let dataCart = JSON.parse(localStorage.getItem("cart"))
-            ? JSON.parse(localStorage.getItem("cart"))
-            : [];
+        ? JSON.parse(localStorage.getItem("cart"))
+        : [];
     let flag = false;
     product.map((i, index) => {
         let qty = 0;
         dataCart.map((j, key) => {
-          if(j.total.id == i.id){
-            qty++;
-          }
+            if (j.total.id == i.id) {
+                qty++;
+            }
         })
         let numberPrice = new Number(i.price);
         numberPrice = numberPrice * qty;
         totalPrice += numberPrice;
 
-        if(qty > 0){
-        html += `
+        if (qty > 0) {
+            html += `
                 <div class="d-flex justify-content-between mb-5">
                     <div class="d-flex align-items-center w_400">
                         <img class="w_40" src="${i.image}" alt="">
@@ -1015,8 +1015,86 @@ function catchEnter(key) {
 addEventListener('keypress', catchEnter);
 
 
-//login
-//register
-// let fullNameRes = document.getElementById("fullnameRegister");
-// let emailRes = document.getElementById("emailRegister");
-// let passWordRes = document.getElementById("")
+
+//Register
+
+const checkAccountRegister = () => {
+    let fullNameRes = document.getElementById("NameRegister").value;
+    let emailRes = document.getElementById("EmailRegister").value;
+    let passWordRes = document.getElementById("PassRegister").value;
+    let passRepeatRs = document.getElementById("PassRepeatRegister").value;
+    let checkRes = document.getElementById("CheckRes");
+
+    let regexText = /[a-zA-Z]$/;
+    let regexEmail = /[a-zA-Z0-9-_.]+\@+[a-zA-Z0-9]+\.+[a-zA-Z]{2,4}$/
+    let regexPass = /.{8}$/
+
+    if (fullNameRes != "" || emailRes != "" || passWordRes != "" || passRepeatRs != "") {
+        if (!regexText.test(fullNameRes)) {
+            alert2("Name without numbers or special characters", "light", "NameRes");
+        } else if (!regexEmail.test(emailRes)) {
+            alert2("Invalid email e.g. Example@gmail.com", "light", "EmailRes")
+        } else if (!regexPass.test(passWordRes)) {
+            alert2("Password with 8 characters or more", "light", "PassRes")
+        } else if (passWordRes !== passRepeatRs) {
+            alert2("Password does not match!", "light", "PassRepeatRes")
+        } else if (!checkRes.checked) {
+            alert2("Password does not match!", "light", "CheckResAlert")
+        }
+        else {
+            let account = localStorage.getItem("account") ?
+                JSON.parse(localStorage.getItem("email-input")) : [];
+            account.push({
+                Name: fullNameRes,
+                Email: emailRes,
+                Password: passWordRes
+
+            })
+            localStorage.setItem("Account", JSON.stringify(account))
+            window.location = "login.html"
+        }
+    } else {
+        alert2("Please enter full information!", "light", "PassRepeatRes")
+    }
+
+}
+
+
+
+const alert2 = (message, type, parent) => {
+    const wrapper = document.createElement("div")
+    const alertPlaceholder = document.getElementById(`${parent}`)
+    wrapper.innerHTML = [
+        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+        `   <div>${message}</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+    ].join('')
+
+    alertPlaceholder.append(wrapper)
+}
+
+const alertTrigger = document.getElementById('liveAlertBtn')
+if (alertTrigger) {
+    alertTrigger.addEventListener('click', () => {
+        alert2('Nice, you triggered this alert message!', 'success')
+    })
+}
+
+let btnRegister = document.getElementById("Register_Form")
+btnRegister.addEventListener("submit", (e) => {
+    e.preventDefault();
+    checkAccountRegister()
+})
+
+
+
+
+
+
+
+
+
+
+
+
