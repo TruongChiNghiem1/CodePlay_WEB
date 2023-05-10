@@ -1144,32 +1144,57 @@ const renderLogin_out = () => {
         <li><a class="dropdown-item" href="account.html">Account</a></li>
         <li><a class="dropdown-item" onclick="LogOut()">Log out</a></li>
         `
-        btnMenu.innerHTML = `
+        if (btnMenu != null) {
+            btnMenu.innerHTML = `
         <div><a href="/index.html">Home</a></div>
         <div><a href="/shop.html">Shop</a></div>
         <div><a href="/about_us.html">AboutUs</a></div>
         <div><a href="/cart.html">Cart</a></div>
         <div><a class="dropdown-item" href="acount.html">Account</a></div>
         <div><a class="dropdown-item" onclick="LogOut()">Log out</a></div>`
+        }
 
-       if(headAcc != null){
-        let title = document.createElement("title")
-        title.innerText = `${localStorage.getItem("Logged")}`
-        headAcc.appendChild(title)
-       }
+        if (headAcc != null) {
+            let title = document.createElement("title")
+            title.innerText = `${localStorage.getItem("Logged")}`
+            headAcc.appendChild(title)
+        }
     } else {
         ul.innerHTML = `<li><a class="dropdown-item" href="login.html">Log in</a></li>`
-        btnMenu.innerHTML = `
-        <div><a href="/index.html">Home</a></div>
-        <div><a href="/shop.html">Shop</a></div>
-        <div><a href="/about_us.html">AboutUs</a></div>
-        <div><a class="dropdown-item" href="login.html">Log in</a></div>`
+        if (btnMenu != null) {
+            btnMenu.innerHTML = `
+            <div><a href="/index.html">Home</a></div>
+            <div><a href="/shop.html">Shop</a></div>
+            <div><a href="/about_us.html">AboutUs</a></div>
+            <div><a class="dropdown-item" href="login.html">Log in</a></div>`
+        }
     }
-    btnAcc.appendChild(ul)
+    if(btnAcc != null){
+        btnAcc.appendChild(ul)
+    }
 }
 
 renderLogin_out()
 
+//admin_login
+
+const getAdminLogin = () => {
+    let username = document.getElementById("UsernameAdmin")
+    let adminPassword = document.getElementById("PassAdmin")
+
+    // let adminStorage = localStorage.getItem("admin") ?
+    //     JSON.parse(localStorage.getItem("admin")) : [];
+    // localStorage.setItem("admin", { ad: btoa("dekorare") + "UXV5ZW5OZ2hpZW0=", min: btoa("123" + "RGVrb3JhcmU=") })
+    if (username.value === "dekorare" || adminPassword.value === "123") {
+        window.location = "admin.html"
+    }
+}
+
+let btnAdminLogin = document.getElementById("Admin_Login")
+btnAdminLogin.addEventListener("submit", e => {
+    e.preventDefault()
+    getAdminLogin()
+})
 
 
 
