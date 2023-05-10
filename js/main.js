@@ -1094,6 +1094,8 @@ const Login = () => {
             if (acc.email === emailLg.value && acc.password === passLg.value) {
                 localStorage.removeItem("isLogin")
                 localStorage.setItem("isLogin", "true")
+                localStorage.removeItem("Logged")
+                localStorage.setItem("Logged", acc.name)
                 window.location = "index.html"
             } else {
                 alert2("Invalid account!", "light", "PassLgForm")
@@ -1126,12 +1128,14 @@ function TogglePass() {
 function LogOut() {
     localStorage.removeItem("isLogin");
     localStorage.setItem("isLogin", "false");
+    localStorage.removeItem("Logged")
     window.location = "login.html"
 }
 
 const renderLogin_out = () => {
     let btnAcc = document.getElementById("btnAccount")
     let btnMenu = document.getElementById("menu-button-dropdown")
+    let headAcc = document.getElementById("head_of-acc")
     let ul = document.createElement("ul")
     ul.setAttribute("class", "dropdown-menu")
     if (localStorage.getItem("isLogin") === "true") {
@@ -1147,6 +1151,12 @@ const renderLogin_out = () => {
         <div><a href="/cart.html">Cart</a></div>
         <div><a class="dropdown-item" href="acount.html">Account</a></div>
         <div><a class="dropdown-item" onclick="LogOut()">Log out</a></div>`
+
+       if(headAcc != null){
+        let title = document.createElement("title")
+        title.innerText = `${localStorage.getItem("Logged")}`
+        headAcc.appendChild(title)
+       }
     } else {
         ul.innerHTML = `<li><a class="dropdown-item" href="login.html">Log in</a></li>`
         btnMenu.innerHTML = `
