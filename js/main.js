@@ -883,14 +883,16 @@ let listCart = localStorage.getItem("cart") ?
     JSON.parse(localStorage.getItem("cart")) : [];
 
 function addToCart(key) {
-       if(localStorage.getItem("isLogin")){
+    if (localStorage.getItem("isLogin") === "true") {
         dataCart = JSON.parse(localStorage.getItem("cart"));
         listCart.push({
             total: product[key],
         });
         localStorage.setItem("cart", JSON.stringify(listCart));
-       }
-    
+    }else{
+        window.location = "login.html"
+    }
+
 }
 
 function getDataCart() {
@@ -1090,6 +1092,7 @@ const Login = () => {
     if (emailLg.value != "" || passLg.value != "") {
         account.map(acc => {
             if (acc.email === emailLg.value && acc.password === passLg.value) {
+                localStorage.removeItem("isLogin")
                 localStorage.setItem("isLogin", "true")
                 window.location = "index.html"
             } else {
@@ -1103,12 +1106,12 @@ const Login = () => {
 }
 
 let btnLogin = document.getElementById("Login_Form")
-if(btnLogin != null){
+if (btnLogin != null) {
     btnLogin.addEventListener("submit", (e) => {
         e.preventDefault();
         Login();
     })
-    
+
 }
 function TogglePass() {
     let PassInput = document.getElementById("PassLogin")
@@ -1120,7 +1123,11 @@ function TogglePass() {
 }
 
 
-
+function LogOut() {
+    localStorage.removeItem("isLogin");
+    localStorage.setItem("isLogin", "false");
+    window.location = "login.html"
+}
 
 
 
