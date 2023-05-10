@@ -1403,6 +1403,13 @@ input[type="checkbox"] {
     border: 1px groove black;
 }
 
+.bill_main{
+    min-height: 100vh;
+    background-image: url("https://res.cloudinary.com/dz96u1u2a/image/upload/v1683671816/wallpaperflare.com_wallpaper_2_htovjq.jpg");
+    background-size: cover;
+    background-position: bottom;
+}
+
 
 @media (min-width: 768px) {
     .text-md-right {

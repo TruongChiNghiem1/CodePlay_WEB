@@ -516,6 +516,30 @@ const product = [{
 },
 ];
 
+
+// let product = localStorage.getItem("product") ?
+//     JSON.parse(localStorage.getItem("product")) : [];
+
+//  fetch("https://642c508e208dfe25472d4c1e.mockapi.io/api/v1/product")
+//     .then(res => res.json())
+//     .then(data => {
+//         data.map(pro => {
+//             product.push({
+//                 id: `${pro.id}`,
+//                 image: `${pro.image}`,
+//                 title: `${pro.title}`,
+//                 price: `${pro.price}`,
+//                 classify: `${pro.classify}`
+//             });
+
+//         })
+//     })
+// console.log(product);
+// localStorage.setItem("product", JSON.stringify(product))
+
+
+
+
 let perPage = 16;
 let currentPage = 1;
 let start = 0;
@@ -562,7 +586,8 @@ function renderProduct() {
     document.getElementById("product_shop").innerHTML = html;
 }
 
-if (document.getElementById("product_shop") !== null) {
+
+if (document.getElementById("product_shop") !== null && product.length !== 0) {
     renderProduct();
 }
 
@@ -1169,7 +1194,7 @@ const renderLogin_out = () => {
             <div><a class="dropdown-item" href="login.html">Log in</a></div>`
         }
     }
-    if(btnAcc != null){
+    if (btnAcc != null) {
         btnAcc.appendChild(ul)
     }
 }
@@ -1191,10 +1216,14 @@ const getAdminLogin = () => {
 }
 
 let btnAdminLogin = document.getElementById("Admin_Login")
-btnAdminLogin.addEventListener("submit", e => {
-    e.preventDefault()
-    getAdminLogin()
-})
+if (btnAdminLogin != null) {
+    btnAdminLogin.addEventListener("submit", e => {
+        e.preventDefault()
+        getAdminLogin()
+    })
+
+}
+
 
 
 
