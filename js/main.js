@@ -889,7 +889,7 @@ function addToCart(key) {
             total: product[key],
         });
         localStorage.setItem("cart", JSON.stringify(listCart));
-    }else{
+    } else {
         window.location = "login.html"
     }
 
@@ -1128,6 +1128,25 @@ function LogOut() {
     localStorage.setItem("isLogin", "false");
     window.location = "login.html"
 }
+
+const renderLogin_out = () => {
+    let btnAcc = document.getElementById("btnAccount")
+    let ul = document.createElement("ul")
+    ul.setAttribute("class", "dropdown-menu")
+    if (localStorage.getItem("isLogin") === "true") {
+        ul.innerHTML =
+            `
+        <li><a class="dropdown-item" href="Account.html">Account</a></li>
+        <li><a class="dropdown-item" onclick="LogOut()">Log out</a></li>
+        `
+    }else{
+        ul.innerHTML = `<li><a class="dropdown-item" href="login.html">Log in</a></li>`
+
+    }
+    btnAcc.appendChild(ul)
+}
+
+renderLogin_out()
 
 
 
