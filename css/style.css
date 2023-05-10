@@ -974,9 +974,11 @@ a {
     height: 40px;
 
 }
-.min_with_cart{
+
+.min_with_cart {
     min-height: 310px;
 }
+
 .outln_none {
     outline: none;
 }
@@ -1281,7 +1283,8 @@ footer {
     color: white;
 }
 
-.login_form input:focus, .regiter_main input:focus  {
+.login_form input:focus,
+.regiter_main input:focus {
     background-color: transparent;
     -webkit-box-shadow: none;
     border: 1px groove white;
@@ -1300,7 +1303,13 @@ footer {
     text-transform: uppercase;
 }
 
-#Register{
+.font_great2 {
+    font-size: 100px;
+    font-family: 'Dancing Script', cursive;
+}
+
+
+#Register {
     background: #346751 !important;
     border: 1px solid #346751 !important;
     color: white !important;
@@ -1313,11 +1322,11 @@ footer {
 }
 
 .form-check-input:checked {
-    background-color: #346751 ;
-    border-color: #346751 ;
+    background-color: #346751;
+    border-color: #346751;
 }
 
-.regiter_main label{
+.regiter_main label {
     color: white !important;
 
 }
@@ -1343,6 +1352,7 @@ footer {
     height: 0;
     width: 0;
 }
+
 input[type="checkbox"] {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -1360,17 +1370,39 @@ input[type="checkbox"] {
     width: 50% !important;
 }
 
-.background{
-   background-size: cover;
+.background {
+    background-size: cover;
 }
 
-.register_card{
+.register_card {
     background-color: rgba(253, 253, 253, 0.315);
 }
 
-.toggle-password{
+.toggle-password {
     cursor: pointer;
 }
+
+.account_main {
+    min-height: 100vh;
+    background-image: url("https://res.cloudinary.com/dz96u1u2a/image/upload/v1683694279/wallpaperflare.com_wallpaper_6_cilzgd.jpg");
+    background-size: cover;
+    /* background-position: bottom; */
+}
+
+/* admin_login */
+.admin_log_main {
+    height: 100vh;
+    background-image: url("https://res.cloudinary.com/dz96u1u2a/image/upload/v1683696306/wallpaperflare-cropped_kxl5bs.jpg");
+    background-size: cover;
+    background-position: top;
+}
+
+.admin_log_main input:focus {
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    border: 1px groove black;
+}
+
 
 @media (min-width: 768px) {
     .text-md-right {
