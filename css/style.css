@@ -81,6 +81,7 @@ header h1 {
     border: none;
     background-color: transparent;
     border-radius: 100%;
+    margin: 0 0.5rem;
 }
 
 .header_person_button {
@@ -90,7 +91,7 @@ header h1 {
     color: white;
     border: none;
     background-color: transparent;
-    margin: 0 1rem;
+    margin: 0 0.5rem;
     border-radius: 100%;
 }
 
@@ -1365,6 +1366,10 @@ input[type="checkbox"] {
 
 .register_card{
     background-color: rgba(253, 253, 253, 0.315);
+}
+
+.toggle-password{
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {

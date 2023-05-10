@@ -33,7 +33,7 @@ const goToAcount = () => {
 var x = document.querySelector("#header_container");
 const but = document.querySelectorAll(".header_menu > div > button");
 const icon = document.querySelectorAll(".header_cart_lgn > button > i");
-
+const login = document.querySelector(".header_person_button > i")
 let changeStyleHeader = () => {
     document.getElementById("header_container").style.backgroundColor = "white";
     but.forEach((element) => {
@@ -44,6 +44,7 @@ let changeStyleHeader = () => {
     });
     document.getElementById("header_button_aboutus").style.color = "black";
     document.querySelector("#header_container > a > h1").style.color = "black";
+    login.style.color = "black"
 };
 
 let clearStyleHeader = () => {
@@ -57,12 +58,8 @@ let clearStyleHeader = () => {
     });
     document.querySelector("#header_container > a > h1").style.color = "";
     document.getElementById("header_button_aboutus").style.color = "";
+    login.style.color = "";
 };
-
-if (x != null) {
-    x.addEventListener("mouseover", changeStyleHeader);
-    x.addEventListener("mouseout", clearStyleHeader);
-}
 
 let onScroll = () => {
     window.addEventListener("scroll", callBackFunc);
@@ -886,13 +883,14 @@ let listCart = localStorage.getItem("cart") ?
     JSON.parse(localStorage.getItem("cart")) : [];
 
 function addToCart(key) {
-    dataCart = JSON.parse(localStorage.getItem("cart"));
-
-    listCart.push({
-        total: product[key],
-    });
-    localStorage.setItem("cart", JSON.stringify(listCart));
-    // reloadCart();
+       if(localStorage.getItem("isLogin")){
+        dataCart = JSON.parse(localStorage.getItem("cart"));
+        listCart.push({
+            total: product[key],
+        });
+        localStorage.setItem("cart", JSON.stringify(listCart));
+       }
+    
 }
 
 function getDataCart() {
@@ -1043,14 +1041,14 @@ const checkAccountRegister = () => {
         }
         else {
             let account = localStorage.getItem("account") ?
-                JSON.parse(localStorage.getItem("email-input")) : [];
+                JSON.parse(localStorage.getItem("account")) : [];
             account.push({
-                Name: fullNameRes,
-                Email: emailRes,
-                Password: passWordRes
+                name: fullNameRes,
+                email: emailRes,
+                password: passWordRes
 
             })
-            localStorage.setItem("Account", JSON.stringify(account))
+            localStorage.setItem("account", JSON.stringify(account))
             window.location = "login.html"
         }
     } else {
@@ -1074,20 +1072,52 @@ const alert2 = (message, type, parent) => {
     alertPlaceholder.append(wrapper)
 }
 
-const alertTrigger = document.getElementById('liveAlertBtn')
-if (alertTrigger) {
-    alertTrigger.addEventListener('click', () => {
-        alert2('Nice, you triggered this alert message!', 'success')
+let btnRegister = document.getElementById("Register_Form")
+if (btnRegister != null) {
+    btnRegister.addEventListener("submit", (e) => {
+        e.preventDefault();
+        checkAccountRegister()
     })
 }
 
-let btnRegister = document.getElementById("Register_Form")
-btnRegister.addEventListener("submit", (e) => {
-    e.preventDefault();
-    checkAccountRegister()
-})
 
+//Login
+const Login = () => {
+    let emailLg = document.getElementById("EmailLogin")
+    let passLg = document.getElementById("PassLogin")
+    let account = localStorage.getItem("account") ?
+        JSON.parse(localStorage.getItem("account")) : [];
+    if (emailLg.value != "" || passLg.value != "") {
+        account.map(acc => {
+            if (acc.email === emailLg.value && acc.password === passLg.value) {
+                localStorage.setItem("isLogin", "true")
+                window.location = "index.html"
+            } else {
+                alert2("Invalid account!", "light", "PassLgForm")
+            }
+        })
+    } else {
+        alert2("Please enter full information!", "light", "PassLgForm")
+    }
 
+}
+
+let btnLogin = document.getElementById("Login_Form")
+if(btnLogin != null){
+    btnLogin.addEventListener("submit", (e) => {
+        e.preventDefault();
+        Login();
+    })
+    
+}
+function TogglePass() {
+    let PassInput = document.getElementById("PassLogin")
+    if (PassInput.getAttribute("type") == "password") {
+        PassInput.setAttribute("type", "text");
+    } else {
+        PassInput.setAttribute("type", "password");
+    }
+}
 
 
 

@@ -31,23 +31,23 @@
                 <h1>Have a account ?</h1>
                 <div class="login_form">
                     <!-- Section: Design Block -->
-                    <form>
+                    <form id="Login_Form">
                         <!-- Email input -->
-                        <div class="form-group">
-                            <input type="text" class="form-control"
+                        <div id="EmailLgForm" class="form-group">
+                            <input id="EmailLogin" type="text" class="form-control"
                                 placeholder="Email" required>
                         </div>
-                        <div class="form-group">
-                            <input id="password-field" type="password"
+                        <div id="PassLgForm" class="form-group">
+                            <input id="PassLogin" type="password"
                                 class="form-control" placeholder="Password"
                                 required>
-                            <span toggle="#password-field" class="fa fa-fw
+                            <span onclick="TogglePass()" class="fa fa-fw
                                 fa-eye field-icon toggle-password"></span>
                         </div>
 
                         <!-- Submit button -->
                         <div class="form-group">
-                            <button id="Login" type="submit" class="form-control
+                            <button  type="submit" class="form-control
                                 btn
                                 btn-primary submit px-3">Sign In</button>
                         </div>
