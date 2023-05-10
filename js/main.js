@@ -1131,17 +1131,29 @@ function LogOut() {
 
 const renderLogin_out = () => {
     let btnAcc = document.getElementById("btnAccount")
+    let btnMenu = document.getElementById("menu-button-dropdown")
     let ul = document.createElement("ul")
     ul.setAttribute("class", "dropdown-menu")
     if (localStorage.getItem("isLogin") === "true") {
         ul.innerHTML =
             `
-        <li><a class="dropdown-item" href="Account.html">Account</a></li>
+        <li><a class="dropdown-item" href="account.html">Account</a></li>
         <li><a class="dropdown-item" onclick="LogOut()">Log out</a></li>
         `
-    }else{
+        btnMenu.innerHTML = `
+        <div><a href="/index.html">Home</a></div>
+        <div><a href="/shop.html">Shop</a></div>
+        <div><a href="/about_us.html">AboutUs</a></div>
+        <div><a href="/cart.html">Cart</a></div>
+        <div><a class="dropdown-item" href="acount.html">Account</a></div>
+        <div><a class="dropdown-item" onclick="LogOut()">Log out</a></div>`
+    } else {
         ul.innerHTML = `<li><a class="dropdown-item" href="login.html">Log in</a></li>`
-
+        btnMenu.innerHTML = `
+        <div><a href="/index.html">Home</a></div>
+        <div><a href="/shop.html">Shop</a></div>
+        <div><a href="/about_us.html">AboutUs</a></div>
+        <div><a class="dropdown-item" href="login.html">Log in</a></div>`
     }
     btnAcc.appendChild(ul)
 }
