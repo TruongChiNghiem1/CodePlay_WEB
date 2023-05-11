@@ -1410,6 +1410,15 @@ input[type="checkbox"] {
     background-position: bottom;
 }
 
+.receipt_bill{
+    background-color: #91816854;
+    border-radius:  40px;
+}
+
+#btnConfirm{
+    color: white;
+    background-color: #346751;
+}
 
 @media (min-width: 768px) {
     .text-md-right {
