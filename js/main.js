@@ -34,6 +34,7 @@ var x = document.querySelector("#header_container");
 const but = document.querySelectorAll(".header_menu > div > button");
 const icon = document.querySelectorAll(".header_cart_lgn > button > i");
 const login = document.querySelector(".header_person_button > i")
+
 let changeStyleHeader = () => {
     document.getElementById("header_container").style.backgroundColor = "white";
     but.forEach((element) => {
@@ -49,7 +50,7 @@ let changeStyleHeader = () => {
 
 let clearStyleHeader = () => {
     document.getElementById("header_container").style.backgroundColor =
-        "rgba(52, 58, 58, 0.384)";
+        "transparent";
     but.forEach((element) => {
         element.style.color = "";
     });
@@ -1223,6 +1224,354 @@ if (btnAdminLogin != null) {
     })
 
 }
+
+
+//Account 
+function showMyAccSelect() {
+    let myDiv = document.getElementById("myAcc_select");
+    myDiv.querySelector("ul").classList.toggle("hide");
+}
+
+const renderFrmProfile = () => {
+    let account = localStorage.getItem("account") ?
+        JSON.parse(localStorage.getItem("account")) : [];
+    let acc_info_detail = localStorage.getItem("account_detail") ?
+        JSON.parse(localStorage.getItem("account_detail")) : [];
+
+    let side = document.getElementById("account_detail")
+    let html = ""
+    let flag = false;
+
+    if (acc_info_detail.length > 0) {
+        account.map(acc => {
+            acc_info_detail.map(item => {
+                if (item.email === acc.email && item.name === localStorage.getItem("Logged")) {
+                    flag = true;
+                    if(item.gender === 0){
+                        html += `
+                    <h4>My Profile</h4>
+                    <p>Manage and protect your account</p>
+                    <hr style="color: black" class="w-50 t-3"/>
+                    <div class="d-flex justify-content-center">
+                        <form id="submit_profile" class="d-flex direction flex-column
+                            align-items-lg-start p-4 justify-content-around ms-5">
+                            <div class="item mb-4">
+                                Name:
+                                <input id="acc_name" type="text" value= '${acc.name}'>
+                            </div>
+                            <div class="item mb-4">
+                               Email:
+                                <input id="acc_email" type="text" value= '${acc.email}'>
+                            </div>
+                            <div class="item mb-4">
+                                PhoneNo:
+                                <input id="acc-phone" type="tel" placeholder= '${item.phoneNo}'>
+                            </div>
+                            <div id="check_gender" class="item d-flex mb-4">
+                            <p class="me-3">Gender: </p>
+                            <div class="form-check form-check-inline ">
+                                <input class="form-check-input" type="radio"
+                                    name="inlineRadioOptions" id="male_checked" 
+                                    checked="checked">
+                                <label class="form-check-label"
+                                    for="male_checked"></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                    name="inlineRadioOptions" id="female_checked">
+                                <label class="form-check-label"
+                                    for="female_checked">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                    name="inlineRadioOptions" id="other_gender_checked">
+                                <label class="form-check-label"
+                                    for="other_gender_checked">Other</label>
+                            </div>
+                            </div>
+                            <div class="item d-flex align-items-center mb-5">
+                                <p>Date of birth: </p>
+                                <input id="acc_dob" type="date" class="border-0 p-1 ps-2
+                                    value='${item.DOB}'>
+                            </div>
+                            <div id="showAlertAcc"></div>
+                            <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
+                        </form>
+                        <hr style="width: 1; height: 50px; color: black">
+                        <div class="d-flex direction flex-column
+                            align-items-lg-start p-4 ms-5">
+                            <img style="width: 150px; border-radius: 100%; margin: 0
+                                8px"
+                                src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
+                        </div>
+    `  
+                    }else if(item.gender === 1){
+                        html += `
+                    <h4>My Profile</h4>
+                    <p>Manage and protect your account</p>
+                    <hr style="color: black" class="w-50 t-3"/>
+                    <div class="d-flex justify-content-center">
+                        <form id="submit_profile" class="d-flex direction flex-column
+                            align-items-lg-start p-4 justify-content-around ms-5">
+                            <div class="item mb-4">
+                                Name:
+                                <input id="acc_name" type="text" value= '${acc.name}'>
+                            </div>
+                            <div class="item mb-4">
+                               Email:
+                                <input id="acc_email" type="text" value= '${acc.email}'>
+                            </div>
+                            <div class="item mb-4">
+                                PhoneNo:
+                                <input id="acc-phone" type="tel" placeholder= '${item.phoneNo}'>
+                            </div>
+                            <div id="check_gender" class="item d-flex mb-4">
+                            <p class="me-3">Gender: </p>
+                                    <div class="form-check form-check-inline ">
+                                        <input class="form-check-input" type="radio"
+                                            name="inlineRadioOptions" id="male_checked" 
+                                            >
+                                        <label class="form-check-label"
+                                            for="male_checked"></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"
+                                            name="inlineRadioOptions" id="female_checked" checked="checked">
+                                        <label class="form-check-label"
+                                            for="female_checked">Female</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"
+                                            name="inlineRadioOptions" id="other_gender_checked">
+                                        <label class="form-check-label"
+                                            for="other_gender_checked">Other</label>
+                                    </div>
+                            </div>
+                            <div class="item d-flex align-items-center mb-5">
+                                <p>Date of birth: </p>
+                                <input id="acc_dob" type="date" class="border-0 p-1 ps-2
+                                    value='${item.DOB}'>
+                            </div>
+                            <div id="showAlertAcc"></div>
+                            <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
+                        </form>
+                        <hr style="width: 1; height: 50px; color: black">
+                        <div class="d-flex direction flex-column
+                            align-items-lg-start p-4 ms-5">
+                            <img style="width: 150px; border-radius: 100%; margin: 0
+                                8px"
+                                src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
+                        </div>
+    `  
+                    }
+                    else{
+                        html += `
+                    <h4>My Profile</h4>
+                    <p>Manage and protect your account</p>
+                    <hr style="color: black" class="w-50 t-3"/>
+                    <div class="d-flex justify-content-center">
+                        <form id="submit_profile" class="d-flex direction flex-column
+                            align-items-lg-start p-4 justify-content-around ms-5">
+                            <div class="item mb-4">
+                                Name:
+                                <input id="acc_name" type="text" value= '${acc.name}'>
+                            </div>
+                            <div class="item mb-4">
+                               Email:
+                                <input id="acc_email" type="text" value= '${acc.email}'>
+                            </div>
+                            <div class="item mb-4">
+                                PhoneNo:
+                                <input id="acc-phone" type="tel" placeholder= '${item.phoneNo}'>
+                            </div>
+                            <div id="check_gender" class="item d-flex mb-4">
+                            <p class="me-3">Gender: </p>
+                                    <div class="form-check form-check-inline ">
+                                        <input class="form-check-input" type="radio"
+                                            name="inlineRadioOptions" id="male_checked" 
+                                            >
+                                        <label class="form-check-label"
+                                            for="male_checked"></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"
+                                            name="inlineRadioOptions" id="female_checked">
+                                        <label class="form-check-label"
+                                            for="female_checked">Female</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"
+                                            name="inlineRadioOptions" id="other_gender_checked" checked="checked">
+                                        <label class="form-check-label"
+                                            for="other_gender_checked">Other</label>
+                                    </div>
+                            </div>
+                            <div class="item d-flex align-items-center mb-5">
+                                <p>Date of birth: </p>
+                                <input id="acc_dob" type="date" class="border-0 p-1 ps-2
+                                    value='${item.DOB}'>
+                            </div>
+                            <div id="showAlertAcc"></div>
+                            <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
+                        </form>
+                        <hr style="width: 1; height: 50px; color: black">
+                        <div class="d-flex direction flex-column
+                            align-items-lg-start p-4 ms-5">
+                            <img style="width: 150px; border-radius: 100%; margin: 0
+                                8px"
+                                src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
+                        </div>
+    `  
+                    }
+                }
+            })
+        })
+    }
+
+    if (!flag) {
+        account.map(acc => {
+            if (acc.name === localStorage.getItem("Logged")) {
+                html += `
+                <h4>My Profile</h4>
+                <p>Manage and protect your account</p>
+                <hr style="color: black" class="w-50 t-3"/>
+                <div class="d-flex justify-content-center">
+                    <form id="submit_profile" class="d-flex direction flex-column
+                        align-items-lg-start p-4 justify-content-around ms-5">
+                        <div class="item mb-4">
+                            Name:
+                            <input id="acc_name" type="text" value= '${acc.name}'>
+                        </div>
+                        <div class="item mb-4">
+                           Email:
+                            <input id="acc_email" type="text" value= '${acc.email}'>
+                        </div>
+                        <div class="item mb-4">
+                            PhoneNo:
+                            <input id="acc-phone" type="tel" placeholder= 'Your phone number'>
+                        </div>
+                        <div class="item d-flex mb-4">
+                            <p class="me-3">Gender: </p>
+                            <div class="form-check form-check-inline ">
+                                <input class="form-check-input" type="radio"
+                                    name="inlineRadioOptions" id="male_checked">
+                                <label class="form-check-label"
+                                    for="male_checked">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                    name="inlineRadioOptions"
+                                    id="female_checked">
+                                <label class="form-check-label"
+                                    for="female_checked">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                    name="inlineRadioOptions"
+                                    id="other_gender_checked">
+                                <label class="form-check-label"
+                                    for="other_gender_checked">Other</label>
+                            </div>
+                        </div>
+                        <div class="item d-flex align-items-center mb-5">
+                            <p>Date of birth: </p>
+                            <input id="acc_dob" type="date" class="border-0 p-1 ps-2
+                                value="2018-07-22">
+                        </div>
+                        <div id="showAlertAcc"></div>
+                        <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
+                    </form>
+                    <hr style="width: 1; height: 50px; color: black">
+                    <div class="d-flex direction flex-column
+                        align-items-lg-start p-4 ms-5">
+                        <img style="width: 150px; border-radius: 100%; margin: 0
+                            8px"
+                            src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
+                    </div>
+`
+
+            }
+        })
+    }
+
+    side.innerHTML = html
+
+}
+renderFrmProfile()
+
+
+let save_profile = document.getElementById("submit_profile")
+save_profile.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let name = document.getElementById("acc_name").value;
+    let phoneno = document.getElementById("acc-phone").value;
+    let email = document.getElementById("acc_email").value;
+    let male = document.getElementById("male_checked");
+    let female = document.getElementById("female_checked");
+    let other_gender = document.getElementById("other_gender_checked");
+    let DOB = document.getElementById("acc_dob").value;
+
+    let acc_info_detail = localStorage.getItem("account_detail") ?
+        JSON.parse(localStorage.getItem("account_detail")) : [];
+    let account = localStorage.getItem("account") ?
+        JSON.parse(localStorage.getItem("account")) : [];
+
+    if (name !== "" && phoneno !== "" && DOB !== "" && male.checked || female.checked || other_gender.checked) {
+       alert('fdhjkdfjhsgdfhj')
+        if (!/[a-zA-Z]$/.test(name)) {
+            alert2("Name without numbers or special characters.", "light", "showAlertAcc");
+        } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/g.test(phoneno)) {
+            alert2("Invalid phone nummber!", "light", "showAlertAcc");
+        } else {
+            const indexToRemv = acc_info_detail.findIndex(o => o.email === email);
+            let acc_updated = {}
+            if (male.checked) {
+                acc_updated = {
+                    name: name,
+                    email: email,
+                    gender: 0,
+                    phoneNo: phoneno,
+                    DOB: DOB
+                }
+            } else if (female.checked) {
+                acc_updated = {
+                    name: name,
+                    email: email,
+                    gender: 1,
+                    phoneNo: phoneno,
+                    DOB: DOB
+                }
+            } else {
+                acc_updated = {
+                    name: name,
+                    email: email,
+                    gender: 2,
+                    phoneNo: phoneno,
+                    DOB: DOB
+                }
+            }
+            if (indexToRemv !== -1) {
+                acc_info_detail.splice(indexToRemv, 1);
+                acc_info_detail.splice(indexToRemv, 0, acc_updated);
+            }else{
+                acc_info_detail.push(acc_updated)
+            }
+            localStorage.setItem("account_detail", JSON.stringify(acc_info_detail));
+
+        }
+    } else {
+        alert2("Please enter full information!", "light", "showAlertAcc")
+    }
+
+})
+
+
+let btnProfile = document.getElementById("profile")
+btnProfile.addEventListener("click", () => {
+    // if()
+})
+
+
 
 
 
