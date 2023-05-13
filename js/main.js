@@ -1070,12 +1070,28 @@ const checkAccountRegister = () => {
         else {
             let account = localStorage.getItem("account") ?
                 JSON.parse(localStorage.getItem("account")) : [];
-            account.push({
+            let newAcc = {
                 name: fullNameRes,
                 email: emailRes,
                 password: passWordRes
 
-            })
+            }
+            let isExists = false;
+            if (account.length > 0) {
+                account.map(acc => {
+                    if (acc.email === emailRes) {
+                        isExists = true;
+                    }
+                })
+                if (isExists) {
+                    account.push(newAcc)
+                } else {
+                    alert("Exists")
+                }
+            } else {
+                account.push(newAcc)
+            }
+
             localStorage.setItem("account", JSON.stringify(account))
             window.location = "login.html"
         }
@@ -1121,7 +1137,7 @@ const Login = () => {
                 localStorage.removeItem("isLogin")
                 localStorage.setItem("isLogin", "true")
                 localStorage.removeItem("Logged")
-                localStorage.setItem("Logged", acc.name)
+                localStorage.setItem("Logged", JSON.stringify({ name: acc.name, email: acc.email }))
                 window.location = "index.html"
             } else {
                 alert2("Invalid account!", "light", "PassLgForm")
@@ -1181,8 +1197,10 @@ const renderLogin_out = () => {
         }
 
         if (headAcc != null) {
+            let titleLocal = localStorage.getItem("Logged") ?
+                JSON.parse(localStorage.getItem("Logged")) : [];
             let title = document.createElement("title")
-            title.innerText = `${localStorage.getItem("Logged")}`
+            title.innerText = `${titleLocal.name}`
             headAcc.appendChild(title)
         }
     } else {
@@ -1232,22 +1250,26 @@ function showMyAccSelect() {
     myDiv.querySelector("ul").classList.toggle("hide");
 }
 
+
+let right_content = document.createElement("div")
+right_content.classList.add("change_feature")
+right_content.setAttribute("class", "w-50 d-flex direction flex-column align-items-lg-start p-4 fw-bold")
 const renderFrmProfile = () => {
     let account = localStorage.getItem("account") ?
         JSON.parse(localStorage.getItem("account")) : [];
+    let acc_logged = localStorage.getItem("Logged") ?
+        JSON.parse(localStorage.getItem("Logged")) : {};
     let acc_info_detail = localStorage.getItem("account_detail") ?
         JSON.parse(localStorage.getItem("account_detail")) : [];
-
     let side = document.getElementById("account_detail")
-    let html = ""
     let flag = false;
-
+    let html = ""
     if (acc_info_detail.length > 0) {
         account.map(acc => {
             acc_info_detail.map(item => {
-                if (item.email === acc.email && item.name === localStorage.getItem("Logged")) {
+                if (item.email === acc.email && item.name === acc_logged.name) {
                     flag = true;
-                    if(item.gender === 0){
+                    if (item.gender === 0) {
                         html += `
                     <h4>My Profile</h4>
                     <p>Manage and protect your account</p>
@@ -1274,7 +1296,7 @@ const renderFrmProfile = () => {
                                     name="inlineRadioOptions" id="male_checked" 
                                     checked="checked">
                                 <label class="form-check-label"
-                                    for="male_checked"></label>
+                                    for="male_checked">Male</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio"
@@ -1291,8 +1313,8 @@ const renderFrmProfile = () => {
                             </div>
                             <div class="item d-flex align-items-center mb-5">
                                 <p>Date of birth: </p>
-                                <input id="acc_dob" type="date" class="border-0 p-1 ps-2
-                                    value='${item.DOB}'>
+                                <input id="acc_dob" type="date" class="border-0 p-1 ps-2"
+                                    value="${item.dob}">
                             </div>
                             <div id="showAlertAcc"></div>
                             <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
@@ -1304,8 +1326,8 @@ const renderFrmProfile = () => {
                                 8px"
                                 src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
                         </div>
-    `  
-                    }else if(item.gender === 1){
+    `
+                    } else if (item.gender === 1) {
                         html += `
                     <h4>My Profile</h4>
                     <p>Manage and protect your account</p>
@@ -1332,7 +1354,7 @@ const renderFrmProfile = () => {
                                             name="inlineRadioOptions" id="male_checked" 
                                             >
                                         <label class="form-check-label"
-                                            for="male_checked"></label>
+                                            for="male_checked">Male</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio"
@@ -1349,8 +1371,8 @@ const renderFrmProfile = () => {
                             </div>
                             <div class="item d-flex align-items-center mb-5">
                                 <p>Date of birth: </p>
-                                <input id="acc_dob" type="date" class="border-0 p-1 ps-2
-                                    value='${item.DOB}'>
+                                <input id="acc_dob" type="date" class="border-0 p-1 ps-2"
+                                    value='${item.dob}'>
                             </div>
                             <div id="showAlertAcc"></div>
                             <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
@@ -1362,9 +1384,9 @@ const renderFrmProfile = () => {
                                 8px"
                                 src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
                         </div>
-    `  
+    `
                     }
-                    else{
+                    else {
                         html += `
                     <h4>My Profile</h4>
                     <p>Manage and protect your account</p>
@@ -1391,7 +1413,7 @@ const renderFrmProfile = () => {
                                             name="inlineRadioOptions" id="male_checked" 
                                             >
                                         <label class="form-check-label"
-                                            for="male_checked"></label>
+                                            for="male_checked">Male</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio"
@@ -1408,8 +1430,8 @@ const renderFrmProfile = () => {
                             </div>
                             <div class="item d-flex align-items-center mb-5">
                                 <p>Date of birth: </p>
-                                <input id="acc_dob" type="date" class="border-0 p-1 ps-2
-                                    value='${item.DOB}'>
+                                <input id="acc_dob" type="date" class="border-0 p-1 ps-2"
+                                    value='${item.dob}'>
                             </div>
                             <div id="showAlertAcc"></div>
                             <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
@@ -1421,7 +1443,7 @@ const renderFrmProfile = () => {
                                 8px"
                                 src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
                         </div>
-    `  
+    `
                     }
                 }
             })
@@ -1430,7 +1452,7 @@ const renderFrmProfile = () => {
 
     if (!flag) {
         account.map(acc => {
-            if (acc.name === localStorage.getItem("Logged")) {
+            if (acc.name === acc_logged.name) {
                 html += `
                 <h4>My Profile</h4>
                 <p>Manage and protect your account</p>
@@ -1494,82 +1516,313 @@ const renderFrmProfile = () => {
         })
     }
 
-    side.innerHTML = html
-
+    right_content.innerHTML = html
+    side.appendChild(right_content)
 }
-renderFrmProfile()
 
-
+// renderFrmProfile()
 let save_profile = document.getElementById("submit_profile")
-save_profile.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let name = document.getElementById("acc_name").value;
-    let phoneno = document.getElementById("acc-phone").value;
-    let email = document.getElementById("acc_email").value;
-    let male = document.getElementById("male_checked");
-    let female = document.getElementById("female_checked");
-    let other_gender = document.getElementById("other_gender_checked");
-    let DOB = document.getElementById("acc_dob").value;
+if (save_profile !== null) {
+    save_profile.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let name = document.getElementById("acc_name").value;
+        let phoneno = document.getElementById("acc-phone").value;
+        let email = document.getElementById("acc_email").value;
+        let male = document.getElementById("male_checked");
+        let female = document.getElementById("female_checked");
+        let other_gender = document.getElementById("other_gender_checked");
+        let DOB = document.getElementById("acc_dob").value;
 
-    let acc_info_detail = localStorage.getItem("account_detail") ?
-        JSON.parse(localStorage.getItem("account_detail")) : [];
-    let account = localStorage.getItem("account") ?
-        JSON.parse(localStorage.getItem("account")) : [];
+        let acc_info_detail = localStorage.getItem("account_detail") ?
+            JSON.parse(localStorage.getItem("account_detail")) : [];
 
-    if (name !== "" && phoneno !== "" && DOB !== "" && male.checked || female.checked || other_gender.checked) {
-       alert('fdhjkdfjhsgdfhj')
-        if (!/[a-zA-Z]$/.test(name)) {
-            alert2("Name without numbers or special characters.", "light", "showAlertAcc");
-        } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/g.test(phoneno)) {
-            alert2("Invalid phone nummber!", "light", "showAlertAcc");
-        } else {
-            const indexToRemv = acc_info_detail.findIndex(o => o.email === email);
-            let acc_updated = {}
-            if (male.checked) {
-                acc_updated = {
-                    name: name,
-                    email: email,
-                    gender: 0,
-                    phoneNo: phoneno,
-                    DOB: DOB
-                }
-            } else if (female.checked) {
-                acc_updated = {
-                    name: name,
-                    email: email,
-                    gender: 1,
-                    phoneNo: phoneno,
-                    DOB: DOB
-                }
+        if (name !== "" && phoneno !== "" && DOB !== "" && male.checked || female.checked || other_gender.checked) {
+            if (!/[a-zA-Z]$/.test(name)) {
+                // alert2("Name without numbers or special characters.", "light", "showAlertAcc");
+                alert("Bu 1")
+            } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/g.test(phoneno)) {
+                // alert2("Invalid phone nummber!", "light", "showAlertAcc");
+                alert("Bu 3")
             } else {
-                acc_updated = {
-                    name: name,
-                    email: email,
-                    gender: 2,
-                    phoneNo: phoneno,
-                    DOB: DOB
+                const indexToRemv = acc_info_detail.findIndex(o => o.email === email);
+                let acc_updated = {}
+                if (male.checked) {
+                    acc_updated = {
+                        name: name,
+                        email: email,
+                        gender: 0,
+                        phoneNo: phoneno,
+                        dob: DOB
+                    }
+                } else if (female.checked) {
+                    acc_updated = {
+                        name: name,
+                        email: email,
+                        gender: 1,
+                        phoneNo: phoneno,
+                        dob: DOB
+                    }
+                } else {
+                    acc_updated = {
+                        name: name,
+                        email: email,
+                        gender: 2,
+                        phoneNo: phoneno,
+                        dob: DOB
+                    }
                 }
-            }
-            if (indexToRemv !== -1) {
-                acc_info_detail.splice(indexToRemv, 1);
-                acc_info_detail.splice(indexToRemv, 0, acc_updated);
-            }else{
-                acc_info_detail.push(acc_updated)
-            }
-            localStorage.setItem("account_detail", JSON.stringify(acc_info_detail));
+                if (indexToRemv !== -1) {
+                    alert("fdjksdfjhkdfshj")
+                    acc_info_detail.splice(indexToRemv, 1);
+                    acc_info_detail.splice(indexToRemv, 0, acc_updated);
+                } else {
+                    acc_info_detail.push(acc_updated)
+                }
+                alert("push")
+                localStorage.setItem("account_detail", JSON.stringify(acc_info_detail));
 
+            }
+        } else {
+            // alert2("Please enter full information!", "light", "showAlertAcc")
+            alert("Bu 2")
         }
-    } else {
-        alert2("Please enter full information!", "light", "showAlertAcc")
+
+    })
+}
+
+//Address 
+let user_address = localStorage.getItem("user_address") ?
+    JSON.parse(localStorage.getItem("user_address")) : [];
+let acc_logged = localStorage.getItem("Logged") ?
+    JSON.parse(localStorage.getItem("Logged")) : {};
+
+const renderAddressIfEmpty = () => {
+    html = ""
+    right_content.setAttribute("class", "w-100 d-flex direction flex-column align-items-lg-start p-4 fw-bold")
+    html += `
+        <div class="w-100 d-flex justify-content-between">
+            <h4>Address</h4>
+            <button id="btnAddress" class="p-1 pe-3"
+                data-bs-toggle="modal"
+                data-bs-target="#modal_Address"><i
+                    class="bi-plus p-1"></i>Add new address</button>
+        </div>
+        <hr style="color: black" class="w-100 t-3"/>
+        <div id="address_render" class="w-100 d-flex justify-content-between">     
+        </div>
+        `
+    right_content.innerHTML = html;
+    let side = document.getElementById("account_detail")
+    side.appendChild(right_content)
+}
+
+const renderFrmAddress = () => {
+    let html = "";
+    let address_render = document.getElementById('address_render')
+    let address_child = document.createElement("div");
+    address_child.setAttribute("class", "d-flex direction flex-column align-items-start fw-bold w-100")
+
+
+    if (user_address.length > 0) {
+        user_address.map(user_add => {
+            if (user_add.email === acc_logged.email) {
+                user_add.address.map((e, i) => {
+                    if (e.isDefault === true) {
+                        html += `
+                        <div class = "w-100 d-flex justify-content-between mb-4">
+                        <div class="d-flex direction flex-column
+                        align-items-start fw-bold w-100">
+                        <div class="d-flex">
+                            <p>${e.name}</p>
+                            <p>-</p>
+                            <p>${e.phoneNo}</p>
+                        </div>
+                        <p>${e.street_houseNo}</p>
+                        <p>${e.city_district}</p>
+                    </div>
+                    <div class="d-flex direction flex-column
+                        align-items-end fw-bold w-100">
+                        <div id="address_btnFeature" class="d-flex">
+                            <p id="editAdress" data-bs-toggle="modal"
+                            data-bs-target="#modal_Address" class="me-2">Edit</p>
+                        </div>
+                        <button type="button" id="setDefaultAddress" class="mt-2 btn rounded-0" disabled>Set default</button>
+                    </div>
+                        </div>
+                     `
+                    } else {
+                        html += `
+                        <div class = "w-100 d-flex justify-content-between mb-4">
+                        <div class="d-flex direction flex-column
+                        align-items-start fw-bold w-100">
+                        <div class="d-flex">
+                            <p>${e.name}</p>
+                            <p>-</p>
+                            <p>${e.phoneNo}</p>
+                        </div>
+                        <p>${e.street_houseNo}</p>
+                        <p>${e.city_district}</p>
+                    </div>
+                    <div class="d-flex direction flex-column
+                        align-items-end fw-bold w-100">
+                        <div id="address_btnFeature" class="d-flex">
+                            <p id="editAdress" data-bs-toggle="modal"
+                            data-bs-target="#modal_Address" class="me-2">Edit</p>
+                            <p id="deleteAdress">Delete</p>
+                        </div>
+                        <button id="setDefaultAddress" onClick="setDefaultAddress(${i})" class="mt-2">Set default</button>
+                    </div>
+                        </div>
+                     `
+                    }
+                })
+            }
+        })
     }
 
-})
+    address_child.innerHTML = html
+    address_render.appendChild(address_child)
 
+}
+
+
+const getDataAddressModal = () => {
+
+}
+
+let submitModalAddress = document.getElementById("submitAddressModal")
+if (submitModalAddress != null) {
+    submitModalAddress.addEventListener("click", () => {
+        let reciever = document.getElementById("reciever_name").value
+        let reciever_phone = document.getElementById("reciever_phoneNo").value
+        let reciever_city_district = document.getElementById("reciever_city").value
+        let reciever_street_houseNo = document.getElementById("reciever_street").value;
+        let isHome = document.getElementById("home_checked")
+        let isWork = document.getElementById("work_checked")
+
+        let parent = document.getElementById("showRegexAddress")
+        let p = document.createElement("p")
+        p.style.color = "red";
+
+        if (reciever !== "" && reciever_phone !== "" && reciever_city_district !== "" && reciever_street_houseNo !== "" && isHome.checked || isWork.checked) {
+            if (!/[a-zA-Z]$/.test(reciever)) {
+                p.innerHTML = "Name without numbers or special characters."
+            } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/g.test(reciever_phone)) {
+                p.innerHTML = "Invalid phone number !";
+            } else {
+                let newAddress = {}
+                if (isHome.checked) {
+                    newAddress = {
+                        address: [{
+                            name: reciever,
+                            phoneNo: reciever_phone,
+                            city_district: reciever_city_district,
+                            street_houseNo: reciever_street_houseNo,
+                            isHome: true,
+                        }],
+                        email: JSON.parse(localStorage.getItem("Logged")).email
+                    }
+                } else {
+                    newAddress = {
+                        address: [{
+                            name: reciever,
+                            phoneNo: reciever_phone,
+                            city_district: reciever_city_district,
+                            street_houseNo: reciever_street_houseNo,
+                            isHome: false,
+                        }],
+                        email: JSON.parse(localStorage.getItem("Logged")).email
+                    }
+                }
+                user_address.push(newAddress);
+                localStorage.setItem("user_address", JSON.stringify(user_address))
+
+
+                p.innerHTML = "New address is added!";
+                p.style.color = "green"
+                parent.appendChild(p);
+                setTimeout(() => {
+                    parent.removeChild(p);;
+                }, "2000");
+            }
+        }
+        else {
+            p.innerHTML = "Please enter full information!";
+            parent.appendChild(p);
+            setTimeout(() => {
+                parent.removeChild(p);;
+            }, "2000");
+        }
+
+    })
+}
+
+function setDefaultAddress(id_address) {
+    user_address.map(user_add => {
+        if (user_add.address.length > 1) {
+            if (user_add.email === acc_logged.email) {
+                user_add.address.map((e, i) => {
+                    console.log(i);
+                    console.log(id_address);
+                    if (i === id_address) {
+                        user_add.address.map((e, i) => {
+                            if (e.isDefault === true) {
+                                user_address.address.splice(i, 1);
+                                const newAddress = {
+                                    name: e.name,
+                                    phoneNo: e.phoneNo,
+                                    city_district: e.city_district,
+                                    street_houseNo: e.street_houseNo,
+                                    isHome: e.isHome,
+                                };
+                                user_address.address.splice(i, 0, newAddress);
+                            }
+                        })
+                        user_address.address.splice(i, 1);
+                        const newAddress = {
+                            name: e.name,
+                            phoneNo: e.phoneNo,
+                            city_district: e.city_district,
+                            street_houseNo: e.street_houseNo,
+                            isHome: e.isHome,
+                            isDefault: true
+                        };
+                        user_address.address.splice(i, 0, newAddress);
+
+                    }
+                })
+            }
+        }
+        else {
+            alert("hjdfjhdfghjdfghjfdg")
+            user_address[0].address.push(
+                    {
+                        name: user_address[0].address.name,
+                        phoneNo: user_address[0].address.phoneNo,
+                        city_district: user_address[0].address.city_district,
+                        street_houseNo: user_address[0].address.street_houseNo,
+                        isHome: user_address[0].address.isHome,
+                        isDefault: true,
+                    }
+            )
+            user_address[0].address.shift();
+        }
+    })
+
+}
 
 let btnProfile = document.getElementById("profile")
 btnProfile.addEventListener("click", () => {
-    // if()
+    renderFrmProfile()
+
 })
+let btnAddress = document.getElementById("address")
+btnAddress.addEventListener("click", () => {
+    renderAddressIfEmpty();
+    renderFrmAddress();
+
+})
+
 
 
 

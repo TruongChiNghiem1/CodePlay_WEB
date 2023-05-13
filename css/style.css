@@ -1477,7 +1477,44 @@ input[type="checkbox"] {
     background-color: black;
 }
 
+#profile_page{
+    display: none;
+}
 
+#btnAddress{
+    border: 0;
+    color: white;
+    background-color: #346751;
+}
+
+#form_Address input[type="text"]{
+    width: 25rem;
+    outline: none;
+}
+
+#editAdress, #deleteAdress{
+    cursor: pointer;
+}
+
+#editAdress:hover{
+    color: rgb(26, 141, 26);
+}
+
+#deleteAdress:hover{
+    color: rgb(150, 10, 10);
+}
+
+#setDefautAddress{
+    border: 0;
+    padding: 5px;
+    color: white;
+    background-color: #85603f;
+}
+
+#setDefautAddress:hover{
+    color: black;
+    background-color: #dddebd;
+}
 
 @media (min-width: 768px) {
     .text-md-right {
