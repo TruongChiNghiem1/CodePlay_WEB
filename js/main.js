@@ -1652,7 +1652,7 @@ const renderFrmAddress = () => {
                         <div id="address_btnFeature" class="d-flex">
                             <p id="editAdress" data-bs-toggle="modal"
                             data-bs-target="#modal_Address" class="me-2">Edit</p>
-                            <p id="deleteAdress">Delete</p>
+                            <p id="deleteAdress" onClick="deleteAddress(${index})">Delete</p>
                         </div>
                         <button id="setDefaultAddress" onClick="setDefaultAddress(${index})" class="mt-2">Set default</button>
                     </div>
@@ -1800,6 +1800,20 @@ function setDefaultAddress(index) {
     // Lưu mảng mới vào localStorage
     localStorage.setItem("user_address", JSON.stringify(user_address))
 
+}
+
+function deleteAddress(index){
+
+    for (let i = 0; i < user_address.length; i++) {
+        if (user_address[i].email === acc_logged.email) {
+          // Xóa đối tượng ở vị trí chỉ mục (index) được truyền vào
+          user_address[i].address.splice(index, 1);
+          break;
+        }
+      }
+    
+      // Lưu lại thông tin vào local storage
+      localStorage.setItem('user_address', JSON.stringify(user_address));
 }
 
 let btnProfile = document.getElementById("profile")

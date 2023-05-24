@@ -1504,14 +1504,14 @@ input[type="checkbox"] {
     color: rgb(150, 10, 10);
 }
 
-#setDefautAddress{
+#setDefaultAddress{
     border: 0;
     padding: 5px;
     color: white;
     background-color: #85603f;
 }
 
-#setDefautAddress:hover{
+#setDefaultAddress:hover{
     color: black;
     background-color: #dddebd;
 }
