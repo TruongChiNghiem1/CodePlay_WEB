@@ -1065,12 +1065,11 @@ const checkAccountRegister = () => {
                 account.map(acc => {
                     if (acc.email === emailRes) {
                         isExists = true;
+                        alert("Exists")
                     }
                 })
-                if (isExists) {
+                if (!isExists) {
                     account.push(newAcc)
-                } else {
-                    alert("Exists")
                 }
             } else {
                 account.push(newAcc)
@@ -1605,7 +1604,7 @@ const renderFrmAddress = () => {
     let address_render = document.getElementById('address_render')
     let address_child = document.createElement("div");
     address_child.setAttribute("class", "d-flex direction flex-column align-items-start fw-bold w-100")
-
+    let index = 0;
 
     if (user_address.length > 0) {
         user_address.map(user_add => {
@@ -1630,10 +1629,11 @@ const renderFrmAddress = () => {
                             <p id="editAdress" data-bs-toggle="modal"
                             data-bs-target="#modal_Address" class="me-2">Edit</p>
                         </div>
-                        <button type="button" id="setDefaultAddress" class="mt-2 btn rounded-0" disabled>Set default</button>
+                        <button type="button" id="setDefaultAddress"  class="mt-2 btn rounded-0" disabled>Default</button>
                     </div>
                         </div>
                      `
+                        index++;
                     } else {
                         html += `
                         <div class = "w-100 d-flex justify-content-between mb-4">
@@ -1654,10 +1654,11 @@ const renderFrmAddress = () => {
                             data-bs-target="#modal_Address" class="me-2">Edit</p>
                             <p id="deleteAdress">Delete</p>
                         </div>
-                        <button id="setDefaultAddress" onClick="setDefaultAddress(${i})" class="mt-2">Set default</button>
+                        <button id="setDefaultAddress" onClick="setDefaultAddress(${index})" class="mt-2">Set default</button>
                     </div>
                         </div>
                      `
+                        index++;
                     }
                 })
             }
@@ -1694,33 +1695,69 @@ if (submitModalAddress != null) {
             } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/g.test(reciever_phone)) {
                 p.innerHTML = "Invalid phone number !";
             } else {
-                let newAddress = {}
-                if (isHome.checked) {
-                    newAddress = {
-                        address: [{
-                            name: reciever,
-                            phoneNo: reciever_phone,
-                            city_district: reciever_city_district,
-                            street_houseNo: reciever_street_houseNo,
-                            isHome: true,
-                        }],
-                        email: JSON.parse(localStorage.getItem("Logged")).email
-                    }
-                } else {
-                    newAddress = {
-                        address: [{
-                            name: reciever,
-                            phoneNo: reciever_phone,
-                            city_district: reciever_city_district,
-                            street_houseNo: reciever_street_houseNo,
-                            isHome: false,
-                        }],
-                        email: JSON.parse(localStorage.getItem("Logged")).email
+                let isEmailExists = false;
+                if (user_address.length > 0) {
+                    for (let index = 0; index < user_address.length ; index++) {
+                        if (user_address[index].email === acc_logged.email) {
+                            alert("dfshjdfjhfd")
+                            let newAddr = {};
+                            if (isHome.checked) {
+                                newAddr = {
+                                    name: reciever,
+                                    phoneNo: reciever_phone,
+                                    city_district: reciever_city_district,
+                                    street_houseNo: reciever_street_houseNo,
+                                    isHome: true,
+                                    isDefault: false
+                                }
+                            } else {
+                                newAddr = {
+                                    name: reciever,
+                                    phoneNo: reciever_phone,
+                                    city_district: reciever_city_district,
+                                    street_houseNo: reciever_street_houseNo,
+                                    isHome: false,
+                                    isDefault: false
+                                }
+                            }
+                            isEmailExists = true;
+                            user_address[index].address.push(newAddr);
+                            break;
+                        }
+                        
                     }
                 }
-                user_address.push(newAddress);
+                if (!isEmailExists || user_address.length <= 0) {
+                    let newAddress = {}
+                    alert("dfsd")
+                    if (isHome.checked) {
+                        newAddress = {
+                            address: [{
+                                name: reciever,
+                                phoneNo: reciever_phone,
+                                city_district: reciever_city_district,
+                                street_houseNo: reciever_street_houseNo,
+                                isHome: true,
+                                isDefault: false
+                            }],
+                            email: JSON.parse(localStorage.getItem("Logged")).email
+                        }
+                    } else {
+                        newAddress = {
+                            address: [{
+                                name: reciever,
+                                phoneNo: reciever_phone,
+                                city_district: reciever_city_district,
+                                street_houseNo: reciever_street_houseNo,
+                                isHome: false,
+                                isDefault: false
+                            }],
+                            email: JSON.parse(localStorage.getItem("Logged")).email
+                        }
+                    }
+                    user_address.push(newAddress);
+                }
                 localStorage.setItem("user_address", JSON.stringify(user_address))
-
 
                 p.innerHTML = "New address is added!";
                 p.style.color = "green"
@@ -1748,16 +1785,18 @@ function setDefaultAddress(index) {
             if (user_add.email === acc_logged.email) {
                 const defaultIndex = user_add.address.findIndex(obj => obj.isDefault === true);
                 if (defaultIndex >= 0) {
-                    alert(user_add.address[defaultIndex])
                     user_add.address[defaultIndex].isDefault = false;
+                    user_add.address[index].isDefault = true;
+                } else {
+                    // Tìm object cần set default và thêm key value isDefault: true
+                    user_add.address[index].isDefault = true;
                 }
-                
-                // Tìm object cần set default và thêm key value isDefault: true
-                user_add.address[index].isDefault = true;
+
+
             }
         })
     }
-  
+
     // Lưu mảng mới vào localStorage
     localStorage.setItem("user_address", JSON.stringify(user_address))
 
