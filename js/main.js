@@ -2,6 +2,11 @@ const changeButtonMenu = (x) => {
     x.classList.toggle("change");
 };
 
+
+const reLoad = () =>{
+    window.location.reload();
+}
+
 //Dieu huong trang
 
 const goToHome = () => {
@@ -1626,7 +1631,7 @@ const renderFrmAddress = () => {
                     <div class="d-flex direction flex-column
                         align-items-end fw-bold w-100">
                         <div id="address_btnFeature" class="d-flex">
-                            <p id="editAdress" data-bs-toggle="modal"
+                            <p id="editAdress" onClick="setEdit(${index})" data-bs-toggle="modal"
                             data-bs-target="#modal_Address" class="me-2">Edit</p>
                         </div>
                         <button type="button" id="setDefaultAddress"  class="mt-2 btn rounded-0" disabled>Default</button>
@@ -1650,7 +1655,7 @@ const renderFrmAddress = () => {
                     <div class="d-flex direction flex-column
                         align-items-end fw-bold w-100">
                         <div id="address_btnFeature" class="d-flex">
-                            <p id="editAdress" data-bs-toggle="modal"
+                            <p id="editAdress" onClick="setEdit(${index})" data-bs-toggle="modal"
                             data-bs-target="#modal_Address" class="me-2">Edit</p>
                             <p id="deleteAdress" onClick="deleteAddress(${index})">Delete</p>
                         </div>
@@ -1675,107 +1680,105 @@ const getDataAddressModal = () => {
 
 }
 
-let submitModalAddress = document.getElementById("submitAddressModal")
-if (submitModalAddress != null) {
-    submitModalAddress.addEventListener("click", () => {
-        let reciever = document.getElementById("reciever_name").value
-        let reciever_phone = document.getElementById("reciever_phoneNo").value
-        let reciever_city_district = document.getElementById("reciever_city").value
-        let reciever_street_houseNo = document.getElementById("reciever_street").value;
-        let isHome = document.getElementById("home_checked")
-        let isWork = document.getElementById("work_checked")
 
-        let parent = document.getElementById("showRegexAddress")
-        let p = document.createElement("p")
-        p.style.color = "red";
 
-        if (reciever !== "" && reciever_phone !== "" && reciever_city_district !== "" && reciever_street_houseNo !== "" && isHome.checked || isWork.checked) {
-            if (!/[a-zA-Z]$/.test(reciever)) {
-                p.innerHTML = "Name without numbers or special characters."
-            } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/g.test(reciever_phone)) {
-                p.innerHTML = "Invalid phone number !";
-            } else {
-                let isEmailExists = false;
-                if (user_address.length > 0) {
-                    for (let index = 0; index < user_address.length ; index++) {
-                        if (user_address[index].email === acc_logged.email) {
-                            alert("dfshjdfjhfd")
-                            let newAddr = {};
-                            if (isHome.checked) {
-                                newAddr = {
-                                    name: reciever,
-                                    phoneNo: reciever_phone,
-                                    city_district: reciever_city_district,
-                                    street_houseNo: reciever_street_houseNo,
-                                    isHome: true,
-                                    isDefault: false
-                                }
-                            } else {
-                                newAddr = {
-                                    name: reciever,
-                                    phoneNo: reciever_phone,
-                                    city_district: reciever_city_district,
-                                    street_houseNo: reciever_street_houseNo,
-                                    isHome: false,
-                                    isDefault: false
-                                }
-                            }
-                            isEmailExists = true;
-                            user_address[index].address.push(newAddr);
-                            break;
-                        }
-                        
-                    }
-                }
-                if (!isEmailExists || user_address.length <= 0) {
-                    let newAddress = {}
-                    alert("dfsd")
-                    if (isHome.checked) {
-                        newAddress = {
-                            address: [{
+const getNewAddress = () => {
+    let reciever = document.getElementById("reciever_name").value
+    let reciever_phone = document.getElementById("reciever_phoneNo").value
+    let reciever_city_district = document.getElementById("reciever_city").value
+    let reciever_street_houseNo = document.getElementById("reciever_street").value;
+    let isHome = document.getElementById("home_checked")
+    let isWork = document.getElementById("work_checked")
+
+    let parent = document.getElementById("showRegexAddress")
+    let p = document.createElement("p")
+    p.style.color = "red";
+
+    if (reciever !== "" && reciever_phone !== "" && reciever_city_district !== "" && reciever_street_houseNo !== "" && isHome.checked || isWork.checked) {
+        if (!/[a-zA-Z]$/.test(reciever)) {
+            p.innerHTML = "Name without numbers or special characters."
+        } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/g.test(reciever_phone)) {
+            p.innerHTML = "Invalid phone number !";
+        } else {
+            let isEmailExists = false;
+            if (user_address.length > 0) {
+                for (let index = 0; index < user_address.length; index++) {
+                    if (user_address[index].email === acc_logged.email) {
+                        alert("dfshjdfjhfd")
+                        let newAddr = {};
+                        if (isHome.checked) {
+                            newAddr = {
                                 name: reciever,
                                 phoneNo: reciever_phone,
                                 city_district: reciever_city_district,
                                 street_houseNo: reciever_street_houseNo,
                                 isHome: true,
                                 isDefault: false
-                            }],
-                            email: JSON.parse(localStorage.getItem("Logged")).email
-                        }
-                    } else {
-                        newAddress = {
-                            address: [{
+                            }
+                        } else {
+                            newAddr = {
                                 name: reciever,
                                 phoneNo: reciever_phone,
                                 city_district: reciever_city_district,
                                 street_houseNo: reciever_street_houseNo,
                                 isHome: false,
                                 isDefault: false
-                            }],
-                            email: JSON.parse(localStorage.getItem("Logged")).email
+                            }
                         }
+                        isEmailExists = true;
+                        user_address[index].address.push(newAddr);
+                        break;
                     }
-                    user_address.push(newAddress);
-                }
-                localStorage.setItem("user_address", JSON.stringify(user_address))
 
-                p.innerHTML = "New address is added!";
-                p.style.color = "green"
-                parent.appendChild(p);
-                setTimeout(() => {
-                    parent.removeChild(p);;
-                }, "2000");
+                }
             }
-        }
-        else {
-            p.innerHTML = "Please enter full information!";
+            if (!isEmailExists || user_address.length <= 0) {
+                let newAddress = {}
+                alert("dfsd")
+                if (isHome.checked) {
+                    newAddress = {
+                        address: [{
+                            name: reciever,
+                            phoneNo: reciever_phone,
+                            city_district: reciever_city_district,
+                            street_houseNo: reciever_street_houseNo,
+                            isHome: true,
+                            isDefault: false
+                        }],
+                        email: JSON.parse(localStorage.getItem("Logged")).email
+                    }
+                } else {
+                    newAddress = {
+                        address: [{
+                            name: reciever,
+                            phoneNo: reciever_phone,
+                            city_district: reciever_city_district,
+                            street_houseNo: reciever_street_houseNo,
+                            isHome: false,
+                            isDefault: false
+                        }],
+                        email: JSON.parse(localStorage.getItem("Logged")).email
+                    }
+                }
+                user_address.push(newAddress);
+            }
+            localStorage.setItem("user_address", JSON.stringify(user_address))
+
+            p.innerHTML = "New address is added!";
+            p.style.color = "green"
             parent.appendChild(p);
             setTimeout(() => {
                 parent.removeChild(p);;
             }, "2000");
         }
-
-    })
+    }
+    else {
+        p.innerHTML = "Please enter full information!";
+        parent.appendChild(p);
+        setTimeout(() => {
+            parent.removeChild(p);;
+        }, "2000");
+    }
 }
 
 function setDefaultAddress(index) {
@@ -1802,23 +1805,115 @@ function setDefaultAddress(index) {
 
 }
 
-function deleteAddress(index){
+function deleteAddress(index) {
 
     for (let i = 0; i < user_address.length; i++) {
         if (user_address[i].email === acc_logged.email) {
-          // Xóa đối tượng ở vị trí chỉ mục (index) được truyền vào
-          user_address[i].address.splice(index, 1);
-          break;
+            // Xóa đối tượng ở vị trí chỉ mục (index) được truyền vào
+            user_address[i].address.splice(index, 1);
+            break;
         }
-      }
-    
-      // Lưu lại thông tin vào local storage
-      localStorage.setItem('user_address', JSON.stringify(user_address));
+    }
+
+    // Lưu lại thông tin vào local storage
+    localStorage.setItem('user_address', JSON.stringify(user_address));
+}
+let edit = -1;
+function setEdit(index) {
+    edit = index;
+}
+const editAddress = (index) => {
+    let reciever = document.getElementById("reciever_name").value
+    let reciever_phone = document.getElementById("reciever_phoneNo").value
+    let reciever_city_district = document.getElementById("reciever_city").value
+    let reciever_street_houseNo = document.getElementById("reciever_street").value;
+    let isHome = document.getElementById("home_checked")
+    let isWork = document.getElementById("work_checked")
+
+    let parent = document.getElementById("showRegexAddress")
+    let p = document.createElement("p")
+    p.style.color = "red";
+    let newAddressObj = {};
+
+    if (reciever !== "" && reciever_phone !== "" && reciever_city_district !== "" && reciever_street_houseNo !== "" && isHome.checked || isWork.checked) {
+        if (!/[a-zA-Z]$/.test(reciever)) {
+            p.innerHTML = "Name without numbers or special characters."
+        } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/g.test(reciever_phone)) {
+            p.innerHTML = "Invalid phone number !";
+        } else {
+            if (user_address.length > 0) {
+                for (let index = 0; index < user_address.length; index++) {
+                    if (user_address[index].email === acc_logged.email) {
+                        alert("dfshjdfjhfd")
+                        let newAddr = {};
+                        if (isHome.checked) {
+                            newAddressObj = {
+                                name: reciever,
+                                phoneNo: reciever_phone,
+                                city_district: reciever_city_district,
+                                street_houseNo: reciever_street_houseNo,
+                                isHome: true,
+                                isDefault: false
+                            }
+                        } else {
+                            newAddressObj = {
+                                name: reciever,
+                                phoneNo: reciever_phone,
+                                city_district: reciever_city_district,
+                                street_houseNo: reciever_street_houseNo,
+                                isHome: false,
+                                isDefault: false
+                            }
+                        }
+                        break;
+                    }
+
+                }
+                p.innerHTML = "Update success!";
+                p.style.color = "green"
+                parent.appendChild(p);
+                setTimeout(() => {
+                    parent.removeChild(p);;
+                }, "2000");
+            }
+        }
+    }
+    else {
+        p.innerHTML = "Please enter full information!";
+        parent.appendChild(p);
+        setTimeout(() => {
+            parent.removeChild(p);;
+        }, "2000");
+    }
+    // Lặp qua mảng để tìm đối tượng có email tương ứng
+    for (let i = 0; i < user_address.length; i++) {
+        if (user_address[i].email === acc_logged.email) {
+            // Thay đổi thông tin đối tượng ở vị trí chỉ mục (index) được truyền vào
+            user_address[i].address[index] = newAddressObj;
+            break;
+        }
+    }
+    edit == -1
+    // Lưu lại thông tin vào local storage
+    localStorage.setItem('user_address', JSON.stringify(user_address));
+}
+
+let submitModalAddress = document.getElementById("submitAddressModal")
+if (submitModalAddress != null) {
+    submitModalAddress.addEventListener("click", () => {
+        if (edit == -1) {
+            getNewAddress();
+        } else {
+            editAddress(edit);
+        }
+        
+    })
 }
 
 let btnProfile = document.getElementById("profile")
 btnProfile.addEventListener("click", () => {
     renderFrmProfile()
+    
 
 })
 let btnAddress = document.getElementById("address")
@@ -1827,6 +1922,7 @@ btnAddress.addEventListener("click", () => {
     renderFrmAddress();
 
 })
+
 
 
 
