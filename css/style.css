@@ -944,8 +944,6 @@ h6 {
     width: 250px;
 }
 
-.truotlen {}
-
 .border_style_none {
     border-style: none;
 }
@@ -1508,13 +1506,39 @@ input[type="checkbox"] {
     border: 0;
     padding: 5px;
     color: white;
-    background-color: #85603f;
+    background-color: #dbdba6;
+}
+
+/* Admin */
+.admin_sidebar button{
+    color: #918168;
+    --bs-nav-pills-link-active-bg: #5c4d30 ;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #346751;
+}
+
+.admin_sidebar button:hover{
+    color: #5c4d30;
+}
+
+.admin_body{
+    margin: 1.5rem;
+    border: 1px rgb(204, 203, 203) groove;
+    border-radius: 8px;
 }
 
 #setDefaultAddress:hover{
     color: black;
-    background-color: #dddebd;
+    background-color: #85603f;
 }
+
+input[type=search].form-control:focus {
+    border-color: rgb(204, 203, 203);
+    box-shadow: none;
+  }
+
 
 @media (min-width: 768px) {
     .text-md-right {

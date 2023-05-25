@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head id="head_of-acc">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dekorare | Admin</title>
+        <link rel="stylesheet"
+            href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+            crossorigin="anonymous">
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap"
+            rel="stylesheet">
+        <link
+            href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+            rel="stylesheet" type='text/css'>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                    <div
+                        class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 admin_sidebar">
+                        <a href="/"
+                            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <h1 class="font_great mt-4 mb_8">Dekorare</h1>
+                        </a>
+                        <ul
+                            class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                            id="menu">
+                            <li class="nav-item">
+                                <button id="adminHome"
+                                    class="nav-link align-middle px-0">
+                                    <i class="fs-4 bi-house"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Home</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button id="adminOrder" href="#"
+                                    class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-table"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Orders</span></button>
+                            </li>
+                            <li>
+                                <button id="adminProduct" href="#submenu3"
+                                    data-bs-toggle="collapse"
+                                    class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-grid"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Products</span>
+                                </button>
+                                <ul class="collapse nav flex-column ms-1"
+                                    id="submenu3" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="#" class="nav-link px-0"> <span
+                                                class="d-none d-sm-inline">Product</span>
+                                            1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0"> <span
+                                                class="d-none d-sm-inline">Product</span>
+                                            2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0"> <span
+                                                class="d-none d-sm-inline">Product</span>
+                                            3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0"> <span
+                                                class="d-none d-sm-inline">Product</span>
+                                            4</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button id="adminCustomer" href="#"
+                                    class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-people"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Customers</span>
+                                </button>
+                            </li>
+                        </ul>
+                        <hr>
+                        <div class="dropup pb-4">
+                            <a href="#"
+                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                                id="dropdownUser1" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img
+                                    src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1685016093/Pngtree_vector_administration_icon_4090499_g9svjt.png"
+                                    alt="hugenerd" width="30" height="30"
+                                    class="rounded-circle">
+                                <span class="d-none d-sm-inline mx-1">Admin</span>
+                            </a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-dark text-small shadow">
+                                <li><a class="dropdown-item"
+                                        onclick="logoutAdmin()">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col py-3 admin_body">
+                    <div class="container data-bs-spy="scroll"
+                        data-bs-target="#list-example" data-bs-offset="0"
+                        class="scrollspy-example" tabindex="0"">
+                        <div class="input-group mb-5">
+                            <input id="search-focus" type="search" id="form1"
+                                class="form-control" placeholder="Search product"/>
+                            <button type="button" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex admin_pro_list">
+                                <img width="100px" class="me-2"
+                                    src="./img-product/Aimee Song Closet.jpg"
+                                    alt>
+                                <div class="flex-column">
+                                    <h4 class="fw-bold">Aimee Song Closet</h4>
+                                    <p>Price: 30$</p>
+                                    <p>Classify: Wall</p>
+                                    <div class="d-flex mt-3">
+                                        <button
+                                            class="nav-link text-warning me-2 fw-bold">Edit</button>
+                                        <button
+                                            class="nav-link text-success me-2 fw-bold">Update</button>
+                                        <button
+                                            class="nav-link text-danger fw-bold">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col d-flex">
+                                <img width="100px" class="me-2"
+                                    src="./img-product/Aimee Song Closet.jpg"
+                                    alt>
+                                <div class="flex-column">
+                                    <h4 class="fw-bold">Aimee Song Closet</h4>
+                                    <p>Price: 30$</p>
+                                    <p>Classify: Wall</p>
+                                    <div class="d-flex mt-3">
+                                        <button
+                                            class="nav-link text-warning me-2 fw-bold">Edit</button>
+                                        <button
+                                            class="nav-link text-success me-2 fw-bold">Update</button>
+                                        <button
+                                            class="nav-link text-danger fw-bold">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col d-flex">
+                                <img width="100px" class="me-2"
+                                    src="./img-product/Aimee Song Closet.jpg"
+                                    alt>
+                                <div class="flex-column">
+                                    <h4 class="fw-bold">Aimee Song Closet</h4>
+                                    <p>Price: 30$</p>
+                                    <p>Classify: Wall</p>
+                                    <div class="d-flex mt-3">
+                                        <button
+                                            class="nav-link text-warning me-2 fw-bold">Edit</button>
+                                        <button
+                                            class="nav-link text-success me-2 fw-bold">Update</button>
+                                        <button
+                                            class="nav-link text-danger fw-bold">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col d-flex">
+                                <img width="100px" class="me-2"
+                                    src="./img-product/Aimee Song Closet.jpg"
+                                    alt>
+                                <div class="flex-column">
+                                    <h4 class="fw-bold">Aimee Song Closet</h4>
+                                    <p>Price: 30$</p>
+                                    <p>Classify: Wall</p>
+                                    <div class="d-flex mt-3">
+                                        <button
+                                            class="nav-link text-warning me-2 fw-bold">Edit</button>
+                                        <button
+                                            class="nav-link text-success me-2 fw-bold">Update</button>
+                                        <button
+                                            class="nav-link text-danger fw-bold">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/40e182ddd7.js"
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+        </style>
+</html>

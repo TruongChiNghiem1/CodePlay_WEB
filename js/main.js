@@ -3,7 +3,7 @@ const changeButtonMenu = (x) => {
 };
 
 
-const reLoad = () =>{
+const reLoad = () => {
     window.location.reload();
 }
 
@@ -1139,7 +1139,7 @@ const Login = () => {
 
 let btnLogin = document.getElementById("Login_Form")
 if (btnLogin != null) {
-    btnLogin.addEventListener("submit", (e) => {
+    btnLogin.dEventListener("submit", (e) => {
         e.preventDefault();
         Login();
     })
@@ -1207,29 +1207,6 @@ const renderLogin_out = () => {
 }
 
 renderLogin_out()
-
-//admin_login
-
-const getAdminLogin = () => {
-    let username = document.getElementById("UsernameAdmin")
-    let adminPassword = document.getElementById("PassAdmin")
-
-    // let adminStorage = localStorage.getItem("admin") ?
-    //     JSON.parse(localStorage.getItem("admin")) : [];
-    // localStorage.setItem("admin", { ad: btoa("dekorare") + "UXV5ZW5OZ2hpZW0=", min: btoa("123" + "RGVrb3JhcmU=") })
-    if (username.value === "dekorare" || adminPassword.value === "123") {
-        window.location = "admin.html"
-    }
-}
-
-let btnAdminLogin = document.getElementById("Admin_Login")
-if (btnAdminLogin != null) {
-    btnAdminLogin.addEventListener("submit", e => {
-        e.preventDefault()
-        getAdminLogin()
-    })
-
-}
 
 
 //Account 
@@ -1762,6 +1739,8 @@ const getNewAddress = () => {
                 }
                 user_address.push(newAddress);
             }
+            renderAddressIfEmpty();
+            renderFrmAddress();
             localStorage.setItem("user_address", JSON.stringify(user_address))
 
             p.innerHTML = "New address is added!";
@@ -1799,7 +1778,8 @@ function setDefaultAddress(index) {
             }
         })
     }
-
+    renderAddressIfEmpty();
+    renderFrmAddress();
     // Lưu mảng mới vào localStorage
     localStorage.setItem("user_address", JSON.stringify(user_address))
 
@@ -1814,7 +1794,8 @@ function deleteAddress(index) {
             break;
         }
     }
-
+    renderAddressIfEmpty();
+    renderFrmAddress();
     // Lưu lại thông tin vào local storage
     localStorage.setItem('user_address', JSON.stringify(user_address));
 }
@@ -1896,6 +1877,8 @@ const editAddress = (index) => {
     edit == -1
     // Lưu lại thông tin vào local storage
     localStorage.setItem('user_address', JSON.stringify(user_address));
+    renderAddressIfEmpty();
+    renderFrmAddress();
 }
 
 let submitModalAddress = document.getElementById("submitAddressModal")
@@ -1906,23 +1889,68 @@ if (submitModalAddress != null) {
         } else {
             editAddress(edit);
         }
-        
     })
 }
 
 let btnProfile = document.getElementById("profile")
-btnProfile.addEventListener("click", () => {
-    renderFrmProfile()
-    
+if (btnProfile != null) {
+    btnProfile.addEventListener("click", () => {
+        renderFrmProfile()
 
-})
+
+    })
+}
 let btnAddress = document.getElementById("address")
-btnAddress.addEventListener("click", () => {
-    renderAddressIfEmpty();
-    renderFrmAddress();
+if (btnAddress != null) {
+    btnAddress.addEventListener("click", () => {
+        renderAddressIfEmpty();
+        renderFrmAddress();
 
-})
+    })
+}
 
+
+//Admin_login
+
+let isAdmin = localStorage.getItem("isAdmin") ?
+    JSON.parse(localStorage.getItem("isAdmin")) : false;
+const getAdminLogin = () => {
+    let username = document.getElementById("UsernameAdmin")
+    let adminPassword = document.getElementById("PassAdmin")
+    if (username.value === "dekorare" || adminPassword.value === "123") {
+        window.location = "admin.html"
+        isAdmin = true;
+        localStorage.removeItem("isLogin");
+        localStorage.setItem("isLogin", "false");
+    }
+    localStorage.setItem("isAdmin", isAdmin);
+}
+
+let btnAdminLogin = document.getElementById("Admin_Login")
+if (btnAdminLogin != null) {
+    btnAdminLogin.addEventListener("submit", e => {
+        e.preventDefault()
+        getAdminLogin()
+    })
+}
+
+
+//Admin
+
+function logoutAdmin() {
+    isAdmin = false;
+    localStorage.setItem("isAdmin", isAdmin);
+    window.location = "login.html"
+}
+
+let admin_body = document.getElementById("admin_body");
+
+const renderProductAdmin = () =>{
+    let html = ""
+    product.map((item, index) =>{
+        
+    })
+}
 
 
 
