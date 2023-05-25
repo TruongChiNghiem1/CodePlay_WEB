@@ -24,65 +24,63 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <header>
-            <div id="header_container">
-                <div class="header_menu">
-                    <div class="dropdown" id="header_button_home">
-                        <button onclick="goToHome()" class="btn btn-secondary
-                            dropdown-toggle"
-                            type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Home
-                        </button>
-                        <ul class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="">Decorate Themes</a></li>
-                            <li><a class="dropdown-item" href="">Collections</a></li>
-                            <li><a class="dropdown-item" href="">Interior
-                                    designer</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown" id="header_button_shop">
-                        <button onclick="goToShop()" class="btn btn-secondary
-                            dropdown-toggle"
-                            type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Shop
-                        </button>
-                        <ul class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="">All Categories</a></li>
-                            <li><a class="dropdown-item" href="">Noticeable</a></li>
-                        </ul>
-                    </div>
-                    <div><button onclick="goToAboutUs()" type="button"
-                            id="header_button_aboutus" class="btn btn-primary">About
-                            Us</button></div>
-                    <div class="header_menu_button_rps"
-                        onclick="changeButtonMenu(this)">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                        <div id="menu-button-dropdown"></div>
-                    </div>
+        <div id="header_container" class="header_container_other">
+            <div class="header_menu">
+                <div class="dropdown" id="header_button_home">
+                    <button onclick="goToHome()" class="btn btn-secondary
+                        dropdown-toggle"
+                        type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Home
+                    </button>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="">Decorate Themes</a></li>
+                        <li><a class="dropdown-item" href="">Collections</a></li>
+                        <li><a class="dropdown-item" href="">Interior
+                                designer</a></li>
+                    </ul>
                 </div>
-
-                <a href="/index.html"><h1
-                        style="font-weight: bold;">Dekorare</h1></a>
-                <div class="header_cart_lgn">
-                    <button onclick="goToFavourite()"
-                        class="header_cart_button"><i
-                            class="fa-regular fa-heart"></i></button>
-                    <button onclick="goToCart()" class="header_cart_button"><i
-                            class="bi-bag"></i></button>
-                    <div id="btnAccount" class="dropdown">
-                        <button class="header_person_button">
-                            <i class="bi-person-circle"></i>
-                        </button>
-                    </div>
+                <div class="dropdown" id="header_button_shop">
+                    <button onclick="goToShop()" class="btn btn-secondary
+                        dropdown-toggle"
+                        type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop
+                    </button>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="">All Categories</a></li>
+                        <li><a class="dropdown-item" href="">Noticeable</a></li>
+                    </ul>
+                </div>
+                <div><button onclick="goToAboutUs()" type="button"
+                        id="header_button_aboutus" class="btn btn-primary">About
+                        Us</button></div>
+                <div class="header_menu_button_rps"
+                    onclick="changeButtonMenu(this)">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                    <div id="menu-button-dropdown"></div>
                 </div>
             </div>
-        </header>
+
+            <a href="/index.html"><h1
+                    style="font-weight: bold;">Dekorare</h1></a>
+            <div class="header_cart_lgn">
+                <button onclick="goToFavourite()"
+                    class="header_cart_button"><i
+                        class="fa-regular fa-heart"></i></button>
+                <button onclick="goToCart()" class="header_cart_button"><i
+                        class="bi-bag"></i></button>
+                <div id="btnAccount" class="dropdown">
+                    <button class="header_person_button">
+                        <i class="bi-person-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
         <section>
             <div class="bg_shop_header ">
                 <div class="container d-flex justify-content-center">

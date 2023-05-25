@@ -23,66 +23,176 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <header>
-            <div id="header_container">
-                <div class="header_menu">
-                    <div class="dropdown" id="header_button_home">
-                        <button onclick="goToHome()" class="btn btn-secondary
-                            dropdown-toggle"
-                            type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Home
-                        </button>
-                        <ul class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="">Decorate Themes</a></li>
-                            <li><a class="dropdown-item" href="">Collections</a></li>
-                            <li><a class="dropdown-item" href="">Interior
-                                    designer</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown" id="header_button_shop">
-                        <button onclick="goToShop()" class="btn btn-secondary
-                            dropdown-toggle"
-                            type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Shop
-                        </button>
-                        <ul class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="">All Categories</a></li>
-                            <li><a class="dropdown-item" href="">Noticeable</a></li>
-                        </ul>
-                    </div>
-                    <div><button onclick="goToAboutUs()" type="button"
-                            id="header_button_aboutus" class="btn btn-primary">About
-                            Us</button></div>
-                    <div class="header_menu_button_rps"
-                        onclick="changeButtonMenu(this)">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                        <div id="menu-button-dropdown"></div>
-                    </div>
+        <div id="header_container">
+            <div class="header_menu">
+                <div class="dropdown" id="header_button_home">
+                    <button onclick="goToHome()" class="btn btn-secondary
+                        dropdown-toggle"
+                        type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Home
+                    </button>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="">Decorate Themes</a></li>
+                        <li><a class="dropdown-item" href="">Collections</a></li>
+                        <li><a class="dropdown-item" href="">Interior
+                                designer</a></li>
+                    </ul>
                 </div>
-
-                <a href="/index.html"><h1
-                        style="font-weight: bold;">Dekorare</h1></a>
-                <div class="header_cart_lgn">
-                    <button onclick="goToFavourite()"
-                        class="header_cart_button"><i
-                            class="fa-regular fa-heart"></i></button>
-                    <button onclick="goToCart()" class="header_cart_button"><i
-                            class="bi-bag"></i></button>
-                    <div id="btnAccount" class="dropdown">
-                        <button class="header_person_button">
-                            <i class="bi-person-circle"></i>
-                        </button>
-                    </div>
+                <div class="dropdown" id="header_button_shop">
+                    <button onclick="goToShop()" class="btn btn-secondary
+                        dropdown-toggle"
+                        type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop
+                    </button>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="">All Categories</a></li>
+                        <li><a class="dropdown-item" href="">Noticeable</a></li>
+                    </ul>
+                </div>
+                <div><button onclick="goToAboutUs()" type="button"
+                        id="header_button_aboutus" class="btn btn-primary">About
+                        Us</button></div>
+                <div class="header_menu_button_rps"
+                    onclick="changeButtonMenu(this)">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                    <div id="menu-button-dropdown"></div>
                 </div>
             </div>
-        </header>
-        
+
+            <a href="/index.html"><h1
+                    style="font-weight: bold;">Dekorare</h1></a>
+            <div class="header_cart_lgn">
+                <button onclick="goToFavourite()"
+                    class="header_cart_button"><i
+                        class="fa-regular fa-heart"></i></button>
+                <button onclick="goToCart()" class="header_cart_button"><i
+                        class="bi-bag"></i></button>
+                <div id="btnAccount" class="dropdown">
+                    <button class="header_person_button">
+                        <i class="bi-person-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <section id="right_side" class="account_main d-flex
+            justify-content-center">
+            <div class="w-15 d-flex direction flex-column align-items-center
+                justify-content-lg-start account_navbar">
+                <div class="acc_title d-flex justify-content-dxss 3[fdcxx]
+                    align-items-center">
+                    <img style="width: 50px; border-radius: 100%; margin: 0 8px"
+                        src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
+                    <div>
+                        <p class="fw-bold m-1">Nguyen Uyen Quyen</p>
+                        <p id="edit_pro"><i class="bi-pencil"></i> Edit profile</p>
+                    </div>
+                </div>
+                <button id="myAcc" onclick="showMyAccSelect()"><i
+                        class="bi-person p-2"></i>My Account</button>
+                <div id="myAcc_select">
+                    <ul class="p-0">
+                        <li id="profile">Profile</li>
+                        <li id="address">Addresses</li>
+                        <li id="changePass">Change password</li>
+                    </ul>
+                </div>
+                <button id="myPur"><i class="bi-cart-check p-2"></i>My Purchase</button>
+                <button id="Notify"><i class="bi-bell p-2"></i>Notifications</button>
+                <button id="myVou"><i class="bi-stickies p-2"></i>My Vouchers</button>
+                <button id="starPoints"><i class="bi-star p-2"></i>Star Points</button>
+            </div>
+            <div id="account_detail" class="w-50 d-flex direction flex-column
+                align-items-lg-start account_detail fw-bold">
+                <!-- Modal -->
+        <div class="modal fade" id="modal_Address" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold"
+                        id="exampleModalLabel">Address</h5>
+                    <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="form_Address" class="d-flex
+                        direction flex-column
+                        align-items-center fw-bold w-100">
+                        <div class="item d-flex flex-column
+                            align-items-start mb-3 ">
+                            <label class="me-3">Reciever:
+                            </label>
+                            <input id="reciever_name"
+                                type="text" class="border-1 p-1
+                                ps-2">
+                        </div>
+                        <div class="item d-flex flex-column
+                            align-items-start mb-3">
+                            <label class="me-3">Phone No:
+                            </label>
+                            <input id="reciever_phoneNo"
+                                type="text" class="border-1 p-1
+                                ps-2">
+                        </div>
+                        <div class="item d-flex flex-column
+                            align-items-start mb-3">
+                            <label class="me-3">Street Name,
+                                Building, House No: </label>
+                            <input id="reciever_street"
+                                type="text" class="border-1 p-1
+                                ps-2">
+                        </div>
+                        <div class="item d-flex flex-column
+                            align-items-start mb-3">
+                            <label class="me-3">City, District,
+                                Ward: </label>
+                            <input id="reciever_city"
+                                type="text" class="border-1 p-1
+                                ps-2">
+                        </div>
+
+                        <div class="item d-flex mb-3">
+                            <p class="me-3">Label As:</p>
+                            <div class="form-check
+                                form-check-inline ">
+                                <input class="form-check-input"
+                                    type="radio"
+                                    name="inlineRadioOptions"
+                                    id="home_checked">
+                                <label class="form-check-label"
+                                    for="home_checked">Home</label>
+                            </div>
+                            <div class="form-check
+                                form-check-inline">
+                                <input class="form-check-input"
+                                    type="radio"
+                                    name="inlineRadioOptions"
+                                    id="work_checked">
+                                <label class="form-check-label"
+                                    for="work_checked">Work</label>
+                            </div>
+                        </div>
+                        <div id="showRegexAddress"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn
+                        btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="submitAddressModal" type="button" class="btn
+                        btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+        </section>
         <footer id="footer">
             <div class="contact-with-us">
                 <div class="contact-icons">

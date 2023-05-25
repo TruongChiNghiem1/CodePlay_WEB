@@ -19,23 +19,27 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    color: white;
-    background-color: rgb(194, 194, 194);
+    position: sticky;
+    color: black;
+    background-color: transparent;
     padding: 0 1rem;
     z-index: 100;
+    top: 0;
+}
+
+.elementor_top_section{
+    position: relative;
 }
 
 header a {
     text-decoration: none;
-    color: white;
 }
 
 header a:hover {
     color: wheat;
 }
 
-header h1 {
+#header_container h1 {
     margin: 0;
 }
 
@@ -56,7 +60,6 @@ header h1 {
     border: none;
     background-color: rgba(6, 53, 56, 0);
     border-radius: 0;
-    color: white;
     --bs-btn-active-bg: #918168;
     box-sizing: content-box;
     font-weight: bold;
@@ -77,7 +80,6 @@ header h1 {
     width: 42px;
     height: 42px;
     font-size: 24px;
-    color: white;
     border: none;
     background-color: transparent;
     border-radius: 100%;
@@ -88,7 +90,6 @@ header h1 {
     width: 42px;
     height: 42px;
     font-size: 24px;
-    color: white;
     border: none;
     background-color: transparent;
     margin: 0 0.5rem;
@@ -128,9 +129,9 @@ header h1 {
 
 }
 
-.dropdown-menu a {
+/* .dropdown-menu a {
     color: white;
-}
+} */
 
 
 .line1,
@@ -192,6 +193,7 @@ header h1 a {
 }
 
 #carouselExampleDark {
+    position: relative;
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
@@ -617,6 +619,7 @@ header h1 a {
 }
 
 .bg_shop_header {
+    position: relative;
     background-image: url("../img/shop/BackgroundShop.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -941,8 +944,6 @@ h6 {
     width: 250px;
 }
 
-.truotlen {}
-
 .border_style_none {
     border-style: none;
 }
@@ -974,9 +975,11 @@ a {
     height: 40px;
 
 }
-.min_with_cart{
+
+.min_with_cart {
     min-height: 310px;
 }
+
 .outln_none {
     outline: none;
 }
@@ -1281,7 +1284,8 @@ footer {
     color: white;
 }
 
-.login_form input:focus, .regiter_main input:focus  {
+.login_form input:focus,
+.regiter_main input:focus {
     background-color: transparent;
     -webkit-box-shadow: none;
     border: 1px groove white;
@@ -1300,7 +1304,13 @@ footer {
     text-transform: uppercase;
 }
 
-#Register{
+.font_great2 {
+    font-size: 100px;
+    font-family: 'Dancing Script', cursive;
+}
+
+
+#Register {
     background: #346751 !important;
     border: 1px solid #346751 !important;
     color: white !important;
@@ -1313,11 +1323,11 @@ footer {
 }
 
 .form-check-input:checked {
-    background-color: #346751 ;
-    border-color: #346751 ;
+    background-color: #346751;
+    border-color: #346751;
 }
 
-.regiter_main label{
+.regiter_main label {
     color: white !important;
 
 }
@@ -1343,6 +1353,7 @@ footer {
     height: 0;
     width: 0;
 }
+
 input[type="checkbox"] {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -1360,17 +1371,174 @@ input[type="checkbox"] {
     width: 50% !important;
 }
 
-.background{
-   background-size: cover;
+.background {
+    background-size: cover;
 }
 
-.register_card{
+.register_card {
     background-color: rgba(253, 253, 253, 0.315);
 }
 
-.toggle-password{
+.toggle-password {
     cursor: pointer;
 }
+
+.account_main {
+    min-height: 60vh;
+    background-size: cover;
+    /* background-position: bottom; */
+}
+
+/* admin_login */
+.admin_log_main {
+    height: 100vh;
+    background-image: url("https://res.cloudinary.com/dz96u1u2a/image/upload/v1683696306/wallpaperflare-cropped_kxl5bs.jpg");
+    background-size: cover;
+    background-position: top;
+}
+
+.admin_log_main input:focus {
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    border: 1px groove black;
+}
+
+.bill_main{
+    min-height: 100vh;
+    background-image: url("https://res.cloudinary.com/dz96u1u2a/image/upload/v1683671816/wallpaperflare.com_wallpaper_2_htovjq.jpg");
+    background-size: cover;
+    background-position: bottom;
+}
+
+.receipt_bill{
+    background-color: #91816854;
+    border-radius:  40px;
+}
+
+#btnConfirm{
+    color: white;
+    background-color: #346751;
+}
+
+.account_detail{
+    background-color: #6281746b;
+    display: none;
+}
+
+.account_navbar{
+    padding: 0.5rem 0;
+}
+
+.account_navbar button{
+    border: 0;
+    margin-top: 1rem;
+    padding: 0.5rem 3rem;
+    background-color: transparent;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+}
+
+.account_navbar button:hover{
+    color: #346751;
+}
+
+#myAcc_select li{
+    margin-top: 6px;
+    list-style:  none;
+    cursor: pointer;
+}
+
+#myAcc_select li:hover{
+    color: wheat;
+}
+
+
+.w-15{
+    width: 15%;
+}
+
+#edit_pro{
+    cursor: pointer;
+}
+
+.acc_title{
+    margin: 1.5rem 0;
+}
+
+.hide {
+    display: none;
+}
+
+#SaveAcc{
+    color: white;
+    background-color: black;
+}
+
+#profile_page{
+    display: none;
+}
+
+#btnAddress{
+    border: 0;
+    color: white;
+    background-color: #346751;
+}
+
+#form_Address input[type="text"]{
+    width: 25rem;
+    outline: none;
+}
+
+#editAdress, #deleteAdress{
+    cursor: pointer;
+}
+
+#editAdress:hover{
+    color: rgb(26, 141, 26);
+}
+
+#deleteAdress:hover{
+    color: rgb(150, 10, 10);
+}
+
+#setDefaultAddress{
+    border: 0;
+    padding: 5px;
+    color: white;
+    background-color: #dbdba6;
+}
+
+/* Admin */
+.admin_sidebar button{
+    color: #918168;
+    --bs-nav-pills-link-active-bg: #5c4d30 ;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #346751;
+}
+
+.admin_sidebar button:hover{
+    color: #5c4d30;
+}
+
+.admin_body{
+    margin: 1.5rem;
+    border: 1px rgb(204, 203, 203) groove;
+    border-radius: 8px;
+}
+
+#setDefaultAddress:hover{
+    color: black;
+    background-color: #85603f;
+}
+
+input[type=search].form-control:focus {
+    border-color: rgb(204, 203, 203);
+    box-shadow: none;
+  }
+
 
 @media (min-width: 768px) {
     .text-md-right {
