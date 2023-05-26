@@ -26,7 +26,8 @@
     <body>
         <div class="container-fluid">
             <div class="row flex-nowrap">
-                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div
+                    class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark fixed-top">
                     <div
                         class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 admin_sidebar">
                         <a href="/"
@@ -108,112 +109,220 @@
                         </div>
                     </div>
                 </div>
-                <div class="col py-3 admin_body">
-                    <div class="container data-bs-spy="scroll"
-                        data-bs-target="#list-example" data-bs-offset="0"
-                        class="scrollspy-example" tabindex="0"">
-                        <div class="input-group mb-5">
+                <div class="col admin_body">
+                    <div class=" admin_search">
+                        <div class="input-group">
                             <input id="search-focus" type="search" id="form1"
-                                class="form-control" placeholder="Search product"/>
-                            <button type="button" class="btn btn-primary">
+                                class="form-control"
+                                placeholder="Search product" />
+                            <button id="admin_search_btn" type="button"
+                                class="btn btn-primary admin_search_btn">
                                 <i class="fas fa-search"></i>
                             </button>
+                            <button id="admin_edit_btn" type="button"
+                                class="btn btn-primary admin_search_btn ms-3 green_bg">
+                                <i class="fas fa-edit"></i>
+                            </button>
                         </div>
-                        <div class="row">
-                            <div class="col d-flex admin_pro_list">
-                                <img width="100px" class="me-2"
-                                    src="./img-product/Aimee Song Closet.jpg"
-                                    alt>
-                                <div class="flex-column">
-                                    <h4 class="fw-bold">Aimee Song Closet</h4>
-                                    <p>Price: 30$</p>
-                                    <p>Classify: Wall</p>
-                                    <div class="d-flex mt-3">
-                                        <button
-                                            class="nav-link text-warning me-2 fw-bold">Edit</button>
-                                        <button
-                                            class="nav-link text-success me-2 fw-bold">Update</button>
-                                        <button
-                                            class="nav-link text-danger fw-bold">Delete</button>
+                    </div>
+                    <div id="admin_body_main"
+                        class="container-fluid admin_body_main">
+                        <div class="modal fade" id="modal_EditProduct"
+                            tabindex="-1"
+                            aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title fw-bold"
+                                            id="exampleModalLabel">Product</h5>
+                                        <button type="button" class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col d-flex">
-                                <img width="100px" class="me-2"
-                                    src="./img-product/Aimee Song Closet.jpg"
-                                    alt>
-                                <div class="flex-column">
-                                    <h4 class="fw-bold">Aimee Song Closet</h4>
-                                    <p>Price: 30$</p>
-                                    <p>Classify: Wall</p>
-                                    <div class="d-flex mt-3">
-                                        <button
-                                            class="nav-link text-warning me-2 fw-bold">Edit</button>
-                                        <button
-                                            class="nav-link text-success me-2 fw-bold">Update</button>
-                                        <button
-                                            class="nav-link text-danger fw-bold">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-100"></div>
-                            <div class="col d-flex">
-                                <img width="100px" class="me-2"
-                                    src="./img-product/Aimee Song Closet.jpg"
-                                    alt>
-                                <div class="flex-column">
-                                    <h4 class="fw-bold">Aimee Song Closet</h4>
-                                    <p>Price: 30$</p>
-                                    <p>Classify: Wall</p>
-                                    <div class="d-flex mt-3">
-                                        <button
-                                            class="nav-link text-warning me-2 fw-bold">Edit</button>
-                                        <button
-                                            class="nav-link text-success me-2 fw-bold">Update</button>
-                                        <button
-                                            class="nav-link text-danger fw-bold">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col d-flex">
-                                <img width="100px" class="me-2"
-                                    src="./img-product/Aimee Song Closet.jpg"
-                                    alt>
-                                <div class="flex-column">
-                                    <h4 class="fw-bold">Aimee Song Closet</h4>
-                                    <p>Price: 30$</p>
-                                    <p>Classify: Wall</p>
-                                    <div class="d-flex mt-3">
-                                        <button
-                                            class="nav-link text-warning me-2 fw-bold">Edit</button>
-                                        <button
-                                            class="nav-link text-success me-2 fw-bold">Update</button>
-                                        <button
-                                            class="nav-link text-danger fw-bold">Delete</button>
+                                    <div class="modal-body">
+                                        <div id="form_EditProduct"
+                                            class="d-flex direction flex-column align-items-start fw-bold w-100">
+                                            <div id="title_pro_alert" class="item d-flex flex-column align-items-start mb-3 input_product_modal">
+                                                <label class="me-3">Title:
+                                                </label>
+                                                <input id="edit_prodct_title"
+                                                    type="text"
+                                                    class="border-1 p-1 ps-2">
+                                            </div>
+                                            <div id="classify_pro_alert" class="item d-flex flex-column mb-3 ">
+                                                <label class="me-3 mb-3">Classify:</label>
+                                                <div class="row row-cols-4">
+                                                    <div class="col">
+                                                        <div
+                                                            class="form-check form-check-inline">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="kitchen"
+                                                                value="Kitchen"
+                                                                name="classify">
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="kitchen">Kitchen</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div
+                                                            class="form-check form-check-inline">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="bedroom"
+                                                                value="Bedroom"
+                                                                name="classify">
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="bedroom">Bedroom</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div
+                                                            class="form-check form-check-inline">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="bathroom"
+                                                                value="Bathroom"
+                                                                name="classify">
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="bathroom">Bathroom</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div
+                                                            class="form-check form-check-inline">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="wall"
+                                                                value="Wall"
+                                                                name="classify">
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="wall">Wall</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div
+                                                            class="form-check form-check-inline">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="living-room"
+                                                                value="Living-room"
+                                                                name="classify">
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="living-room">Living-room</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div
+                                                            class="form-check form-check-inline">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="bancony"
+                                                                value="Bancony"
+                                                                name="classify">
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="bancony">Bancony</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div
+                                                            class="form-check form-check-inline">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="decor"
+                                                                value="Decor"
+                                                                name="classify">
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="decor">Decor</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+
+                                                        <div
+                                                            class="form-check form-check-inline">
+                                                            <input
+                                                                class="form-check-input"
+                                                                type="checkbox"
+                                                                id="other"
+                                                                value="Other"
+                                                                name="classify">
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="other">Other</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="price_pro_alert" class="item d-flex flex-column align-items-start mb-3 input_product_modal input_product_modal">
+                                                <label class="me-3">Price:
+                                                </label>
+                                                <input id="edit_prodct_price"
+                                                    type="number"
+                                                    class="border-1 p-1 ps-2">
+                                            </div>
+                                            <div id="quantity_pro_alert" class="item d-flex flex-column align-items-start mb-3 input_product_modal input_product_modal">
+                                                <label class="me-3">Quantity:
+                                                </label>
+                                                <input id="edit_prodct_quantity"
+                                                    type="number"
+                                                    class="border-1 p-1 ps-2">
+                                            </div>
+                                            <div id="image_pro_alert" class="item d-flex flex-column align-items-start mb-3 input_product_modal input_product_modal">
+                                                <label class="me-3">Link image:
+                                                </label>
+                                                <input id="edit_prodct_image"
+                                                    type="text"
+                                                    class="border-1 p-1 ps-2">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button"
+                                                    class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button
+                                                    id="submitAddProductModal"
+                                                    type="button"
+                                                    class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                    <!-- Modal -->
 
-    </body>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/40e182ddd7.js"
-        crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
-    <style>
+                </div>
+
+            </body>
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                crossorigin="anonymous"></script>
+            <script src="https://kit.fontawesome.com/40e182ddd7.js"
+                crossorigin="anonymous"></script>
+            <script src="js/main.js"></script>
+            <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
         </style>
-    <style>
+            <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
         </style>
-    <style>
+            <style>
         @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
         </style>
-</html>
+        </html>
