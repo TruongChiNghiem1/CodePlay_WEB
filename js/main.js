@@ -67,24 +67,24 @@ let clearStyleHeader = () => {
     login.style.color = "";
 };
 
-let onScroll = () => {
-    window.addEventListener("scroll", callBackFunc);
+// let onScroll = () => {
+//     window.addEventListener("scroll", callBackFunc);
 
-    function callBackFunc() {
-        var y = window.pageYOffset;
-        if (y > 10) {
-            x.classList.add("scroll");
-            changeStyleHeader();
-        } else {
-            x.classList.remove("scroll");
-            clearStyleHeader();
-        }
-    }
-};
+//     function callBackFunc() {
+//         var y = window.pageYOffset;
+//         if (y > 10) {
+//             x.classList.add("scroll");
+//             changeStyleHeader();
+//         } else {
+//             x.classList.remove("scroll");
+//             clearStyleHeader();
+//         }
+//     }
+// };
 
-window.onload = () => {
-    onScroll();
-};
+// window.onload = () => {
+//     onScroll();
+// };
 
 // const product = [{
 //     id: 1,
@@ -92,6 +92,7 @@ window.onload = () => {
 //     title: "Rosy Vase",
 //     price: "120000",
 //     classify: ["Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 2,
@@ -99,6 +100,7 @@ window.onload = () => {
 //     title: "Strange Single Sofa",
 //     price: "500000",
 //     classify: ["Living-room"],
+//     quatity: 100,
 // },
 // {
 //     id: 3,
@@ -106,6 +108,7 @@ window.onload = () => {
 //     title: "RoundSquare Wooden Clock",
 //     price: "180000",
 //     classify: ["Wall", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 4,
@@ -113,6 +116,7 @@ window.onload = () => {
 //     title: "Retro Paiting By Me",
 //     price: "1000000",
 //     classify: ["Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 5,
@@ -120,6 +124,7 @@ window.onload = () => {
 //     title: "Holder Curtain",
 //     price: "99000",
 //     classify: ["Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 7,
@@ -127,6 +132,7 @@ window.onload = () => {
 //     title: "Flower Garden Cup",
 //     price: "80000",
 //     classify: ["Kitchen"],
+//     quatity: 100,
 // },
 // {
 //     id: 8,
@@ -134,6 +140,7 @@ window.onload = () => {
 //     title: "Luxury Dishes",
 //     price: "120000",
 //     classify: ["Kitchen"],
+//     quatity: 100,
 // },
 // {
 //     id: 9,
@@ -141,6 +148,7 @@ window.onload = () => {
 //     title: "Ood Toothbrush Holder",
 //     price: "320000",
 //     classify: ["Bathroom", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 10,
@@ -148,6 +156,7 @@ window.onload = () => {
 //     title: "Vintage Fan Wall Lamp",
 //     price: "100000",
 //     classify: ["Decor", "Wall"],
+//     quatity: 100,
 // },
 // {
 //     id: 11,
@@ -155,6 +164,7 @@ window.onload = () => {
 //     title: "You're Mirror",
 //     price: "120000",
 //     classify: ["Decor", "Wall"],
+//     quatity: 100,
 // },
 // {
 //     id: 12,
@@ -162,6 +172,7 @@ window.onload = () => {
 //     title: "Morden Planter Kiki",
 //     price: "150000",
 //     classify: ["Bancony"],
+//     quatity: 100,
 // },
 // {
 //     id: 13,
@@ -169,6 +180,7 @@ window.onload = () => {
 //     title: "Combo Flowers Spoon",
 //     price: "90000",
 //     classify: ["Kitchen"],
+//     quatity: 100,
 // },
 // {
 //     id: 14,
@@ -176,6 +188,7 @@ window.onload = () => {
 //     title: "Shower Curtain",
 //     price: "60000",
 //     classify: ["Bathroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 15,
@@ -183,6 +196,7 @@ window.onload = () => {
 //     title: "Seashell Pillow",
 //     price: "20000",
 //     classify: ["Bedroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 16,
@@ -190,6 +204,7 @@ window.onload = () => {
 //     title: "Circle Rug DOVE",
 //     price: "50000",
 //     classify: ["Bedroom", "Bathroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 17,
@@ -197,6 +212,7 @@ window.onload = () => {
 //     title: "Brilliant Chair",
 //     price: "150000",
 //     classify: ["Living-room"],
+//     quatity: 100,
 // },
 // {
 //     id: 18,
@@ -204,6 +220,7 @@ window.onload = () => {
 //     title: "Bookshelf Checker",
 //     price: "80000",
 //     classify: ["Living-room", "Bedroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 19,
@@ -211,6 +228,7 @@ window.onload = () => {
 //     title: "Coffee Table Design",
 //     price: "50000",
 //     classify: ["Bancony"],
+//     quatity: 100,
 // },
 // {
 //     id: 20,
@@ -218,6 +236,7 @@ window.onload = () => {
 //     title: "Cosmico Clothes Hanger",
 //     price: "65000",
 //     classify: ["Bedroom", "Bathroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 21,
@@ -225,6 +244,7 @@ window.onload = () => {
 //     title: "Iconic Etcetera Chair",
 //     price: "70000",
 //     classify: ["Living-room", "Bancony"],
+//     quatity: 100,
 // },
 // {
 //     id: 22,
@@ -232,6 +252,7 @@ window.onload = () => {
 //     title: "Modern Light",
 //     price: "110000",
 //     classify: ["Wall", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 23,
@@ -239,6 +260,7 @@ window.onload = () => {
 //     title: "Ocean Light",
 //     price: "50000",
 //     classify: ["Living-room", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 24,
@@ -246,6 +268,7 @@ window.onload = () => {
 //     title: "Water Tower Chair",
 //     price: "250000",
 //     classify: ["Living-room", "Bancony"],
+//     quatity: 100,
 // },
 // {
 //     id: 25,
@@ -253,6 +276,7 @@ window.onload = () => {
 //     title: "Circle Wall Lamp",
 //     price: "150000",
 //     classify: ["Wall", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 26,
@@ -260,6 +284,7 @@ window.onload = () => {
 //     title: "Scandinavian Kitchen",
 //     price: "50000",
 //     classify: ["Kitchen"],
+//     quatity: 100,
 // },
 // {
 //     id: 27,
@@ -267,6 +292,7 @@ window.onload = () => {
 //     title: "Remark Floating Shelves",
 //     price: "50000",
 //     classify: ["Decor", "Bancony"],
+//     quatity: 100,
 // },
 // {
 //     id: 28,
@@ -274,6 +300,7 @@ window.onload = () => {
 //     title: "Coffee Chill Table",
 //     price: "120000",
 //     classify: ["Bancony"],
+//     quatity: 100,
 // },
 // {
 //     id: 29,
@@ -281,6 +308,7 @@ window.onload = () => {
 //     title: "Papering Outdoor Chair",
 //     price: "350000",
 //     classify: ["Living-room", "Bancony"],
+//     quatity: 100,
 // },
 // {
 //     id: 30,
@@ -288,6 +316,7 @@ window.onload = () => {
 //     title: "Low Flower Vase",
 //     price: "50000",
 //     classify: ["Decor", "Other"],
+//     quatity: 100,
 // },
 // {
 //     id: 31,
@@ -295,6 +324,7 @@ window.onload = () => {
 //     title: "Leaf Candle Holder",
 //     price: "20000",
 //     classify: ["Decor", "Living-room"],
+//     quatity: 100,
 // },
 // {
 //     id: 32,
@@ -302,6 +332,7 @@ window.onload = () => {
 //     title: "Spiral Felt Star",
 //     price: "50000",
 //     classify: ["Decor", "Other"],
+//     quatity: 100,
 // },
 // {
 //     id: 33,
@@ -309,6 +340,7 @@ window.onload = () => {
 //     title: "White Dream Catcher",
 //     price: "80000",
 //     classify: ["Decor", "Other"],
+//     quatity: 100,
 // },
 // {
 //     id: 34,
@@ -316,6 +348,7 @@ window.onload = () => {
 //     title: "Metallic-Flecked Toilet",
 //     price: "350000",
 //     classify: ["Bathroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 35,
@@ -323,6 +356,7 @@ window.onload = () => {
 //     title: "Outdoor Egg Chair",
 //     price: "250000",
 //     classify: ["Bancony"],
+//     quatity: 100,
 // },
 // {
 //     id: 36,
@@ -330,6 +364,7 @@ window.onload = () => {
 //     title: "Multi-function Cabinet",
 //     price: "100000",
 //     classify: ["Bathroom", "Bedroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 37,
@@ -337,6 +372,7 @@ window.onload = () => {
 //     title: "Orissa Shower Curtain",
 //     price: "60000",
 //     classify: ["Bathroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 38,
@@ -344,6 +380,7 @@ window.onload = () => {
 //     title: "Multi-use Shelf",
 //     price: "99000",
 //     classify: ["Bathroom", "Other"],
+//     quatity: 100,
 // },
 // {
 //     id: 39,
@@ -351,6 +388,7 @@ window.onload = () => {
 //     title: "Susie Storage Cart",
 //     price: "150000",
 //     classify: ["Bathroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 40,
@@ -358,6 +396,7 @@ window.onload = () => {
 //     title: "Pastel Caninet",
 //     price: "199000",
 //     classify: ["Bathroom", "Bedroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 41,
@@ -365,6 +404,7 @@ window.onload = () => {
 //     title: "Leaf Design Decor",
 //     price: "99000",
 //     classify: ["Wall", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 42,
@@ -372,6 +412,7 @@ window.onload = () => {
 //     title: "Swing Decoration",
 //     price: "150000",
 //     classify: ["Bancony", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 43,
@@ -379,6 +420,7 @@ window.onload = () => {
 //     title: "Plant Hanger",
 //     price: "15000",
 //     classify: ["Bancony", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 44,
@@ -386,6 +428,7 @@ window.onload = () => {
 //     title: "Large Mirror",
 //     price: "59000",
 //     classify: ["Bathroom", "Bedroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 45,
@@ -393,6 +436,7 @@ window.onload = () => {
 //     title: "Pillow Sofa Decor",
 //     price: "50000",
 //     classify: ["Living-room"],
+//     quatity: 100,
 // },
 // {
 //     id: 46,
@@ -400,6 +444,7 @@ window.onload = () => {
 //     title: "Doily Table Runner ",
 //     price: "50000",
 //     classify: ["Kitchen", "Decor", "Other"],
+//     quatity: 100,
 // },
 // {
 //     id: 47,
@@ -407,6 +452,7 @@ window.onload = () => {
 //     title: "Flowers Pillow",
 //     price: "30000",
 //     classify: ["Living-room", "Bedroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 48,
@@ -414,6 +460,7 @@ window.onload = () => {
 //     title: "Crochet Pearl Valance",
 //     price: "20000",
 //     classify: ["Other", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 49,
@@ -421,6 +468,7 @@ window.onload = () => {
 //     title: "Unique Loryal Curtain",
 //     price: "50000",
 //     classify: ["Other", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 50,
@@ -428,6 +476,7 @@ window.onload = () => {
 //     title: "Reflections Decor",
 //     price: "500000",
 //     classify: ["Other", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 51,
@@ -435,6 +484,7 @@ window.onload = () => {
 //     title: "Tiny Round Washbasin",
 //     price: "250000",
 //     classify: ["Bathroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 52,
@@ -442,6 +492,7 @@ window.onload = () => {
 //     title: "Rocking Chair",
 //     price: "50000",
 //     classify: ["Living-room", "Bancony"],
+//     quatity: 100,
 // },
 // {
 //     id: 53,
@@ -449,6 +500,7 @@ window.onload = () => {
 //     title: "Stone Wash Basins",
 //     price: "500000",
 //     classify: ["Bathroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 54,
@@ -456,6 +508,7 @@ window.onload = () => {
 //     title: "Beige Hanging Shelf",
 //     price: "50000",
 //     classify: ["Other", "Bathroom"],
+//     quatity: 100,
 // },
 // {
 //     id: 55,
@@ -463,6 +516,7 @@ window.onload = () => {
 //     title: "Simple Clock",
 //     price: "5000",
 //     classify: ["Living-room", "Wall"],
+//     quatity: 100,
 // },
 // {
 //     id: 56,
@@ -470,6 +524,7 @@ window.onload = () => {
 //     title: "Wooden Eggs Holder",
 //     price: "15000",
 //     classify: ["Kitchen"],
+//     quatity: 100,
 // },
 // {
 //     id: 57,
@@ -477,6 +532,7 @@ window.onload = () => {
 //     title: "Ceramic Batsket",
 //     price: "5000",
 //     classify: ["Other", "Kitchen"],
+//     quatity: 100,
 // },
 // {
 //     id: 58,
@@ -484,6 +540,7 @@ window.onload = () => {
 //     title: "Canvas Gardening Wall",
 //     price: "2000",
 //     classify: ["Other", "Wall"],
+//     quatity: 100,
 // },
 // {
 //     id: 59,
@@ -491,6 +548,7 @@ window.onload = () => {
 //     title: "Bear Honney Blossom",
 //     price: "60000",
 //     classify: ["Other", "Kitchen"],
+//     quatity: 100,
 // },
 // {
 //     id: 60,
@@ -498,6 +556,7 @@ window.onload = () => {
 //     title: "Bold Chair",
 //     price: "150000",
 //     classify: ["Bancony", "Living-room"],
+//     quatity: 100,
 // },
 // {
 //     id: 61,
@@ -505,6 +564,7 @@ window.onload = () => {
 //     title: "Toilet Paper Holder",
 //     price: "300000",
 //     classify: ["Wall", "Living-room", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 62,
@@ -512,6 +572,7 @@ window.onload = () => {
 //     title: "Pastel Curtain",
 //     price: "50000",
 //     classify: ["Other", "Decor"],
+//     quatity: 100,
 // },
 // {
 //     id: 63,
@@ -519,6 +580,7 @@ window.onload = () => {
 //     title: "Vintage Chandeliers",
 //     price: "50000",
 //     classify: ["Living-room", "Bancony"],
+//     quatity: 100,
 // },
 // ];
 
@@ -1945,14 +2007,126 @@ function logoutAdmin() {
     window.location = "login.html"
 }
 
-let admin_body = document.getElementById("admin_body");
-
-const renderProductAdmin = () =>{
+let admin_body_main = document.getElementById("admin_body_main");
+const renderProductAdmin = () => {
+    let admin_product_row = document.getElementById("admin_product_row")
     let html = ""
-    product.map((item, index) =>{
-        
+    product.map((item, index) => {
+        html += `
+        <div class="col-md-4 col-sm-6 col-12 mb-5 d-flex admin_pro_list">
+        <img width="100px" class="me-2"
+            src="${item.image}"
+            alt>
+        <div class="flex-column">
+            <h4 class="fw-bold">${item.title}</h4>
+            <p>Price: ${item.price}</p>
+            <p>Classify: ${item.classify}</p>
+            <p>Quantity: ${item.quatity}</p>
+            <div class="mt-1 admin_product_contrl">
+                <button 
+                    class="nav-link text-warning me-2 fw-bold" data-bs-toggle="modal"
+                    data-bs-target="#modal_EditProduct"><i class="fas fa-edit"></i></button>
+                <button
+                    class="nav-link text-danger fw-bold ms-2"><i class="fas fa-remove"></i></button>
+            </div>
+        </div>
+    </div>
+        `;
+    })
+
+    admin_product_row.innerHTML = html
+}
+//onClick="CRUDProductAdmin(${item.id})"
+
+let adminProduct = document.getElementById("adminProduct")
+if (adminProduct != null) {
+    let admin_product = document.createElement("div");
+    admin_product.setAttribute("id", "admin_product_row")
+    admin_product.setAttribute("class", "row");
+    admin_body_main.appendChild(admin_product);
+    renderProductAdmin()
+}
+
+let admin_edit_btn = document.getElementById("admin_edit_btn")
+admin_edit_btn.addEventListener("click", (e) => {
+    e.preventDefault()
+    const toggleDivs = document.querySelectorAll('.admin_product_contrl');
+    toggleDivs.forEach(div => {
+        if (div.style.display === 'none') {
+            div.style.display = 'flex';
+        } else {
+            div.style.display = 'none';
+        }
+    });
+})
+
+const alertError = (mess, parent, status) => {
+    let p = document.createElement("p")
+    p.innerHTML = mess;
+    if (status) {
+        p.style.color = "green"
+    } else {
+        p.style.color = "red"
+    }
+    let parenta = document.getElementById(`${parent}`);
+    parenta.appendChild(p)
+    setTimeout(() => {
+        parenta.removeChild(p);
+    }, 2000);
+}
+
+function getNewProductAdmin() {
+    let titleProduct = document.getElementById("edit_prodct_title")
+    let priceProduct = document.getElementById("edit_prodct_price")
+    let quantityProduct = document.getElementById("edit_prodct_quantity")
+    let imageProduct = document.getElementById("edit_prodct_image")
+    let classify = document.getElementsByName("classify")
+    var vals = [];
+    for (var i = 0, n = classify.length; i < n; i++) {
+        if (classify[i].checked) {
+            vals.push(classify[i].value);
+        }
+    }
+    if (!/[a-zA-Z0-9]$/.test(titleProduct.value)) {
+        alertError("Title isn't empty and doesn't include special characters!", "title_pro_alert", false)
+    }
+    else if (vals.length <= 0) {
+        alertError("Select at least one category!", "classify_pro_alert", false)
+    } else if (!/.(.jpg|.png)$/.test(imageProduct.value)) {
+        alertError("The image must have a jpg or png extension!", "image_pro_alert", false)
+    } else {
+        return [titleProduct.value, priceProduct.value, quantityProduct.value, vals, imageProduct.value];
+    }
+    return -1;
+}
+
+const addNewProduct  = (proNeww) =>{
+    let newProduct = {
+        id: product.length + 2,
+        title: proNeww[0],
+        price: Number(proNeww[1]),
+        classify: proNeww[3],
+        image: proNeww[4],
+        quatity: Number(proNeww[2])
+
+    };
+    product.push(newProduct);
+    localStorage.setItem("product", JSON.stringify(product))
+
+}
+
+let submitAddProductModal = document.getElementById("submitAddProductModal")
+if (submitAddProductModal != null) {
+    submitAddProductModal.addEventListener("click", () => {
+        if(getNewProductAdmin() !== -1){
+            addNewProduct(getNewProductAdmin());
+        }
     })
 }
+
+
+
+
 
 
 

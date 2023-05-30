@@ -1524,9 +1524,33 @@ input[type="checkbox"] {
 }
 
 .admin_body{
-    margin: 1.5rem;
+    margin-left: 18%;
+}
+
+.admin_body_main{
     border: 1px rgb(204, 203, 203) groove;
     border-radius: 8px;
+    padding: 2rem;
+}
+
+.admin_search{
+    position: sticky;
+    top: 0;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    background-color: white;
+}
+
+.admin_search_btn{
+    width: 4rem;
+}
+
+.green_bg{
+    background-color: #346751;
+    color: white;
+    border: #346751;
 }
 
 #setDefaultAddress:hover{
@@ -1537,8 +1561,19 @@ input[type="checkbox"] {
 input[type=search].form-control:focus {
     border-color: rgb(204, 203, 203);
     box-shadow: none;
-  }
+}
+.admin_product_contrl{
+    display: none;
+}
 
+.input_product_modal input{
+    width: 29rem;
+    outline: none;
+}
+
+.form-check-input{
+    width: 15px;
+}
 
 @media (min-width: 768px) {
     .text-md-right {
