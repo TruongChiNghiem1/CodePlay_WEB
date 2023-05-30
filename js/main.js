@@ -2023,9 +2023,9 @@ const renderProductAdmin = () => {
             <div class="mt-1 admin_product_contrl">
                 <button 
                     class="nav-link text-warning me-2 fw-bold" data-bs-toggle="modal"
-                    data-bs-target="#modal_EditProduct"><i class="fas fa-edit"></i></button>
+                    data-bs-target="#modal_EditProduct""><i class="fas fa-edit"></i></button>
                 <button
-                    class="nav-link text-danger fw-bold ms-2"><i class="fas fa-remove"></i></button>
+                    class="nav-link text-danger fw-bold ms-2"  onClick="deleteProduct(${item.id})"><i class="fas fa-remove"></i></button>
             </div>
         </div>
     </div>
@@ -2110,8 +2110,9 @@ const addNewProduct  = (proNeww) =>{
     };
     product.push(newProduct);
     localStorage.setItem("product", JSON.stringify(product))
-
 }
+
+
 
 let submitAddProductModal = document.getElementById("submitAddProductModal")
 if (submitAddProductModal != null) {
@@ -2120,6 +2121,16 @@ if (submitAddProductModal != null) {
             addNewProduct(getNewProductAdmin());
         }
     })
+}
+
+function deleteProduct(index){
+    alert(index)
+    let indexToRemv = product.filter(pro => pro.id == index);
+    if(indexToRemv != -1){
+        product.splice(indexToRemv, 1)
+        renderProductAdmin();
+    }
+
 }
 
 
