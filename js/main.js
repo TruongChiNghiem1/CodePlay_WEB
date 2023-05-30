@@ -592,6 +592,8 @@ let product = localStorage.getItem("product") ?
     JSON.parse(localStorage.getItem("product")) : [];
 
 
+
+
 let perPage = 16;
 let currentPage = 1;
 let start = 0;
