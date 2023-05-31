@@ -24,63 +24,65 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <header>
-            <div id="header_container">
-                <div class="header_menu">
-                    <div class="dropdown" id="header_button_home">
-                        <button onclick="goToHome()" class="btn btn-secondary
-                            dropdown-toggle"
-                            type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Home
-                        </button>
-                        <ul class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="">Decorate Themes</a></li>
-                            <li><a class="dropdown-item" href="">Collections</a></li>
-                            <li><a class="dropdown-item" href="">Interior
-                                    designer</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown" id="header_button_shop">
-                        <button onclick="goToShop()" class="btn btn-secondary
-                            dropdown-toggle"
-                            type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Shop
-                        </button>
-                        <ul class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="">All Categories</a></li>
-                            <li><a class="dropdown-item" href="">Noticeable</a></li>
-                        </ul>
-                    </div>
-                    <div><button onclick="goToAboutUs()" type="button"
-                            id="header_button_aboutus" class="btn btn-primary">About
-                            Us</button></div>
-                    <div class="header_menu_button_rps"
-                        onclick="changeButtonMenu(this)">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                        <div id="menu-button-dropdown"></div>
-                    </div>
+        <div id="header_container" style="background-color: white;">
+            <div class="header_menu">
+                <div class="dropdown" id="header_button_home">
+                    <button onclick="goToHome()" class="btn btn-secondary
+                            dropdown-toggle text-black"
+                        type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Home
+                    </button>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href>Decorate Themes</a></li>
+                        <li><a class="dropdown-item" href>Collections</a></li>
+                        <li><a class="dropdown-item" href>Interior
+                                designer</a></li>
+                    </ul>
                 </div>
-
-                <a href="/index.html"><h1
-                        style="font-weight: bold;">Dekorare</h1></a>
-                <div class="header_cart_lgn">
-                    <button onclick="goToFavourite()" class="header_cart_button"><i class="fa-regular fa-heart"></i></button>
-                    <button onclick="goToCart()" class="header_cart_button"><i
-                            class="bi-bag"></i></button>
-                    <div id="btnAccount" class="dropdown">
-                        <button class="header_person_button">
-                            <i class="bi-person-circle"></i>
-                        </button>
-                    </div>
+                <div class="dropdown" id="header_button_shop">
+                    <button onclick="goToShop()" class="btn btn-secondary
+                            dropdown-toggle text-black"
+                        type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop
+                    </button>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href>All Categories</a></li>
+                        <li><a class="dropdown-item" href>Noticeable</a></li>
+                    </ul>
+                </div>
+                <div><button onclick="goToAboutUs()" type="button"
+                        id="header_button_aboutus"
+                        class="btn btn-primary text-black">About
+                        Us</button></div>
+                <div class="header_menu_button_rps"
+                    onclick="changeButtonMenu(this)">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                    <div id="menu-button-dropdown"></div>
                 </div>
             </div>
-        </header>
+
+            <a href="/index.html"><h1
+                    style="font-weight: bold;" class="text-black">Dekorare</h1></a>
+            <div class="header_cart_lgn">
+                <button onclick="goToFavourite()"
+                    class="header_cart_button text-black"><i
+                        class="fa-regular fa-heart"></i></button>
+                <button onclick="goToCart()"
+                    class="header_cart_button text-black"><i
+                        class="bi-bag"></i></button>
+                <div id="btnAccount" class="dropdown">
+                    <button class="header_person_button text-black">
+                        <i class="bi-person-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
         <section>
             <div class="container">
                 <div class="mb-3">
@@ -96,8 +98,8 @@
                 <div class="container ">
                     <div class="d-flex align-items-center flex-column
                         ">
-                        <div class="">
-                            <div class="">
+                        <div class>
+                            <div class>
                                 <p class="fs-5 fw-bold text-center">PRESTIGE
                                     INTERIOR DESIGN COMPANY</p>
                             </div>
@@ -126,7 +128,7 @@
                     <div class="d-flex res_body flex-column-reverse">
                         <div class="mb-3 ">
                             <img class="res_body_img" src="img/About_us/2.jpg"
-                                alt="">
+                                alt>
                         </div>
                         <div class="mb-3 d-flex justify-content-center
                             flex-column align-items-center w-100">
@@ -211,110 +213,110 @@
                         </div>
                         <div class="justify-content-end d-flex">
                             <img class="res_body_img" src="img/About_us/1.jpg"
-                                alt="">
+                                alt>
                         </div>
 
                     </div>
                 </div>
             </div>
         </section>
-         <section>
-                <div class="commit">
-                    <div class="commit-content">
-                        <div class="commit-content-content">
-                            <h3>Dekorare</h3>
-                            <h2>Commit</h2>
-                            <p>DEKORARE always makes constant efforts to
-                                understand
-                                customers, capture new design trends, commit to
-                                bringing
-                                partners and customers perfect and quality
-                                works.
-                                Convinced that with its professionalism and
-                                constant
-                                efforts, DEKORARE will become the number 1
-                                choice in
-                                the
-                                hearts of customers when there is a need to use
-                                design
-                                services, interior construction and project
-                                perspective
-                                visualization.</p>
-                        </div>
-                        <i class="fa fa-angle-double-right"></i>
-                        <div class="commit-card">
-                            <div class="card_about">
-                                <div class="card-item">
-                                    <img
-                                        src="img/About_us/f4971960f6c5bf0b9fa2b9bf60443f66.jpg"
-                                        alt="Decoration">
-                                    <div class="card-details">
-                                        <h1>Modern Decoration</h1>
-                                        <p>Lorem ipsum dolor sit amet
-                                            consectetur.</p>
-                                    </div>
+        <section>
+            <div class="commit">
+                <div class="commit-content">
+                    <div class="commit-content-content">
+                        <h3>Dekorare</h3>
+                        <h2>Commit</h2>
+                        <p>DEKORARE always makes constant efforts to
+                            understand
+                            customers, capture new design trends, commit to
+                            bringing
+                            partners and customers perfect and quality
+                            works.
+                            Convinced that with its professionalism and
+                            constant
+                            efforts, DEKORARE will become the number 1
+                            choice in
+                            the
+                            hearts of customers when there is a need to use
+                            design
+                            services, interior construction and project
+                            perspective
+                            visualization.</p>
+                    </div>
+                    <i class="fa fa-angle-double-right"></i>
+                    <div class="commit-card">
+                        <div class="card_about">
+                            <div class="card-item">
+                                <img
+                                    src="img/About_us/f4971960f6c5bf0b9fa2b9bf60443f66.jpg"
+                                    alt="Decoration">
+                                <div class="card-details">
+                                    <h1>Modern Decoration</h1>
+                                    <p>Lorem ipsum dolor sit amet
+                                        consectetur.</p>
                                 </div>
-                                <div class="card-item">
-                                    <img src="img/About_us/5.jpg" alt="Decoration">
-                                    <div class="card-details">
-                                        <h1>Vintage Kitchen</h1>
-                                        <p>Lorem ipsum dolor sit amet
-                                            consectetur.</p>
-                                    </div>
+                            </div>
+                            <div class="card-item">
+                                <img src="img/About_us/5.jpg" alt="Decoration">
+                                <div class="card-details">
+                                    <h1>Vintage Kitchen</h1>
+                                    <p>Lorem ipsum dolor sit amet
+                                        consectetur.</p>
                                 </div>
-                                <div class="card-item">
-                                    <img src="img/About_us/6.jpg" alt="Decoration">
-                                    <div class="card-details">
-                                        <h1>Luxury Bancony</h1>
-                                        <p>Lorem ipsum dolor sit amet
-                                            consectetur.</p>
-                                    </div>
+                            </div>
+                            <div class="card-item">
+                                <img src="img/About_us/6.jpg" alt="Decoration">
+                                <div class="card-details">
+                                    <h1>Luxury Bancony</h1>
+                                    <p>Lorem ipsum dolor sit amet
+                                        consectetur.</p>
                                 </div>
-                                <div class="card-item">
-                                    <img src="img/About_us/7.jpg" alt="Decoration">
-                                    <div class="card-details">
-                                        <h1>Decor Modern 4k</h1>
-                                        <p>Lorem ipsum dolor sit amet
-                                            consectetur.</p>
-                                    </div>
+                            </div>
+                            <div class="card-item">
+                                <img src="img/About_us/7.jpg" alt="Decoration">
+                                <div class="card-details">
+                                    <h1>Decor Modern 4k</h1>
+                                    <p>Lorem ipsum dolor sit amet
+                                        consectetur.</p>
                                 </div>
-                                <div class="card-item">
-                                    <img src="img/About_us/8.jpg" alt="Decoration">
-                                    <div class="card-details">
-                                        <h1>Built-in bedroom</h1>
-                                        <p>Lorem ipsum dolor sit amet
-                                            consectetur.</p>
-                                    </div>
+                            </div>
+                            <div class="card-item">
+                                <img src="img/About_us/8.jpg" alt="Decoration">
+                                <div class="card-details">
+                                    <h1>Built-in bedroom</h1>
+                                    <p>Lorem ipsum dolor sit amet
+                                        consectetur.</p>
                                 </div>
-                                <div class="card-item">
-                                    <img src="img/About_us/9.jpg" alt="Decoration">
-                                    <div class="card-details">
-                                        <h1>Convenient Balcony Relax</h1>
-                                        <p>Lorem ipsum dolor sit amet
-                                            consectetur.</p>
-                                    </div>
+                            </div>
+                            <div class="card-item">
+                                <img src="img/About_us/9.jpg" alt="Decoration">
+                                <div class="card-details">
+                                    <h1>Convenient Balcony Relax</h1>
+                                    <p>Lorem ipsum dolor sit amet
+                                        consectetur.</p>
                                 </div>
-                                <div class="card-item">
-                                    <img src="img/About_us/10.jpg" alt="Decoration">
-                                    <div class="card-details">
-                                        <h1>Retro 2000</h1>
-                                        <p>Lorem ipsum dolor sit amet
-                                            consectetur.</p>
-                                    </div>
+                            </div>
+                            <div class="card-item">
+                                <img src="img/About_us/10.jpg" alt="Decoration">
+                                <div class="card-details">
+                                    <h1>Retro 2000</h1>
+                                    <p>Lorem ipsum dolor sit amet
+                                        consectetur.</p>
                                 </div>
-                                <div class="card-item">
-                                    <img src="img/About_us/4.jpg" alt="Decoration">
-                                    <div class="card-details">
-                                        <h1>Neoclassical Kitchen</h1>
-                                        <p>Lorem ipsum dolor sit amet
-                                            consectetur.</p>
-                                    </div>
+                            </div>
+                            <div class="card-item">
+                                <img src="img/About_us/4.jpg" alt="Decoration">
+                                <div class="card-details">
+                                    <h1>Neoclassical Kitchen</h1>
+                                    <p>Lorem ipsum dolor sit amet
+                                        consectetur.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
         <footer id="footer">
             <div class="contact-with-us">
                 <div class="contact-icons">
@@ -324,7 +326,7 @@
                             class="fa fa-github"></i></a>
                     <a href="https://www.instagram.com/only.52hzblue/"><i
                             class="fa fa-instagram"></i></a>
-                    <a href=""> <i class="fa fa-twitter"></i></a>
+                    <a href> <i class="fa fa-twitter"></i></a>
                 </div>
                 <div class="contact-text">
                     <h4>Contact With Us</h4>
@@ -334,10 +336,10 @@
             <hr>
             <div class="link">
                 <h5>Link</h5>
-                <a href="">Styler Inside</a>
+                <a href>Styler Inside</a>
                 <a href="AboutUs.html">About Us</a>
-                <a href="">Careers</a>
-                <a href="">Brands</a>
+                <a href>Careers</a>
+                <a href>Brands</a>
             </div>
             <hr>
             <div class="payment">

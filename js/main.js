@@ -33,59 +33,63 @@ const goToAcount = () => {
     window.location = "login.html";
 };
 
+const goToBill = () => {
+    window.location = "bill.html"
+}
+
 //Change color header while scroll
 
 var x = document.querySelector("#header_container");
-const but = document.querySelectorAll(".header_menu > div > button");
-const icon = document.querySelectorAll(".header_cart_lgn > button > i");
-const login = document.querySelector(".header_person_button > i")
+let header_menu_button = document.querySelectorAll(".header_menu > div > button")
+let dekorare = document.querySelector("#header_container > a > h1")
+let cart_favourite = document.querySelectorAll(".header_cart_lgn > button")
+let acc_header = document.querySelector("#btnAccount > button")
 
 let changeStyleHeader = () => {
+    header_menu_button.forEach(i => {
+        i.style.color = "black"
+    })
+    dekorare.style.color = "black"
+    cart_favourite.forEach(i => {
+        i.style.color = "black"
+    })
+    acc_header.style.color = "black"
     document.getElementById("header_container").style.backgroundColor = "white";
-    but.forEach((element) => {
-        element.style.color = "black";
-    });
-    icon.forEach((element) => {
-        element.style.color = "black";
-    });
-    document.getElementById("header_button_aboutus").style.color = "black";
-    document.querySelector("#header_container > a > h1").style.color = "black";
-    login.style.color = "black"
 };
 
 let clearStyleHeader = () => {
-    document.getElementById("header_container").style.backgroundColor =
-        "transparent";
-    but.forEach((element) => {
-        element.style.color = "";
-    });
-    icon.forEach((element) => {
-        element.style.color = "";
-    });
-    document.querySelector("#header_container > a > h1").style.color = "";
-    document.getElementById("header_button_aboutus").style.color = "";
-    login.style.color = "";
+    header_menu_button.forEach(i => {
+        i.style.color = "white"
+    })
+    dekorare.style.color = "white"
+    cart_favourite.forEach(i => {
+        i.style.color = "white"
+    })
+    acc_header.style.color = "white"
+    document.getElementById("header_container").style.backgroundColor = "";
 };
 
-// let onScroll = () => {
-//     window.addEventListener("scroll", callBackFunc);
+let onScroll = () => {
+    window.addEventListener("scroll", callBackFunc);
 
-//     function callBackFunc() {
-//         var y = window.pageYOffset;
-//         if (y > 10) {
-//             x.classList.add("scroll");
-//             changeStyleHeader();
-//         } else {
-//             x.classList.remove("scroll");
-//             clearStyleHeader();
-//         }
-//     }
-// };
+    function callBackFunc() {
+        var y = window.pageYOffset;
+        if (y > 10) {
+            x.classList.add("scroll");
+            changeStyleHeader();
+        } else {
+            x.classList.remove("scroll");
+            clearStyleHeader();
+        }
+    }
+};
 
-// window.onload = () => {
-//     onScroll();
-// };
+if (x != null) {
+    window.onload = () => {
+        onScroll();
+    };
 
+}
 // const product = [{
 //     id: 1,
 //     image: "https://i.pinimg.com/564x/b9/07/03/b907031cfc16e327bd01e94b20131b16.jpg",
@@ -614,26 +618,66 @@ const goToDetail = (key) => {
         qty: 1
     })
 }
+//detail
+// let listDetail = localStorage.getItem("cart")
+//     ? JSON.parse(localStorage.getItem("cart"))
+//     : [];
+function detail(id){
+    localStorage.setItem("detail", JSON.stringify(product[id]));
+    window.location="detail.html";
+  }
+  
+  function renderDetail(){
+    let dataDetail = localStorage.getItem("detail") ? JSON.parse(localStorage.getItem("detail")) : [] ;
+    const titleDetail = document.getElementById("title");
+    const imageDetail = document.getElementById("imageDetail")
+    const priceDetail = document.getElementById("priceDetail");
+    const categoryDetail = document.getElementById("categoryDetail");
+    if(titleDetail != null || imageDetail != null || priceDetail != null || categoryDetail != null){
+      let htmlImageDetail = `<img class="w-100" src="${dataDetail.image}" alt="">`;
+      titleDetail.innerText = dataDetail.title;
+      imageDetail.innerHTML = htmlImageDetail;
+      priceDetail.innerText = "$" + dataDetail.price;
+      categoryDetail.innerText = dataDetail.classify;
+    }
+  
+    const apartform = document.getElementById("apartform1");
+    const plus = document.getElementById("plus");
+    let qty = document.getElementById("qty");
+    if(apartform != null || plus != null || qty != null){
+      plus.addEventListener("click", () =>{
+        qty.value++;
+      })
+  
+      apartform.addEventListener("click", () => {
+        if(qty.value > 1){
+          qty.value--;
+        }
+      })
+    }
+  }
+  
+  renderDetail();
 
 function renderProduct() {
     let html = "";
     const content = product.map((i, index) => {
         if (index >= start && index < end) {
             html += `<div class="col h_300 ">
-              <a id="${i.id}" onclick="detail(${index})">
                       <div class="hover_product d-flex">
+                      <a id="${i.id}" onclick="detail(${i.id})">
                         <div class="title_color">
                           <img class="w_product" src="${i.image}" alt="">
                           <p class="ml_5 fs_1 fw-bold">${i.title}</p>
                           <p class="ml_5 fs_1 fw-light">${i.price}$</p>
                         </div>
+                        </a>
                         <div class="d-flex flex-column hover_open_cart">
-                        <a onclick="addToFavourite(${index})" class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
-                        <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <button onclick="addToFavourite(${i.id})" class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></button>
+                        <button class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></button>
+                        <button onclick="addToCart(${i.id})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></button>
                         </div>
                       </div>
-                      </a>
                   </div>`;
         }
     });
@@ -698,39 +742,39 @@ function renderByClasstify(classify) {
         if (classify === "all") {
             if (index >= start && index < end) {
                 html += `<div class="col h_300 ">
-                  <a id="${i.id}" onclick="detail(${index})">
-                          <div class="hover_product d-flex">
-                            <div class="title_color">
-                              <img class="w_product" src="${i.image}" alt="">
-                              <p class="ml_5 fs_1 fw-bold">${i.title}</p>
-                              <p class="ml_5 fs_1 fw-light">${i.price}$</p>
-                            </div>
-                            <div class="d-flex flex-column hover_open_cart">
-                            <a onclick="addToFavourite(${index})"  class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
-                            <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
-                            <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
-                          </div>
-                          </a>
-                      </div>`;
+                <div class="hover_product d-flex">
+                <a id="${i.id}" onclick="detail(${i.id})">
+                  <div class="title_color">
+                    <img class="w_product" src="${i.image}" alt="">
+                    <p class="ml_5 fs_1 fw-bold">${i.title}</p>
+                    <p class="ml_5 fs_1 fw-light">${i.price}$</p>
+                  </div>
+                  </a>
+                  <div class="d-flex flex-column hover_open_cart">
+                  <button onclick="addToFavourite(${i.id})" class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></button>
+                  <button class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></button>
+                  <button onclick="addToCart(${i.id})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                  </div>
+                </div>
+            </div>`;
             }
         } else if (i.classify.includes(classify)) {
             html += `<div class="col h_300 ">
-                        <a id="${i.id}" onclick="detail(${index})">
-                        <div class="hover_product d-flex">
-                        <div class="title_color">
-                            <img class="w_product" src="${i.image}" alt="">
-                            <p class="ml_5 fs_1 fw-bold">${i.title}</p>
-                            <p class="ml_5 fs_1 fw-light">${i.price}$</p>
-                        </div>
-                    <div class="d-flex flex-column hover_open_cart">
-                        <a onclick="addToFavourite(${index})"  class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
-                        <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                  </div>
-                  </a>
-              </div>`;
+            <div class="hover_product d-flex">
+            <a id="${i.id}" onclick="detail(${i.id})">
+              <div class="title_color">
+                <img class="w_product" src="${i.image}" alt="">
+                <p class="ml_5 fs_1 fw-bold">${i.title}</p>
+                <p class="ml_5 fs_1 fw-light">${i.price}$</p>
+              </div>
+              </a>
+              <div class="d-flex flex-column hover_open_cart">
+              <button onclick="addToFavourite(${i.id})" class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></button>
+              <button class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></button>
+              <button onclick="addToCart(${i.id})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></button>
+              </div>
+            </div>
+        </div>`;
         }
         document.getElementById("product_shop").innerHTML = html;
         // let totalPage = Math.ceil(sum / perPage);
@@ -796,21 +840,21 @@ const searchProduct = () => {
         let searchTitle = titleSearch.value.toLowerCase();
         if (title.includes(searchTitle)) {
             html += `<div class="col h_300 ">
-                        <a id="${i.id}" onclick="detail(${index})">
-                        <div class="hover_product d-flex">
-                        <div class="title_color">
-                            <img class="w_product" src="${i.image}" alt="">
-                            <p class="ml_5 fs_1 fw-bold">${i.title}</p>
-                            <p class="ml_5 fs_1 fw-light">${i.price}$</p>
-                        </div>
-                    <div class="d-flex flex-column hover_open_cart">
-                        <a onclick="addToFavourite(${index})"  class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></a>
-                        <a class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></a>
-                        <a onclick="addToCart(${index})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                    </div>
-                    </a>
-                </div>`;
+            <div class="hover_product d-flex">
+            <a id="${i.id}" onclick="detail(${i.id})">
+              <div class="title_color">
+                <img class="w_product" src="${i.image}" alt="">
+                <p class="ml_5 fs_1 fw-bold">${i.title}</p>
+                <p class="ml_5 fs_1 fw-light">${i.price}$</p>
+              </div>
+              </a>
+              <div class="d-flex flex-column hover_open_cart">
+              <button onclick="addToFavourite(${i.id})" class="heart_product color_heart" href="#"><i class="fa-regular fa-heart"></i></button>
+              <button class="heart_product color_eye" href="#"><i class="fa-regular fa-eye"></i></button>
+              <button onclick="addToCart(${i.id})" href="#" class="heart_product color_cart"><i class="fa-solid fa-cart-shopping"></i></button>
+              </div>
+            </div>
+        </div>`;
         }
     });
     if (html === "") {
@@ -965,7 +1009,7 @@ function addToCart(key) {
     if (localStorage.getItem("isLogin") === "true") {
         dataCart = JSON.parse(localStorage.getItem("cart"));
         listCart.push({
-            total: product[key],
+            total: product[key-1],
         });
         localStorage.setItem("cart", JSON.stringify(listCart));
     } else {
@@ -974,6 +1018,7 @@ function addToCart(key) {
 
 }
 
+const render = document.getElementById("spCart");
 function getDataCart() {
     let html = "";
     let totalPrice = 0;
@@ -981,19 +1026,20 @@ function getDataCart() {
         ? JSON.parse(localStorage.getItem("cart"))
         : [];
     let flag = false;
-    product.map((i, index) => {
-        let qty = 0;
-        dataCart.map((j, key) => {
-            if (j.total.id == i.id) {
-                qty++;
-            }
-        })
-        let numberPrice = new Number(i.price);
-        numberPrice = numberPrice * qty;
-        totalPrice += numberPrice;
+    if (listCart.length > 0) {
+        product.map((i, index) => {
+            let qty = 0;
+            dataCart.map((j, key) => {
+                if (j.total.id == i.id) {
+                    qty++;
+                }
+            })
+            let numberPrice = new Number(i.price);
+            numberPrice = numberPrice * qty;
+            totalPrice += numberPrice;
 
-        if (qty > 0) {
-            html += `
+            if (qty > 0) {
+                html += `
                 <div class="d-flex justify-content-between mb-5">
                     <div class="d-flex align-items-center w_400">
                         <img class="w_40" src="${i.image}" alt="">
@@ -1017,17 +1063,57 @@ function getDataCart() {
                     </div>
                 </div>
                 `;
-        }
-    });
-    const render = document.getElementById("spCart");
+            }
+        });
+        html += `
+        <hr>
+        <div class="d-flex justify-content-end">
+        <p class="fs-4 fw-bold">Total:</p><p id="total"
+                class="fs-4 ml_10
+                fw-bold"></p>
+        </div>
+        <div class="d-flex justify-content-end mr_20 mt-3 mb-5">
+        <button class="button_filter" onclick="goToBill()">Order</button>
+        </div>
+
+        `
+    } else {
+        html += `
+        <div class="d-flex direction flex-column align-items-center w-100 mb-5">
+            <img style="width: 400px" src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1685531958/empty_cart_vih2li.png"/>
+            <button onClick="goToShop()" class="btn btn-primary mb-5 fw-bold ps-3 pe-3">Go to Shop</button>
+        </div>
+        <div class="container-fluid">
+        <div class="row">
+        `
+        product.map((i) => {
+            if (i.id >= 1 && i.id < 20) {
+                html += `<div class="col h_300 ">
+                  <a id="${i.id}" onclick="detail(${i.id - 1})">
+                          <div class="hover_product d-flex">
+                            <div class="title_color">
+                              <img class="w_product" src="${i.image}" alt="">
+                              <p class="ml_5 fs_1 fw-bold">${i.title}</p>
+                              <p class="ml_5 fs_1 fw-light">${i.price}$</p>
+                            </div>
+                          </div>
+                          </a>
+                      </div>`;
+            }
+        })
+        html += `</div></div>`
+    }
+    render.innerHTML = html;
     const total = document.getElementById("total");
-    if (render != null && total != null) {
-        render.innerHTML = html;
+    if (total != null) {
         total.innerHTML = totalPrice;
     }
 }
 
-getDataCart();
+if (render != null) {
+    getDataCart();
+}
+
 
 function reloadCart() {
     listCart.innerHTML = "";
@@ -1110,15 +1196,15 @@ const checkAccountRegister = () => {
 
     if (fullNameRes != "" || emailRes != "" || passWordRes != "" || passRepeatRs != "") {
         if (!regexText.test(fullNameRes)) {
-            alert2("Name without numbers or special characters", "light", "NameRes");
+            alertError("Name without numbers or special characters", "NameRes");
         } else if (!regexEmail.test(emailRes)) {
-            alert2("Invalid email e.g. Example@gmail.com", "light", "EmailRes")
+            alertError("Invalid email e.g. Example@gmail.com", "EmailRes")
         } else if (!regexPass.test(passWordRes)) {
-            alert2("Password with 8 characters or more", "light", "PassRes")
+            alertError("Password with 8 characters or more", "PassRes")
         } else if (passWordRes !== passRepeatRs) {
-            alert2("Password does not match!", "light", "PassRepeatRes")
+            alertError("Password does not match!", "PassRepeatRes")
         } else if (!checkRes.checked) {
-            alert2("Password does not match!", "light", "CheckResAlert")
+            alertError("Password does not match!", "CheckResAlert")
         }
         else {
             let account = localStorage.getItem("account") ?
@@ -1148,25 +1234,11 @@ const checkAccountRegister = () => {
             window.location = "login.html"
         }
     } else {
-        alert2("Please enter full information!", "light", "PassRepeatRes")
+        alertError("Please enter full information!", "PassRepeatRes")
     }
 
 }
 
-
-
-const alert2 = (message, type, parent) => {
-    const wrapper = document.createElement("div")
-    const alertPlaceholder = document.getElementById(`${parent}`)
-    wrapper.innerHTML = [
-        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-        `   <div>${message}</div>`,
-        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-        '</div>'
-    ].join('')
-
-    alertPlaceholder.append(wrapper)
-}
 
 let btnRegister = document.getElementById("Register_Form")
 if (btnRegister != null) {
@@ -1192,18 +1264,18 @@ const Login = () => {
                 localStorage.setItem("Logged", JSON.stringify({ name: acc.name, email: acc.email }))
                 window.location = "index.html"
             } else {
-                alert2("Invalid account!", "light", "PassLgForm")
+                alertError("Invalid account!", "PassLgForm")
             }
         })
     } else {
-        alert2("Please enter full information!", "light", "PassLgForm")
+        alertError("Please enter full information!", "PassLgForm")
     }
 
 }
 
 let btnLogin = document.getElementById("Login_Form")
 if (btnLogin != null) {
-    btnLogin.dEventListener("submit", (e) => {
+    btnLogin.addEventListener("submit", (e) => {
         e.preventDefault();
         Login();
     })
@@ -1282,7 +1354,7 @@ function showMyAccSelect() {
 
 let right_content = document.createElement("div")
 right_content.classList.add("change_feature")
-right_content.setAttribute("class", "w-50 d-flex direction flex-column align-items-lg-start p-4 fw-bold")
+right_content.setAttribute("class", "w-75 d-flex direction flex-column align-items-lg-start p-4 fw-bold")
 const renderFrmProfile = () => {
     let account = localStorage.getItem("account") ?
         JSON.parse(localStorage.getItem("account")) : [];
@@ -1303,9 +1375,9 @@ const renderFrmProfile = () => {
                     <h4>My Profile</h4>
                     <p>Manage and protect your account</p>
                     <hr style="color: black" class="w-50 t-3"/>
-                    <div class="d-flex justify-content-center">
-                        <form id="submit_profile" class="d-flex direction flex-column
-                            align-items-lg-start p-4 justify-content-around ms-5">
+                    <div class="d-flex justify-content-between w-100">
+                    <form id="submit_profile" class="d-flex direction flex-column
+                        align-items-lg-start p-4">
                             <div class="item mb-4">
                                 Name:
                                 <input id="acc_name" type="text" value= '${acc.name}'>
@@ -1348,9 +1420,8 @@ const renderFrmProfile = () => {
                             <div id="showAlertAcc"></div>
                             <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
                         </form>
-                        <hr style="width: 1; height: 50px; color: black">
                         <div class="d-flex direction flex-column
-                            align-items-lg-start p-4 ms-5">
+                            align-items-lg-start p-4">
                             <img style="width: 150px; border-radius: 100%; margin: 0
                                 8px"
                                 src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
@@ -1361,9 +1432,9 @@ const renderFrmProfile = () => {
                     <h4>My Profile</h4>
                     <p>Manage and protect your account</p>
                     <hr style="color: black" class="w-50 t-3"/>
-                    <div class="d-flex justify-content-center">
-                        <form id="submit_profile" class="d-flex direction flex-column
-                            align-items-lg-start p-4 justify-content-around ms-5">
+                    <div class="d-flex justify-content-between w-100">
+                    <form id="submit_profile" class="d-flex direction flex-column
+                        align-items-lg-start p-4">
                             <div class="item mb-4">
                                 Name:
                                 <input id="acc_name" type="text" value= '${acc.name}'>
@@ -1406,9 +1477,8 @@ const renderFrmProfile = () => {
                             <div id="showAlertAcc"></div>
                             <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
                         </form>
-                        <hr style="width: 1; height: 50px; color: black">
                         <div class="d-flex direction flex-column
-                            align-items-lg-start p-4 ms-5">
+                            align-items-lg-start p-4">
                             <img style="width: 150px; border-radius: 100%; margin: 0
                                 8px"
                                 src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
@@ -1420,9 +1490,9 @@ const renderFrmProfile = () => {
                     <h4>My Profile</h4>
                     <p>Manage and protect your account</p>
                     <hr style="color: black" class="w-50 t-3"/>
-                    <div class="d-flex justify-content-center">
-                        <form id="submit_profile" class="d-flex direction flex-column
-                            align-items-lg-start p-4 justify-content-around ms-5">
+                    <div class="d-flex justify-content-between w-100">
+                    <form id="submit_profile" class="d-flex direction flex-column
+                        align-items-lg-start p-4">
                             <div class="item mb-4">
                                 Name:
                                 <input id="acc_name" type="text" value= '${acc.name}'>
@@ -1465,9 +1535,8 @@ const renderFrmProfile = () => {
                             <div id="showAlertAcc"></div>
                             <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
                         </form>
-                        <hr style="width: 1; height: 50px; color: black">
                         <div class="d-flex direction flex-column
-                            align-items-lg-start p-4 ms-5">
+                            align-items-lg-start p-4">
                             <img style="width: 150px; border-radius: 100%; margin: 0
                                 8px"
                                 src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
@@ -1486,9 +1555,9 @@ const renderFrmProfile = () => {
                 <h4>My Profile</h4>
                 <p>Manage and protect your account</p>
                 <hr style="color: black" class="w-50 t-3"/>
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-between w-100">
                     <form id="submit_profile" class="d-flex direction flex-column
-                        align-items-lg-start p-4 justify-content-around ms-5">
+                        align-items-lg-start p-4">
                         <div class="item mb-4">
                             Name:
                             <input id="acc_name" type="text" value= '${acc.name}'>
@@ -1532,9 +1601,8 @@ const renderFrmProfile = () => {
                         <div id="showAlertAcc"></div>
                         <button id="SaveAcc" type="submit" class="w-25 border-0 p-1 ">Save</button>
                     </form>
-                    <hr style="width: 1; height: 50px; color: black">
                     <div class="d-flex direction flex-column
-                        align-items-lg-start p-4 ms-5">
+                        align-items-lg-start p-4">
                         <img style="width: 150px; border-radius: 100%; margin: 0
                             8px"
                             src="https://res.cloudinary.com/dz96u1u2a/image/upload/v1683774881/d970d56d5350d2624041937de985370c_fzbyaf.jpg"/>
@@ -1546,10 +1614,11 @@ const renderFrmProfile = () => {
     }
 
     right_content.innerHTML = html
-    side.appendChild(right_content)
+    if (side != null) {
+        side.appendChild(right_content)
+    }
 }
-
-// renderFrmProfile()
+renderFrmProfile();
 let save_profile = document.getElementById("submit_profile")
 if (save_profile !== null) {
     save_profile.addEventListener("submit", (e) => {
@@ -1567,11 +1636,10 @@ if (save_profile !== null) {
 
         if (name !== "" && phoneno !== "" && DOB !== "" && male.checked || female.checked || other_gender.checked) {
             if (!/[a-zA-Z]$/.test(name)) {
-                // alert2("Name without numbers or special characters.", "light", "showAlertAcc");
+                alertError("Name without numbers or special characters.", "showAlertAcc");
                 alert("Bu 1")
             } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/g.test(phoneno)) {
-                // alert2("Invalid phone nummber!", "light", "showAlertAcc");
-                alert("Bu 3")
+                alertError("Invalid phone nummber!", "showAlertAcc");
             } else {
                 const indexToRemv = acc_info_detail.findIndex(o => o.email === email);
                 let acc_updated = {}
@@ -1601,19 +1669,16 @@ if (save_profile !== null) {
                     }
                 }
                 if (indexToRemv !== -1) {
-                    alert("fdjksdfjhkdfshj")
                     acc_info_detail.splice(indexToRemv, 1);
                     acc_info_detail.splice(indexToRemv, 0, acc_updated);
                 } else {
                     acc_info_detail.push(acc_updated)
                 }
-                alert("push")
                 localStorage.setItem("account_detail", JSON.stringify(acc_info_detail));
 
             }
         } else {
-            // alert2("Please enter full information!", "light", "showAlertAcc")
-            alert("Bu 2")
+            alertError("Please enter full information!", "showAlertAcc")
         }
 
     })
@@ -2016,7 +2081,7 @@ const renderProductAdmin = () => {
         <div class="col-md-4 col-sm-6 col-12 mb-5 d-flex admin_pro_list">
         <img width="100px" class="me-2"
             src="${item.image}"
-            alt>
+            alt />
         <div class="flex-column">
             <h4 class="fw-bold">${item.title}</h4>
             <p>Price: ${item.price}</p>
@@ -2048,18 +2113,20 @@ if (adminProduct != null) {
 }
 
 let admin_edit_btn = document.getElementById("admin_edit_btn")
-admin_edit_btn.addEventListener("click", (e) => {
-    e.preventDefault()
-    const toggleDivs = document.querySelectorAll('.admin_product_contrl');
-    toggleDivs.forEach(div => {
-        if (div.style.display === 'none') {
-            div.style.display = 'flex';
-        } else {
-            div.style.display = 'none';
-        }
-    });
-})
+if (admin_edit_btn != null) {
+    admin_edit_btn.addEventListener("click", (e) => {
+        e.preventDefault()
+        const toggleDivs = document.querySelectorAll('.admin_product_contrl');
+        toggleDivs.forEach(div => {
+            if (div.style.display === 'none') {
+                div.style.display = 'flex';
+            } else {
+                div.style.display = 'none';
+            }
+        });
+    })
 
+}
 const alertError = (mess, parent, status) => {
     let p = document.createElement("p")
     p.innerHTML = mess;
@@ -2100,7 +2167,7 @@ function getNewProductAdmin() {
     return -1;
 }
 
-const addNewProduct  = (proNeww) =>{
+const addNewProduct = (proNeww) => {
     let newProduct = {
         id: product.length + 2,
         title: proNeww[0],
@@ -2119,20 +2186,156 @@ const addNewProduct  = (proNeww) =>{
 let submitAddProductModal = document.getElementById("submitAddProductModal")
 if (submitAddProductModal != null) {
     submitAddProductModal.addEventListener("click", () => {
-        if(getNewProductAdmin() !== -1){
+        if (getNewProductAdmin() !== -1) {
             addNewProduct(getNewProductAdmin());
         }
     })
 }
 
-function deleteProduct(index){
+function deleteProduct(index) {
     alert(index)
     let indexToRemv = product.filter(pro => pro.id == index);
-    if(indexToRemv != -1){
+    if (indexToRemv != -1) {
         product.splice(indexToRemv, 1)
         renderProductAdmin();
     }
 
+}
+
+//Bill
+let cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
+let bill = document.getElementById("tbody-bill");
+console.log(user_address[0].address);
+const renderBill = () => {
+    let html = "";
+    let flag = false;
+    user_address.map((i , index) => {
+        if(i.email == acc_logged.email){
+            if(i.address.length > 0){
+                let index = 1;
+                if (cart.length > 0) {
+                    cart.map(item => {
+                        html += `
+                        <tr>
+                        <th scope="row">${index}</th>
+                        <td><img width="100px"src="${item.total.image}"/></td>
+                        <td>${item.total.title}</td>
+                        <td>2</td>
+                        <td>${item.total.price}</td>
+                        <td>${item.total.price * 2}</td>
+                      </tr>
+                        `
+                        index++;
+                    })
+                }
+                flag = true;
+            }
+        }
+    })
+    if(flag){
+            html +=`
+            <div class="modal" id="modal_Address" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold"
+                            id="exampleModalLabel">Address</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="form_Address" class="d-flex
+                direction flex-column
+                align-items-center fw-bold w-100">
+                            <div class="item d-flex flex-column
+                    align-items-start mb-3 ">
+                                <label class="me-3">Reciever:
+                                </label>
+                                <input id="reciever_name"
+                                    type="text" class="border-1 p-1
+                        ps-2">
+                            </div>
+                            <div class="item d-flex flex-column
+                    align-items-start mb-3">
+                                <label class="me-3">Phone No:
+                                </label>
+                                <input id="reciever_phoneNo"
+                                    type="text" class="border-1 p-1
+                        ps-2">
+                            </div>
+                            <div class="item d-flex flex-column
+                    align-items-start mb-3">
+                                <label class="me-3">Street Name,
+                                    Building, House No: </label>
+                                <input id="reciever_street"
+                                    type="text" class="border-1 p-1
+                        ps-2">
+                            </div>
+                            <div class="item d-flex flex-column
+                    align-items-start mb-3">
+                                <label class="me-3">City, District,
+                                    Ward: </label>
+                                <input id="reciever_city"
+                                    type="text" class="border-1 p-1
+                        ps-2">
+                            </div>
+
+                            <div class="item d-flex mb-3">
+                                <p class="me-3">Label As:</p>
+                                <div class="form-check
+                        form-check-inline ">
+                                    <input class="form-check-input"
+                                        type="radio"
+                                        name="inlineRadioOptions"
+                                        id="home_checked">
+                                    <label class="form-check-label"
+                                        for="home_checked">Home</label>
+                                </div>
+                                <div class="form-check
+                        form-check-inline">
+                                    <input class="form-check-input"
+                                        type="radio"
+                                        name="inlineRadioOptions"
+                                        id="work_checked">
+                                    <label class="form-check-label"
+                                        for="work_checked">Work</label>
+                                </div>
+                            </div>
+                            <div id="showRegexAddress"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn
+                btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="submitAddressModal" type="button"
+                            class="btn
+                btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            `
+    }
+
+   
+    bill.innerHTML = html;
+}
+
+if (bill != null) {
+    renderBill();
+}
+
+
+const confirmBillFnc = () => {
+    localStorage.setItem("order", JSON.stringify(cart))
+    localStorage.removeItem("cart")
+}
+
+let confirmBill = document.getElementById("btnConfirm")
+if (confirmBill != null) {
+    confirmBill.addEventListener("click", confirmBillFnc)
 }
 
 

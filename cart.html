@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Favourite | Decorare</title>
+        <title>Cart | Decorare</title>
         <!-- <link rel="stylesheet"
             href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
         <link
@@ -24,79 +24,69 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <header>
-            <div id="header_container">
-                <div class="header_menu">
-                    <div class="dropdown" id="header_button_home">
-                        <button onclick="goToHome()" class="btn btn-secondary
+        <div id="header_container">
+            <div class="header_menu">
+                <div class="dropdown" id="header_button_home">
+                    <button onclick="goToHome()" class="btn btn-secondary
                             dropdown-toggle"
-                            type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Home
-                        </button>
-                        <ul class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="">Decorate Themes</a></li>
-                            <li><a class="dropdown-item" href="">Collections</a></li>
-                            <li><a class="dropdown-item" href="">Interior
-                                    designer</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown" id="header_button_shop">
-                        <button onclick="goToShop()" class="btn btn-secondary
-                            dropdown-toggle"
-                            type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Shop
-                        </button>
-                        <ul class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="">All Categories</a></li>
-                            <li><a class="dropdown-item" href="">Noticeable</a></li>
-                        </ul>
-                    </div>
-                    <div><button onclick="goToAboutUs()" type="button"
-                            id="header_button_aboutus" class="btn btn-primary">About
-                            Us</button></div>
-                    <div class="header_menu_button_rps"
-                        onclick="changeButtonMenu(this)">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                        <div id="menu-button-dropdown"></div>
-                    </div>
+                        type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Home
+                    </button>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item text-black" href>Decorate Themes</a></li>
+                        <li><a class="dropdown-item text-black" href>Collections</a></li>
+                        <li><a class="dropdown-item text-black" href>Interior
+                                designer</a></li>
+                    </ul>
                 </div>
-
-                <a href="/index.html"><h1
-                        style="font-weight: bold;">Dekorare</h1></a>
-                <div class="header_cart_lgn">
-                    <button onclick="goToFavourite()"
-                        class="header_cart_button"><i
-                            class="fa-regular fa-heart"></i></button>
-                    <button onclick="goToCart()" class="header_cart_button"><i
-                            class="bi-bag"></i></button>
-                    <div id="btnAccount" class="dropdown">
-                        <button class="header_person_button">
-                            <i class="bi-person-circle"></i>
-                        </button>
-                    </div>
+                <div class="dropdown" id="header_button_shop">
+                    <button onclick="goToShop()" class="btn btn-secondary
+                            dropdown-toggle"
+                        type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop
+                    </button>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item text-black" href>All Categories</a></li>
+                        <li><a class="dropdown-item text-black" href>Noticeable</a></li>
+                    </ul>
+                </div>
+                <div><button onclick="goToAboutUs()" type="button"
+                        id="header_button_aboutus" class="btn btn-primary">About
+                        Us</button></div>
+                <div class="header_menu_button_rps"
+                    onclick="changeButtonMenu(this)">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                    <div id="menu-button-dropdown"></div>
                 </div>
             </div>
-        </header>
+
+            <a href="/index.html"><h1
+                    style="font-weight: bold;">Dekorare</h1></a>
+            <div class="header_cart_lgn">
+                <button onclick="goToFavourite()"
+                    class="header_cart_button"><i
+                        class="fa-regular fa-heart"></i></button>
+                <button onclick="goToCart()" class="header_cart_button"><i
+                        class="bi-bag"></i></button>
+                <div id="btnAccount" class="dropdown">
+                    <button class="header_person_button">
+                        <i class="bi-person-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <section style="background-color: #918168; height: 5rem;position: relative; top: -5rem " class="w-100">
+        </section>
         <section>
-            <div class="d-flex justify-content-center mt_50">
-                <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="container" style="min-height: 40.5vh;">
                     <div id="spCart" class="min_with_cart"></div>
-                    
-                    
-                    <hr>
-                    <div class="d-flex justify-content-end">
-                        <p class="fs-4 fw-bold">Total:</p><p id="total" class="fs-4 ml_10
-                            fw-bold"></p>
-                    </div>
-                    <div class="d-flex justify-content-end mr_20 mt-3 mb-5">
-                        <button class="button_filter">Order</button>
-                    </div>
                 </div>
             </div>
         </section>
@@ -109,7 +99,7 @@
                             class="fa fa-github"></i></a>
                     <a href="https://www.instagram.com/only.52hzblue/"><i
                             class="fa fa-instagram"></i></a>
-                    <a href=""> <i class="fa fa-twitter"></i></a>
+                    <a href> <i class="fa fa-twitter"></i></a>
                 </div>
                 <div class="contact-text">
                     <h4>Contact With Us</h4>
@@ -119,10 +109,10 @@
             <hr>
             <div class="link">
                 <h5>Link</h5>
-                <a href="">Styler Inside</a>
+                <a href>Styler Inside</a>
                 <a href="AboutUs.html">About Us</a>
-                <a href="">Careers</a>
-                <a href="">Brands</a>
+                <a href>Careers</a>
+                <a href>Brands</a>
             </div>
             <hr>
             <div class="payment">
