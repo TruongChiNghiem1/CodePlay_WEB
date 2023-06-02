@@ -33,10 +33,6 @@ const goToAcount = () => {
     window.location = "login.html";
 };
 
-const goToBill = () => {
-    window.location = "bill.html"
-}
-
 //Change color header while scroll
 
 var x = document.querySelector("#header_container");
@@ -622,42 +618,42 @@ const goToDetail = (key) => {
 // let listDetail = localStorage.getItem("cart")
 //     ? JSON.parse(localStorage.getItem("cart"))
 //     : [];
-function detail(id){
+function detail(id) {
     localStorage.setItem("detail", JSON.stringify(product[id]));
-    window.location="detail.html";
-  }
-  
-  function renderDetail(){
-    let dataDetail = localStorage.getItem("detail") ? JSON.parse(localStorage.getItem("detail")) : [] ;
+    window.location = "detail.html";
+}
+
+function renderDetail() {
+    let dataDetail = localStorage.getItem("detail") ? JSON.parse(localStorage.getItem("detail")) : [];
     const titleDetail = document.getElementById("title");
     const imageDetail = document.getElementById("imageDetail")
     const priceDetail = document.getElementById("priceDetail");
     const categoryDetail = document.getElementById("categoryDetail");
-    if(titleDetail != null || imageDetail != null || priceDetail != null || categoryDetail != null){
-      let htmlImageDetail = `<img class="w-100" src="${dataDetail.image}" alt="">`;
-      titleDetail.innerText = dataDetail.title;
-      imageDetail.innerHTML = htmlImageDetail;
-      priceDetail.innerText = "$" + dataDetail.price;
-      categoryDetail.innerText = dataDetail.classify;
+    if (titleDetail != null || imageDetail != null || priceDetail != null || categoryDetail != null) {
+        let htmlImageDetail = `<img class="w-100" src="${dataDetail.image}" alt="">`;
+        titleDetail.innerText = dataDetail.title;
+        imageDetail.innerHTML = htmlImageDetail;
+        priceDetail.innerText = "$" + dataDetail.price;
+        categoryDetail.innerText = dataDetail.classify;
     }
-  
+
     const apartform = document.getElementById("apartform1");
     const plus = document.getElementById("plus");
     let qty = document.getElementById("qty");
-    if(apartform != null || plus != null || qty != null){
-      plus.addEventListener("click", () =>{
-        qty.value++;
-      })
-  
-      apartform.addEventListener("click", () => {
-        if(qty.value > 1){
-          qty.value--;
-        }
-      })
+    if (apartform != null || plus != null || qty != null) {
+        plus.addEventListener("click", () => {
+            qty.value++;
+        })
+
+        apartform.addEventListener("click", () => {
+            if (qty.value > 1) {
+                qty.value--;
+            }
+        })
     }
-  }
-  
-  renderDetail();
+}
+
+renderDetail();
 
 function renderProduct() {
     let html = "";
@@ -1009,7 +1005,7 @@ function addToCart(key) {
     if (localStorage.getItem("isLogin") === "true") {
         dataCart = JSON.parse(localStorage.getItem("cart"));
         listCart.push({
-            total: product[key-1],
+            total: product[key - 1],
         });
         localStorage.setItem("cart", JSON.stringify(listCart));
     } else {
@@ -1073,7 +1069,7 @@ function getDataCart() {
                 fw-bold"></p>
         </div>
         <div class="d-flex justify-content-end mr_20 mt-3 mb-5">
-        <button class="button_filter" onclick="goToBill()">Order</button>
+        <button class="button_filter" onClick="goToBill()">Order</button>
         </div>
 
         `
@@ -2203,19 +2199,61 @@ function deleteProduct(index) {
 }
 
 //Bill
+let btnOrder = document.getElementById("btnOrder")
+const goToBill = () => {
+    flag = true;
+    user_address.map(i => {
+        if (i.email === acc_logged.email) {
+            if (i.address.length > 0) {
+                window.location = "bill.html"
+                flag = false;
+            }
+        }
+    })
+
+    if (flag) {
+        window.location = "account.html";
+        renderAddressIfEmpty();
+    }
+}
+
+if (btnOrder != null) {
+    goToBill();
+}
+
+let renderAccInfoBill = () => {
+    let html = "";
+    let acc_info = document.getElementById("acc_info");
+    for (let index = 0; index < user_address.length; index++) {
+        if (user_address[index].email == acc_logged.email) { 
+           for (let j = 0; j < user_address[index].address.length; j++) {
+            if(user_address[index].address[j].isDefault === true){
+                html+= `
+                    <p class="fw-bold">Customer: ${acc_logged.name}</p>
+                    <p class="fw-bold">Phone Number: ${user_address[index].address[j].phoneNo}</p>
+                    <p class="fw-bold">Address:  ${user_address[index].address[j].street_houseNo}, ${user_address[index].address[j].city_district}</p>
+                `
+            }
+            
+           }
+           
+        }
+        
+    }
+    acc_info.innerHTML = html
+}
+
 let cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
 let bill = document.getElementById("tbody-bill");
-console.log(user_address[0].address);
 const renderBill = () => {
     let html = "";
     let flag = false;
-    user_address.map((i , index) => {
-        if(i.email == acc_logged.email){
-            if(i.address.length > 0){
-                let index = 1;
-                if (cart.length > 0) {
-                    cart.map(item => {
-                        html += `
+    user_address.map((i, index) => {
+        if (i.email == acc_logged.email) {
+            let index = 1;
+            if (cart.length > 0) {
+                cart.map(item => {
+                    html += `
                         <tr>
                         <th scope="row">${index}</th>
                         <td><img width="100px"src="${item.total.image}"/></td>
@@ -2225,101 +2263,14 @@ const renderBill = () => {
                         <td>${item.total.price * 2}</td>
                       </tr>
                         `
-                        index++;
-                    })
-                }
+                    index++;
+                })
+
                 flag = true;
             }
         }
     })
-    if(flag){
-            html +=`
-            <div class="modal" id="modal_Address" tabindex="-1"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title fw-bold"
-                            id="exampleModalLabel">Address</h5>
-                        <button type="button" class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div id="form_Address" class="d-flex
-                direction flex-column
-                align-items-center fw-bold w-100">
-                            <div class="item d-flex flex-column
-                    align-items-start mb-3 ">
-                                <label class="me-3">Reciever:
-                                </label>
-                                <input id="reciever_name"
-                                    type="text" class="border-1 p-1
-                        ps-2">
-                            </div>
-                            <div class="item d-flex flex-column
-                    align-items-start mb-3">
-                                <label class="me-3">Phone No:
-                                </label>
-                                <input id="reciever_phoneNo"
-                                    type="text" class="border-1 p-1
-                        ps-2">
-                            </div>
-                            <div class="item d-flex flex-column
-                    align-items-start mb-3">
-                                <label class="me-3">Street Name,
-                                    Building, House No: </label>
-                                <input id="reciever_street"
-                                    type="text" class="border-1 p-1
-                        ps-2">
-                            </div>
-                            <div class="item d-flex flex-column
-                    align-items-start mb-3">
-                                <label class="me-3">City, District,
-                                    Ward: </label>
-                                <input id="reciever_city"
-                                    type="text" class="border-1 p-1
-                        ps-2">
-                            </div>
-
-                            <div class="item d-flex mb-3">
-                                <p class="me-3">Label As:</p>
-                                <div class="form-check
-                        form-check-inline ">
-                                    <input class="form-check-input"
-                                        type="radio"
-                                        name="inlineRadioOptions"
-                                        id="home_checked">
-                                    <label class="form-check-label"
-                                        for="home_checked">Home</label>
-                                </div>
-                                <div class="form-check
-                        form-check-inline">
-                                    <input class="form-check-input"
-                                        type="radio"
-                                        name="inlineRadioOptions"
-                                        id="work_checked">
-                                    <label class="form-check-label"
-                                        for="work_checked">Work</label>
-                                </div>
-                            </div>
-                            <div id="showRegexAddress"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn
-                btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button id="submitAddressModal" type="button"
-                            class="btn
-                btn-primary">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-            `
-    }
-
-   
+    renderAccInfoBill();
     bill.innerHTML = html;
 }
 
@@ -2336,6 +2287,23 @@ const confirmBillFnc = () => {
 let confirmBill = document.getElementById("btnConfirm")
 if (confirmBill != null) {
     confirmBill.addEventListener("click", confirmBillFnc)
+}
+
+let myPur = document.getElementById("myPur");
+let order = localStorage.getItem("order") ? JSON.parse(localStorage.getItem("order")) : [];
+const renderPurchase= () =>{
+    let html ="";
+    if(order.length > 0){
+        html+= `
+            
+        `
+    }else{
+        alert("false")
+    }
+}
+
+if(myPur != null){
+   myPur.addEventListener("click", renderPurchase)
 }
 
 
